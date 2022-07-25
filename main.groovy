@@ -8,7 +8,22 @@ job('example') {
 
 import org.yaml.snakeyaml.Yaml
 def current_workspace = getBinding().getVariables()['WORKSPACE']
-Yaml parser = new Yaml()
-example = parser.load((current_workspace+"/pipelines/a.yaml" as File).text)
 
-println(example)
+import groovy.io.FileType
+
+def list = []
+
+def dir = new File(current_workspace+"/pipelines")
+dir.eachFileRecurse (FileType.FILES) { file ->
+  list << file
+}
+
+list.each {
+  println it.path
+  
+  Yaml parser = new Yaml()
+  example = parser.load((it.path as File).text)
+
+  println(example)
+
+}
