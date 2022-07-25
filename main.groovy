@@ -9,6 +9,6 @@ job('example') {
 import org.yaml.snakeyaml.Yaml
 def current_workspace = getBinding().getVariables()['WORKSPACE']
 Yaml parser = new Yaml()
-List example = parser.load((current_workspace+"/pipelines/a.yaml" as File).text)
+example = parser.load((current_workspace+"/pipelines/a.yaml" as File).text)
 
-example.each{println it.subject}
+println(example)
