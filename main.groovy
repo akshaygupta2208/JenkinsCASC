@@ -24,6 +24,11 @@ list.each {
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
 
+  job(example["name"]) {
+    steps {
+      shell('echo Hello World!')
+    }
+  }
   println(example)
 
 }
