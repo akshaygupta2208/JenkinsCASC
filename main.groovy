@@ -9,6 +9,6 @@ job('example') {
 import org.yaml.snakeyaml.Yaml
 
 Yaml parser = new Yaml()
-List example = parser.load(("./pipelines/a.yaml" as File).text)
+List example = parser.load(($WORKSPACE+"/pipelines/a.yaml" as File).text)
 
 example.each{println it.subject}
