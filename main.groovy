@@ -38,4 +38,3 @@ list.each {
   println(example)
 
 }
-'''
