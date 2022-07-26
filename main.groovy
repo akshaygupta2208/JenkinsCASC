@@ -13,11 +13,10 @@ def current_workspace = System.getProperty("user.dir");
 
 println(current_workspace)
 
-current_workspace = System.getenv("WORKSPACE")
-println(current_workspace)
+current_workspace = "/var/jenkins_home/workspace/SeedJob"
 
 import groovy.io.FileType
-'''
+
 def list = []
 
 def dir = new File(current_workspace+"/pipelines")
