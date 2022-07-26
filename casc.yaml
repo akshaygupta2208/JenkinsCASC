@@ -17,8 +17,26 @@ security:
     authenticators:
     - global:
         strategy: triggeringUsersAuthorizationStrategy
+  globaljobdslsecurityconfiguration:
+    useScriptSecurity: false
 unclassified:
   location:
-    url: http://38.242.154.127:8080/
+    url: ${URL}
   resourceRoot:
-    url: http://38.242.154.127:8080/
+    url: ${RESOURCEURL}
+jobs:
+  - script: |
+      pipelineJob("SeedJob") {
+      definition {
+          cpsScm {
+              scm {
+                  git{
+                    remote {
+                      url("https://github.com/akshaygupta2208/JenkinsCASC.git")
+                    }
+                    branch("*/master")
+                  }
+              }
+          }
+        }
+      }
