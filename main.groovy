@@ -9,7 +9,8 @@ job('example') {
 @Grab('org.yaml:snakeyaml:1.17')
 
 import org.yaml.snakeyaml.Yaml
-def current_workspace = getBinding().getVariables()['WORKSPACE']
+hudson.FilePath current_workspace = hudson.model.Executor.currentExecutor().getCurrentWorkspace()
+
 println(current_workspace)
 
 current_workspace = System.getenv("WORKSPACE")
