@@ -9,7 +9,7 @@ job('example') {
 @Grab('org.yaml:snakeyaml:1.17')
 
 import org.yaml.snakeyaml.Yaml
-hudson.FilePath current_workspace = hudson.model.Executor.currentExecutor().getCurrentWorkspace()
+def current_workspace = System.getProperty("user.dir");
 
 println(current_workspace)
 
