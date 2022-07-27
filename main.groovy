@@ -29,20 +29,52 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-  pipelineJob(example["name"]) {
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        github('jenkinsci/pipeline-examples')
-                    }
-                }
-            }
-            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
-        }
-    }
-}
+  pipelinejob(example["name"]) {  
+      agent any  
+      stages {
+            stage ('Checkout') {  
+              steps {  
+                        echo 'Running Checkout phase'  
+                }  
+            } 
+            stage ('Build') {  
+              steps {  
+                        echo 'Running Build phase...'  
+                }  
+            }  
+            stage ('BuildSanity') {  
+              steps {  
+                        echo 'Running BuildSanity phase...'  
+                }  
+            }  
+            stage ('ArtefactCreation') {  
+              steps {  
+                        echo 'Running ArtefactCreation phase...'  
+                }  
+            }  
+            stage ('DeployDev') {  
+              steps {  
+                        echo 'Running DeployDev phase...'  
+                }    
+            }  
+            stage ('DevSanity') {  
+              steps {  
+                        echo 'Running DevSanity phase...'  
+                }    
+            }  
+            stage ('DeployProd') {  
+              steps {  
+                        echo 'Running DeployProd phase...'  
+                }    
+            }  
+            stage ('ProdSanity') {  
+              steps {  
+                        echo 'Running ProdSanity phase...'  
+                }    
+            }  
+    }  
+} 
+
   println(example)
 
 }
