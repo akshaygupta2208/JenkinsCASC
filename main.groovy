@@ -39,6 +39,7 @@ pipelineJob(example["name"]) {
         cps {
             script("""
             pipeline {
+                agent any
                 stages {
                     stage('Checkout Stage') {     
                         steps{  
