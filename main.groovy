@@ -42,7 +42,7 @@ pipelineJob(example["name"]) {
                 stages {
                     stage('Checkout Stage') {     
                         steps{  
-                            sh `echo AKSHAY`
+                            shell('echo Hello World!')
                             }    
                     }
             }
