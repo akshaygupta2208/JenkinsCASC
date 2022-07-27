@@ -39,7 +39,7 @@ list.each {
     }
     steps {
         maven('-e clean test')
-        sh ('echo hello world')
+        shell('echo Hello World!')
   }
   }
   println(example)
