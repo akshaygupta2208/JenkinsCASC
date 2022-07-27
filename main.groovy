@@ -37,11 +37,7 @@ list.each {
     agent any  
       stages {
             stage ('Checkout') {  
-              steps {  
-                        script {
-                          env.currentBuild.displayName = "job21"
-                          env.currentBuild.description = "The best description."
-                }
+              steps { 
                         echo 'Running Checkout phase'  
                 }  
             } 
