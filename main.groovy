@@ -34,17 +34,21 @@ list.each {
   println(v.getClass())
   println(example["name"])
   
-pipelineJob('github-demo') {
+pipelineJob(example["name"]) {
     definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        github('jenkinsci/pipeline-examples')
+        cps {
+            script("""
+            pipeline {
+                stages {
+                    stage('Checkout Stage') {     
+                        steps{  
+                            sh `echo AKSHAY`
+                            }    
                     }
-                }
             }
-            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
+        }
+                   """)
+            sandbox()
         }
     }
 }
