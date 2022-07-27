@@ -47,13 +47,6 @@ pipelineJob('github-demo') {
             scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
         }
     }
-  stages{
-    stage{
-      steps{
-      shell('echo Hello World!')
-      }
-    }
-  }
 }
   println(example)
 
