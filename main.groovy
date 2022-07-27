@@ -36,20 +36,18 @@ list.each {
     }
 }
 
-pipelineJob('github-demo') {
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        github('jenkinsci/pipeline-examples')
-                    }
-                }
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
             }
-            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
         }
     }
 }
+
   println(example)
 
 }
