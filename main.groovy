@@ -41,6 +41,7 @@ list.each {
         maven('-e clean test')
         sh ('echo hello world')
   }
+  }
   println(example)
 
 }
