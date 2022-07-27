@@ -33,7 +33,7 @@ list.each {
   def v = example["name"]
   println(v.getClass())
   //println(example["name"])
-  pipelineJob(v) {
+  pipelineJob("a") {
     definition {
         cpsScm {
             scm {
