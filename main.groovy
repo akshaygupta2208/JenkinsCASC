@@ -75,6 +75,7 @@ list.each {
             }  
     }  
 }
+}
   println(example)
 
 }
