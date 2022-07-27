@@ -31,12 +31,7 @@ list.each {
   example = parser.load((it.path as File).text)
 
   job('demo') {
-    steps {
-        shell('echo Hello World!')
-    }
-}
-
-pipeline {
+    pipeline {
     agent any
 
     stages {
@@ -47,6 +42,9 @@ pipeline {
         }
     }
 }
+}
+
+
 
   println(example)
 
