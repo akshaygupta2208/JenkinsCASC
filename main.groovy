@@ -31,8 +31,12 @@ list.each {
   example = parser.load((it.path as File).text)
 
   job(example["name"]) {
-    steps {
-      shell('echo Hello World!')
+    stages {
+      stage{
+        steps{
+          shell('echo hello world')
+        }
+      }
     }
   }
   println(example)
