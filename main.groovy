@@ -29,11 +29,17 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-
   job(example["name"]) {
-    steps {
-      shell('echo Hello World!')
+    
+    scm {
+        git('https://github.com/AstroTech/ecosystem-example-java.git')
     }
+    triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        maven('-e clean test')
+        sh ('echo hello world')
   }
   println(example)
 
