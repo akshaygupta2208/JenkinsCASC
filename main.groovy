@@ -31,13 +31,15 @@ list.each {
   example = parser.load((it.path as File).text)
 
   job(example["name"]) {
-    stages {
-      stage{
-        steps{
-          shell('echo hello world')
-        }
+    pipeline {  
+      agent any  
+      stages {
+            stage ('Checkout') {  
+              steps {  
+                        shell('echo hello world')  
+                }  
+            } 
       }
-    }
   }
   println(example)
 
