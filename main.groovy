@@ -29,7 +29,7 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-  pipelineJob(exmple["name"]) {
+  pipelineJob(example["name"]) {
     definition {
         cpsScm {
             scm {
