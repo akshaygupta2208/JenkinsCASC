@@ -30,9 +30,7 @@ list.each {
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
   job(example["name"]){
-    steps {  
-                        echo 'Running build phase...'  
-                }  
+    echo "hello world"  
 }
   println(example)
 
