@@ -34,18 +34,14 @@ list.each {
   println(v.getClass())
   println(example["name"])
   pipelineJob(v) {
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        github('jenkinsci/pipeline-examples')
-                    }
-                }
-            }
-            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
-        }
-    }
+    agent any  
+      stages {
+            stage ('Checkout') {  
+              steps {  
+                        echo 'Running Checkout phase'  
+                }  
+            } 
+      }
 }
   println(example)
 
