@@ -30,7 +30,7 @@ list.each {
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
   println(example["name"].getClass())
-  def v = example["name"]
+  def v = "a"
   println(v.getClass())
   pipelineJob(v) {
     definition {
