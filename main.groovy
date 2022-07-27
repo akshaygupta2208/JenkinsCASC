@@ -29,23 +29,20 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-
-  job('demo') {
-    pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
+  pipelineJob(example["name"]) {
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        github('jenkinsci/pipeline-examples')
+                    }
+                }
             }
+            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
         }
     }
 }
-}
-
-
-
   println(example)
 
 }
