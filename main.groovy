@@ -31,8 +31,8 @@ list.each {
   example = parser.load((it.path as File).text)
   job(example["name"]) {
     pipeline {  
-    agent any  
-    stages {
+      agent any  
+      stages {
             stage ('Checkout') {  
               steps {  
                         echo 'Running Checkout phase'  
