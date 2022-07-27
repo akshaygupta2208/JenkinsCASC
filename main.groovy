@@ -33,11 +33,15 @@ list.each {
   def v = example["name"]
   println(v.getClass())
   println(example["name"])
-  pipeline(v) {
+  pipeline {
     agent any  
       stages {
             stage ('Checkout') {  
               steps {  
+                        script {
+                          env.currentBuild.displayName = "job21"
+                          env.currentBuild.description = "The best description."
+                }
                         echo 'Running Checkout phase'  
                 }  
             } 
