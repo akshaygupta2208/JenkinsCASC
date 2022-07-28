@@ -44,7 +44,9 @@ pipelineJob(example["name"]) {
                     stage('Checkout Stage') {     
                         steps{  
                             sh 'echo "Checkout"'
-                            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'jb', url: 'https://github.com/akshaygupta2208/JenkinsCASC.git']]])
+                            git branch: 'master',
+                            credentialsId: 'jb',
+                            url: 'git@github.com:akshaygupta2208/JenkinsCASC.git'
                             }    
                     }
                     stage('Build') {     
