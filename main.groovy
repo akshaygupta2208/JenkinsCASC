@@ -34,7 +34,7 @@ list.each {
   //println(v.getClass())
   println(example["name"])
   some_var = example["repoUrl"]
-  def url = example["repoUrl"]
+  buildjob = example["build"]
   
 pipelineJob(example["name"]) {
     definition {
@@ -55,6 +55,7 @@ pipelineJob(example["name"]) {
                     stage('Build') {     
                             steps{  
                                 sh 'echo "Build"'
+                                build '${buildjob}'
                                 }    
                         }
                     stage('BuildSanity') {     
