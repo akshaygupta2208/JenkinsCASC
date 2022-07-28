@@ -33,7 +33,7 @@ list.each {
   def v = example["name"]
   //println(v.getClass())
   println(example["name"])
-  env.some_var = example["repoUrl"])
+  env.some_var = example["repoUrl"]
   
 pipelineJob(example["name"]) {
     definition {
