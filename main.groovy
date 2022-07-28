@@ -33,6 +33,7 @@ list.each {
   def v = example["name"]
   println(v.getClass())
   println(example["name"])
+  println(example["repoUrl"])
   
 pipelineJob(example["name"]) {
     definition {
@@ -46,7 +47,7 @@ pipelineJob(example["name"]) {
                             sh 'echo "Checkout"'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: example["repoUrl"]
+                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
                             }    
                     }
                     stage('Build') {     
