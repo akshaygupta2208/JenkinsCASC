@@ -55,7 +55,6 @@ pipelineJob(example["name"]) {
                     stage('Build') {     
                             steps{  
                                 sh 'echo "Build"'
-                                build '${buildjob}'
                                 }    
                         }
                     stage('BuildSanity') {     
