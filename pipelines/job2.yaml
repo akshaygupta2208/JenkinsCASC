@@ -1,3 +1,4 @@
 name: job2
-repoUrl: https://github.com/akshaygupta2208/JenkinsCASC-1.git
+repoUrl: https://github.com/akshaygupta2208/JenkinsCASC.git
+build: job1
 
