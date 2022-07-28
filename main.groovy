@@ -43,14 +43,44 @@ pipelineJob(example["name"]) {
                 stages {
                     stage('Checkout Stage') {     
                         steps{  
-                            sh 'echo "Hello World!"'
+                            sh 'echo "Checkout"'
                             }    
                     }
-                stage('Checkout') {     
-                        steps{  
-                            sh 'echo "Hello World!"'
-                            }    
-                    }
+                    stage('Build') {     
+                            steps{  
+                                sh 'echo "Build"'
+                                }    
+                        }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                                }    
+                        }
+                    stage('ArtefactCreation') {     
+                            steps{  
+                                sh 'echo "ArtefactCreation"'
+                                }    
+                        }
+                    stage('DeployDev') {     
+                            steps{  
+                                sh 'echo "DeployDev"'
+                                }    
+                        }
+                    stage('DevSanity') {     
+                            steps{  
+                                sh 'echo "DevSanity"'
+                                }    
+                        }
+                    stage('DeployProd') {     
+                            steps{  
+                                sh 'echo "DeployProd"'
+                                }    
+                        }
+                    stage('ProdSanity') {     
+                            steps{  
+                                sh 'echo "ProdSanity"'
+                                }    
+                        }
                
             }
         }
