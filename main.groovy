@@ -46,7 +46,7 @@ pipelineJob(example["name"]) {
                             sh 'echo "Checkout"'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: 'git@github.com:akshaygupta2208/JenkinsCASC.git'
+                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
                             }    
                     }
                     stage('Build') {     
