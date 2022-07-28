@@ -47,7 +47,7 @@ pipelineJob(example["name"]) {
                             sh 'echo "Checkout"'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: v
+                            url: $v
                             }    
                     }
                     stage('Build') {     
