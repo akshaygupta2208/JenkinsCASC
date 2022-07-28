@@ -49,7 +49,7 @@ pipelineJob(example["name"]) {
                             sh 'echo $v'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: ${some_var}
+                            url: '${some_var}'
                             }    
                     }
                     stage('Build') {     
