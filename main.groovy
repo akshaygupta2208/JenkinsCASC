@@ -31,9 +31,9 @@ list.each {
   example = parser.load((it.path as File).text)
   println(example["name"].getClass())
   def v = example["name"]
-  println(v.getClass())
+  //println(v.getClass())
   println(example["name"])
-  println(example["repoUrl"])
+  println("this is repo url "+example["repoUrl"])
   
 pipelineJob(example["name"]) {
     definition {
