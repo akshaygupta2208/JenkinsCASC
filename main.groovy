@@ -33,7 +33,7 @@ list.each {
   def v = example["name"]
   //println(v.getClass())
   println(example["name"])
-  v = example["repoUrl"])
+  env.some_var = example["repoUrl"])
   
 pipelineJob(example["name"]) {
     definition {
@@ -48,7 +48,7 @@ pipelineJob(example["name"]) {
                             sh 'echo $v'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: $v
+                            url: ${env.some_var}
                             }    
                     }
                     stage('Build') {     
