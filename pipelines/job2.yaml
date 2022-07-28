@@ -1,4 +1,4 @@
 name: job2
 repoUrl: https://github.com/akshaygupta2208/JenkinsCASC.git
-build: demo
+build: job2
 
