@@ -45,7 +45,7 @@ pipelineJob(example["name"]) {
                         steps{  
                             sh 'echo "Checkout"'
                             git branch: 'master',
-                            credentialsId: 'jb',
+                            credentialsId: 'kgyuvraj',
                             url: 'git@github.com:akshaygupta2208/JenkinsCASC.git'
                             }    
                     }
