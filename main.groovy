@@ -46,21 +46,12 @@ pipelineJob(example["name"]) {
                             sh 'echo "Hello World!"'
                             }    
                     }
-                stage('Checkout Stage') {     
+                stage('Checkout') {     
                         steps{  
                             sh 'echo "Hello World!"'
                             }    
                     }
-                stage('Checkout Stage') {     
-                        steps{  
-                            sh 'echo "Hello World!"'
-                            }    
-                    }
-                stage('Checkout Stage') {     
-                        steps{  
-                            sh 'echo "Hello World!"'
-                            }    
-                    }
+               
             }
         }
                    """)
