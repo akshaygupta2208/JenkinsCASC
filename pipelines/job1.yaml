@@ -1,3 +1,5 @@
 name: job1
 repoUrl: https://github.com/akshaygupta2208/JenkinsCASC.git
-build: demo
+deployEnv:
+- dev
+- prod
