@@ -38,6 +38,10 @@ list.each {
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
+  when {
+    expression{deployenv.contains('stg')}
+    println("present stg")
+  }
   
 pipelineJob(example["name"]) {
     definition {
