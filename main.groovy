@@ -17,6 +17,23 @@ import groovy.io.FileType
 
 def list = []
 
+
+def dev_stage = """
+                    stage('DeployDev') { 
+
+                            steps{ 
+                                if(deployenv.contains('dev')){
+                                sh 'echo "DeployDev"'
+                                }}    
+                        }
+                    stage('DevSanity') {
+
+                            steps{  
+                                sh 'echo "DevSanity"'
+                                }    
+                        }
+"""
+
 def dir = new File(current_workspace+"/pipelines")
 dir.eachFileRecurse (FileType.FILES) { file ->
   list << file
@@ -68,20 +85,7 @@ pipelineJob(example["name"]) {
                                 sh 'echo "ArtefactCreation"'
                                 }    
                         }
-                    
-                    stage('DeployDev') { 
-
-                            steps{ 
-                                if(deployenv.contains('dev')){
-                                sh 'echo "DeployDev"'
-                                }}    
-                        }
-                    stage('DevSanity') {
-
-                            steps{  
-                                sh 'echo "DevSanity"'
-                                }    
-                        }
+                    '${dev_stage}'
                     stage('DeployProd') {
 
                             steps{  
