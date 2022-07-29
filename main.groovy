@@ -81,7 +81,7 @@ stage('Checkout Stage') {
                             sh 'echo "Checkout"'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: '${repourl}'
+                            url: '${some_var}'
                             }    
                     }
                     stage('Build') {     
