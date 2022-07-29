@@ -110,7 +110,7 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-  repourl = example["repoUrl"]
+  some_var = example["repoUrl"]
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
