@@ -90,7 +90,14 @@ list.each {
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
-  basic_stage = """
+  basic_stage = '''
+  pipelineJob(example["name"]) {
+    definition {
+        cps {
+            script("""
+            pipeline {
+                agent any
+                stages {
 stage('Checkout Stage') {     
                         steps{  
                             sh 'echo "Checkout"'
@@ -114,25 +121,9 @@ stage('Checkout Stage') {
                                 sh 'echo "ArtefactCreation"'
                                 }    
                         }
-"""
-pipelineJob(example["name"]) {
-    definition {
-        cps {
-            script("""
-            pipeline {
-                agent any
-                stages {
-                    ${basic_stage}
-                    if(deployenv.contains('dev')){
-                    ${dev_stage}
-                    }
-                    else{
-                    dev_stage = ""}
-                    
-                    ${prod_stage}
-                    ${stg_stage}
-                    ${qa_stage}
-               
+'''
+end_pipeline = '''
+     
             }
         }
                    """)
@@ -140,6 +131,18 @@ pipelineJob(example["name"]) {
         }
     }
 }
+'''
+  if(deployenv.contains('dev')){
+    ${main_pipeline} = ${basic_stage}+${dev_stage}+${end_pipeline}
+      }
+//                     ${basic_stage}
+//                     ${dev_stage}
+                    
+//                     ${prod_stage}
+//                     ${stg_stage}
+//                     ${qa_stage}
+  ${main_pipeline}
+
   println(example)
 
 }
