@@ -18,7 +18,7 @@ import groovy.io.FileType
 
 def list = []
 
-main_pipeline = ""
+def main_pipeline = ""
 def dev_stage = """
                     stage('DeployDev') { 
 
