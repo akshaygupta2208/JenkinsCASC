@@ -85,7 +85,7 @@ pipelineJob(example["name"]) {
                                 sh 'echo "ArtefactCreation"'
                                 }    
                         }
-                    '${dev_stage}'
+                    ${dev_stage}
                     stage('DeployProd') {
 
                             steps{  
