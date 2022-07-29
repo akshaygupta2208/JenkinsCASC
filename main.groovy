@@ -17,6 +17,15 @@ current_workspace = "/var/jenkins_home/workspace/SeedJob"
 import groovy.io.FileType
 
 def list = []
+
+def dir = new File(current_workspace+"/pipelines")
+dir.eachFileRecurse (FileType.FILES) { file ->
+  list << file
+}
+
+list.each {
+  println it.path
+
 dev_stage = """
                     stage('DeployDev') { 
 
@@ -73,19 +82,12 @@ stage('Deployqa') {
                                 }    
                         }
 """
-
-def dir = new File(current_workspace+"/pipelines")
-dir.eachFileRecurse (FileType.FILES) { file ->
-  list << file
-}
-
-list.each {
-  println it.path
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
   repo_url = example["repoUrl"]
   deployenv = example["deployEnv"]
+  
   if (! deployenv.contains("dev")){
   dev_stage = ""
   }
