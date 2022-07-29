@@ -17,9 +17,7 @@ current_workspace = "/var/jenkins_home/workspace/SeedJob"
 import groovy.io.FileType
 
 def list = []
-
-main_pipeline = ""
-def dev_stage = """
+dev_stage = """
                     stage('DeployDev') { 
 
                             steps{ 
@@ -98,7 +96,7 @@ list.each {
             pipeline {
                 agent any
                 stages {
-stage('Checkout Stage') {     
+                  stage('Checkout Stage') {     
                         steps{  
                             sh 'echo "Checkout"'
                             git branch: 'master',
