@@ -50,13 +50,13 @@ stg_stage = """
 stage('Deploystg') { 
 
                             steps{  
-                                sh 'echo "DeployDev"'
+                                sh 'echo "DeployStg"'
                                 }    
                         }
                     stage('stgSanity') {  
 
                             steps{  
-                                sh 'echo "DevSanity"'
+                                sh 'echo "StgSanity"'
                                 }    
                         }
 """
@@ -64,13 +64,13 @@ qa_stage = """
 stage('Deployqa') { 
 
                             steps{  
-                                sh 'echo "DeployDev"'
+                                sh 'echo "DeployQA"'
                                 }    
                         }
                     stage('qaSanity') {
 
                             steps{  
-                                sh 'echo "DevSanity"'
+                                sh 'echo "QaSanity"'
                                 }    
                         }
 """
