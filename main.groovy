@@ -40,6 +40,7 @@ list.each {
   println(example["deployEnv"])
   if (deployenv.contains('stg')) {
       println("stg branching")
+  }
   
 pipelineJob(example["name"]) {
     definition {
