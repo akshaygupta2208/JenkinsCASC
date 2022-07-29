@@ -18,7 +18,7 @@ import groovy.io.FileType
 
 def list = []
 
-def main_pipeline = ""
+main_pipeline = ""
 def dev_stage = """
                     stage('DeployDev') { 
 
@@ -90,8 +90,8 @@ list.each {
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
-  basic_stage = '''
-  pipelineJob(example["name"]) {
+
+    pipelineJob(example["name"]) {
     definition {
         cps {
             script("""
@@ -121,9 +121,11 @@ stage('Checkout Stage') {
                                 sh 'echo "ArtefactCreation"'
                                 }    
                         }
-'''
-end_pipeline = '''
-     
+                    ${dev_stage}
+                    ${prod_stage}
+                    ${stg_stage}
+                    ${qa_stage}
+       
             }
         }
                    """)
@@ -131,17 +133,6 @@ end_pipeline = '''
         }
     }
 }
-'''
-  if(deployenv.contains('dev')){
-    ${main_pipeline} == (${basic_stage}+${dev_stage}+${end_pipeline})
-      }
-//                     ${basic_stage}
-//                     ${dev_stage}
-                    
-//                     ${prod_stage}
-//                     ${stg_stage}
-//                     ${qa_stage}
-  ${main_pipeline}
 
   println(example)
 
