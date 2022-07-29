@@ -75,7 +75,22 @@ stage('Deployqa') {
                                 }    
                         }
 """
-basic_stage = """
+
+def dir = new File(current_workspace+"/pipelines")
+dir.eachFileRecurse (FileType.FILES) { file ->
+  list << file
+}
+
+list.each {
+  println it.path
+  
+  Yaml parser = new Yaml()
+  example = parser.load((it.path as File).text)
+  some_var = example["repoUrl"]
+  deployenv = example["deployEnv"]
+  println("this is deploy env "+deployenv)
+  println(example["deployEnv"])
+  basic_stage = """
 stage('Checkout Stage') {     
                         steps{  
                             sh 'echo "Checkout"'
@@ -100,21 +115,6 @@ stage('Checkout Stage') {
                                 }    
                         }
 """
-def dir = new File(current_workspace+"/pipelines")
-dir.eachFileRecurse (FileType.FILES) { file ->
-  list << file
-}
-
-list.each {
-  println it.path
-  
-  Yaml parser = new Yaml()
-  example = parser.load((it.path as File).text)
-  some_var = example["repoUrl"]
-  deployenv = example["deployEnv"]
-  println("this is deploy env "+deployenv)
-  println(example["deployEnv"])
-  
 pipelineJob(example["name"]) {
     definition {
         cps {
