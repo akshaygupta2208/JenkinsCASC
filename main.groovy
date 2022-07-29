@@ -36,6 +36,8 @@ list.each {
   some_var = example["repoUrl"]
   buildjob = example["build"]
   deployenv = example["deployEnv"]
+  println("this is deploy env "+deployenv)
+  println(example["deployEnv"])
   
 pipelineJob(example["name"]) {
     definition {
@@ -69,65 +71,65 @@ pipelineJob(example["name"]) {
                                 }    
                         }
                     stage('DeployDev') { 
-                      when {
-                        expression { deployenv.contains('dev') }
-}
+//                       when {
+//                         expression { deployenv.contains('dev') }
+//}
                             steps{  
                                 sh 'echo "DeployDev"'
                                 }    
                         }
                     stage('DevSanity') {
-                      when {
-                        expression { deployenv.contains('dev') }
-}
+//                       when {
+//                         expression { deployenv.contains('dev') }
+// }
                             steps{  
                                 sh 'echo "DevSanity"'
                                 }    
                         }
                     stage('DeployProd') {
-                      when {
-                        expression { deployenv.contains('prod') }
-}
+//                       when {
+//                         expression { deployenv.contains('prod') }
+// }
                             steps{  
                                 sh 'echo "DeployProd"'
                                 }    
                         }
                     stage('ProdSanity') {
-                      when {
-                        expression { deployenv.contains('prod') }
-}
+//                       when {
+//                         expression { deployenv.contains('prod') }
+// }
                             steps{  
                                 sh 'echo "ProdSanity"'
                                 }    
                         }
                     stage('Deploystg') { 
-                      when {
-                        expression { deployenv.contains('stg') }
-}
+//                       when {
+//                         expression { deployenv.contains('stg') }
+// }
                             steps{  
                                 sh 'echo "DeployDev"'
                                 }    
                         }
                     stage('stgSanity') {  
-                      when {
-                        expression { deployenv.contains('stg') }
-}
+//                       when {
+//                         expression { deployenv.contains('stg') }
+// }
                             steps{  
                                 sh 'echo "DevSanity"'
                                 }    
                         }
                     stage('Deployqa') { 
-                      when {
-                        expression { deployenv.contains('qa') }
-}
+//                       when {
+//                         expression { deployenv.contains('qa') }
+// }
                             steps{  
                                 sh 'echo "DeployDev"'
                                 }    
                         }
                     stage('qaSanity') {
-                      when {
-                        expression { deployenv.contains('qa') }
-}
+//                       when {
+//                         expression { deployenv.contains('qa') }
+// }
                             steps{  
                                 sh 'echo "DevSanity"'
                                 }    
