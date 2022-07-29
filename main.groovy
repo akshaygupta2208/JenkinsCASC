@@ -133,7 +133,7 @@ end_pipeline = '''
 }
 '''
   if(deployenv.contains('dev')){
-    ${main_pipeline} = ${basic_stage}+${dev_stage}+${end_pipeline}
+    ${main_pipeline} == ${basic_stage}+${dev_stage}+${end_pipeline}
       }
 //                     ${basic_stage}
 //                     ${dev_stage}
