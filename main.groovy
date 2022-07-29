@@ -33,7 +33,7 @@ def dev_stage = """
                                 }    
                         }
 """
-
+dev_stage = ""
 def dir = new File(current_workspace+"/pipelines")
 dir.eachFileRecurse (FileType.FILES) { file ->
   list << file
