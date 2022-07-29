@@ -33,6 +33,47 @@ def dev_stage = """
                                 }    
                         }
 """
+prod_stage = """
+stage('DeployProd') {
+
+                            steps{  
+                                sh 'echo "DeployProd"'
+                                }    
+                        }
+                    stage('ProdSanity') {
+
+                            steps{  
+                                sh 'echo "ProdSanity"'
+                                }    
+                        }"""
+stg_stage = """
+stage('Deploystg') { 
+
+                            steps{  
+                                sh 'echo "DeployDev"'
+                                }    
+                        }
+                    stage('stgSanity') {  
+
+                            steps{  
+                                sh 'echo "DevSanity"'
+                                }    
+                        }
+"""
+qa_stage = """
+stage('Deployqa') { 
+
+                            steps{  
+                                sh 'echo "DeployDev"'
+                                }    
+                        }
+                    stage('qaSanity') {
+
+                            steps{  
+                                sh 'echo "DevSanity"'
+                                }    
+                        }
+"""
 dev_stage = ""
 def dir = new File(current_workspace+"/pipelines")
 dir.eachFileRecurse (FileType.FILES) { file ->
@@ -44,12 +85,7 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-  println(example["name"].getClass())
-  def v = example["name"]
-  //println(v.getClass())
-  println(example["name"])
-  some_var = example["repoUrl"]
-  buildjob = example["build"]
+  repourl = example["repoUrl"]
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
@@ -64,10 +100,9 @@ pipelineJob(example["name"]) {
                     stage('Checkout Stage') {     
                         steps{  
                             sh 'echo "Checkout"'
-                            sh 'echo $v'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: '${some_var}'
+                            url: '${repourl}'
                             }    
                     }
                     stage('Build') {     
@@ -86,42 +121,9 @@ pipelineJob(example["name"]) {
                                 }    
                         }
                     ${dev_stage}
-                    stage('DeployProd') {
-
-                            steps{  
-                                sh 'echo "DeployProd"'
-                                }    
-                        }
-                    stage('ProdSanity') {
-
-                            steps{  
-                                sh 'echo "ProdSanity"'
-                                }    
-                        }
-                    stage('Deploystg') { 
-
-                            steps{  
-                                sh 'echo "DeployDev"'
-                                }    
-                        }
-                    stage('stgSanity') {  
-
-                            steps{  
-                                sh 'echo "DevSanity"'
-                                }    
-                        }
-                    stage('Deployqa') { 
-
-                            steps{  
-                                sh 'echo "DeployDev"'
-                                }    
-                        }
-                    stage('qaSanity') {
-
-                            steps{  
-                                sh 'echo "DevSanity"'
-                                }    
-                        }
+                    ${prod_stage}
+                    ${stg_stage}
+                    ${qa_stage}
                
             }
         }
