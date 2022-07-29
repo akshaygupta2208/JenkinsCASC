@@ -86,19 +86,19 @@ list.each {
   example = parser.load((it.path as File).text)
   repo_url = example["repoUrl"]
   deployenv = example["deployEnv"]
-  if (not deployenv.contains("dev"){
+  if (! deployenv.contains("dev"){
   dev_stage = ""
   }
   
-  if (not deployenv.contains("qa"){
+  if (! deployenv.contains("qa"){
   qa_stage = ""
   }
   
-  if (not deployenv.contains("stg"){
+  if (! deployenv.contains("stg"){
   stg_stage = ""
   }
   
-  if (not deployenv.contains("prod"){
+  if (! deployenv.contains("prod"){
   prod_stage = ""
   }    
   println("this is deploy env "+deployenv)
