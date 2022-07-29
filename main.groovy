@@ -68,13 +68,14 @@ pipelineJob(example["name"]) {
                                 sh 'echo "ArtefactCreation"'
                                 }    
                         }
-                     if(deployenv.contains('dev')){
+                    
                     stage('DeployDev') { 
 
-                            steps{  
+                            steps{ 
+                                if(deployenv.contains('dev')){
                                 sh 'echo "DeployDev"'
-                                }    
-                        }}
+                                }}    
+                        }
                     stage('DevSanity') {
 
                             steps{  
