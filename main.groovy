@@ -1,5 +1,3 @@
-
-
 job('example') {
   steps {
     shell('echo Hello World!')
@@ -70,77 +68,54 @@ pipelineJob(example["name"]) {
                                 sh 'echo "ArtefactCreation"'
                                 }    
                         }
+                     if(deployenv.contains('dev')){
                     stage('DeployDev') { 
-                                if (deployenv.contains('dev')) {
-                                      println("dev branching")
-                                  
+
                             steps{  
                                 sh 'echo "DeployDev"'
-                                } 
-                                }   
-                        }
+                                }    
+                        }}
                     stage('DevSanity') {
-                          if (deployenv.contains('dev')) {
-                                println("dev branching")
-                            
+
                             steps{  
                                 sh 'echo "DevSanity"'
-                                }
                                 }    
                         }
                     stage('DeployProd') {
-                            if (deployenv.contains('prod')) {
-                                  println("prod branching")
-                              
+
                             steps{  
                                 sh 'echo "DeployProd"'
-                                }
-                                }
+                                }    
                         }
                     stage('ProdSanity') {
-                        if (deployenv.contains('prod')) {
-                              println("prod branching")
-                          
+
                             steps{  
                                 sh 'echo "ProdSanity"'
-                                }
-                                }
+                                }    
                         }
                     stage('Deploystg') { 
-                           if (deployenv.contains('stg')) {
-                                  println("stg branching")
-                              
+
                             steps{  
                                 sh 'echo "DeployDev"'
-                                }
-                                }
+                                }    
                         }
                     stage('stgSanity') {  
-                      if (deployenv.contains('stg')) {
-                      println("stg branching")
-                  
+
                             steps{  
                                 sh 'echo "DevSanity"'
-                                }
-                                }
+                                }    
                         }
                     stage('Deployqa') { 
-                    if (deployenv.contains('stg')) {
-                          println("qa branching")
-                      
+
                             steps{  
                                 sh 'echo "DeployDev"'
-                                } 
-                                }
+                                }    
                         }
                     stage('qaSanity') {
-                     if (deployenv.contains('stg')) {
-                          println("stg branching")
-                      
+
                             steps{  
                                 sh 'echo "DevSanity"'
-                                }
-                                }
+                                }    
                         }
                
             }
