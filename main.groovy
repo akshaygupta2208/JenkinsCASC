@@ -38,9 +38,6 @@ list.each {
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
-  if (deployenv.contains('stg')) {
-      println("stg branching")
-  }
   
 pipelineJob(example["name"]) {
     definition {
@@ -74,68 +71,76 @@ pipelineJob(example["name"]) {
                                 }    
                         }
                     stage('DeployDev') { 
-//                       when {
-//                         expression { deployenv.contains('dev') }
-//}
+                                if (deployenv.contains('dev')) {
+                                      println("dev branching")
+                                  
                             steps{  
                                 sh 'echo "DeployDev"'
-                                }    
+                                } 
+                                }   
                         }
                     stage('DevSanity') {
-//                       when {
-//                         expression { deployenv.contains('dev') }
-// }
+                          if (deployenv.contains('dev')) {
+                                println("dev branching")
+                            
                             steps{  
                                 sh 'echo "DevSanity"'
+                                }
                                 }    
                         }
                     stage('DeployProd') {
-//                       when {
-//                         expression { deployenv.contains('prod') }
-// }
+                            if (deployenv.contains('prod')) {
+                                  println("prod branching")
+                              
                             steps{  
                                 sh 'echo "DeployProd"'
-                                }    
+                                }
+                                }
                         }
                     stage('ProdSanity') {
-//                       when {
-//                         expression { deployenv.contains('prod') }
-// }
+                        if (deployenv.contains('prod')) {
+                              println("prod branching")
+                          
                             steps{  
                                 sh 'echo "ProdSanity"'
-                                }    
+                                }
+                                }
                         }
                     stage('Deploystg') { 
-//                       when {
-//                         expression { deployenv.contains('stg') }
-// }
+                           if (deployenv.contains('stg')) {
+                                  println("stg branching")
+                              
                             steps{  
                                 sh 'echo "DeployDev"'
-                                }    
+                                }
+                                }
                         }
                     stage('stgSanity') {  
-//                       when {
-//                         expression { deployenv.contains('stg') }
-// }
+                      if (deployenv.contains('stg')) {
+                      println("stg branching")
+                  
                             steps{  
                                 sh 'echo "DevSanity"'
-                                }    
+                                }
+                                }
                         }
                     stage('Deployqa') { 
-//                       when {
-//                         expression { deployenv.contains('qa') }
-// }
+                    if (deployenv.contains('stg')) {
+                          println("qa branching")
+                      
                             steps{  
                                 sh 'echo "DeployDev"'
-                                }    
+                                } 
+                                }
                         }
                     stage('qaSanity') {
-//                       when {
-//                         expression { deployenv.contains('qa') }
-// }
+                     if (deployenv.contains('stg')) {
+                          println("stg branching")
+                      
                             steps{  
                                 sh 'echo "DevSanity"'
-                                }    
+                                }
+                                }
                         }
                
             }
