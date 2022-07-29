@@ -86,7 +86,7 @@ list.each {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
-  some_var = example["repoUrl"]
+  repo_url = example["repoUrl"]
   deployenv = example["deployEnv"]
   println("this is deploy env "+deployenv)
   println(example["deployEnv"])
@@ -96,7 +96,7 @@ stage('Checkout Stage') {
                             sh 'echo "Checkout"'
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
-                            url: '${some_var}'
+                            url: '${repo_url}'
                             }    
                     }
                     stage('Build') {     
