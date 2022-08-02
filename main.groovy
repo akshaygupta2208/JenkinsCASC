@@ -30,9 +30,8 @@ dev_stage = """
                     stage('DeployDev') { 
 
                             steps{ 
-                                if(deployenv.contains('dev')){
                                 sh 'echo "DeployDev"'
-                                }}    
+                                }    
                         }
                     stage('DevSanity') {
 
