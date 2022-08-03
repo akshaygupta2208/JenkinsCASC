@@ -1,5 +1,0 @@
-name: job3
-repoUrl: https://github.com/akshaygupta2208/JenkinsCASC.git
-deployEnv:
-- stg
-- prod
