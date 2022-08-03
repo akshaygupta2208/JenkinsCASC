@@ -85,7 +85,7 @@ stage('Deployqa') {
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
   repo_url = example["repo_url"]
-  deployenv = example["deployEnv"]
+  deployenv = example["deploy_env"]
   
   if (! deployenv.contains("dev")){
   dev_stage = ""
