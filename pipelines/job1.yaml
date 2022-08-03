@@ -1,5 +1,10 @@
-name: job1
-repoUrl: https://github.com/akshaygupta2208/JenkinsCASC.git
-deployEnv:
+name: petclinic
+repo_url: https://github.com/kgyuvraj/spring-petclinic.git
+build_command: mvn clean install
+run_command: java -jar app.jar
+src_path: ./
+application_port: 8080
+deploy_port: 9080
+deploy_env:
 - dev
 - prod
