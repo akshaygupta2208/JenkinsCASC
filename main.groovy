@@ -123,7 +123,7 @@ stage('Deployqa') {
                     stage('Build') {     
                             steps{  
                                 sh 'echo "Build"'
-                                sh '${build_command}'
+                                sh '${example['build_command']}'
                                 }    
                         }
                     stage('BuildSanity') {     
