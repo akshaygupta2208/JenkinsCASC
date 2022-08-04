@@ -85,6 +85,7 @@ stage('Deployqa') {
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
   repo_url = example["repo_url"]
+  mvn = example["build_command"]
   deployenv = example["deploy_env"]
   
   if (! deployenv.contains("dev")){
@@ -104,6 +105,7 @@ stage('Deployqa') {
   }    
   //println("this is deploy env "+deployenv)
   //println(example["deploy_env"])
+  
 
     pipelineJob(example["name"]) {
     definition {
@@ -123,6 +125,7 @@ stage('Deployqa') {
                     stage('Build') {     
                             steps{  
                                 sh 'echo "Build"'
+                                sh '${mvn}'
                                 }    
                         }
                     stage('BuildSanity') {     
