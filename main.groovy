@@ -103,7 +103,7 @@ stage('Deployqa') {
   prod_stage = ""
   }    
   println("this is deploy env "+deployenv)
-  println(example["deployEnv"])
+  println(example["deploy_env"])
 
     pipelineJob(example["name"]) {
     definition {
