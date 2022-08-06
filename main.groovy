@@ -131,9 +131,14 @@ stage('Deployqa') {
                             steps{  
                                 sh 'echo "Build"'
                                 sh '${mvn}'
-                                sh '${java_command}'
                                 }    
                         }
+                    stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t shanem/spring-petclinic:latest .'
+      }
+    }
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
