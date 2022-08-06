@@ -86,6 +86,7 @@ stage('Deployqa') {
   example = parser.load((it.path as File).text)
   repo_url = example["repo_url"]
   mvn = example["build_command"]
+  java_command = example["run_command"]
   deployenv = example["deploy_env"]
   
   if (! deployenv.contains("dev")){
@@ -129,6 +130,7 @@ stage('Deployqa') {
                             steps{  
                                 sh 'echo "Build"'
                                 sh '${mvn}'
+                                sh '${java_command}'
                                 }    
                         }
                     stage('BuildSanity') {     
