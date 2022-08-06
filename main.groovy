@@ -116,6 +116,7 @@ stage('Deployqa') {
                 agent any
                 tools {
                 maven 'Maven 3.8.6'
+                java 'java 9.0.4'
                 }
                 stages {
                   stage('Checkout Stage') {     
