@@ -136,7 +136,7 @@ stage('Deployqa') {
                     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t shanem/spring-petclinic:latest .'
+        sh 'docker build -f dock/Dockerfile -t shanem/spring-petclinic:latest .'
       }
     }
                     stage('BuildSanity') {     
