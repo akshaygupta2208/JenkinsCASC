@@ -134,11 +134,11 @@ stage('Deployqa') {
                                 }    
                         }
                     stage('Docker Build') {
-      steps {
-        sh 'ls -l'
-        sh 'docker build -t petclinic:latest .'
-      }
-    }
+                              steps {
+                                sh 'ls -l'
+                                sh 'docker build -t petclinic:latest .'
+                              }
+                            }
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
@@ -147,10 +147,7 @@ stage('Deployqa') {
                     stage('ArtefactCreation') {     
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-        //   sh "docker login https://nexus.softwaremathematics.com/"
-        //   sh "docker build -t nexus.softwaremathematics.com/petclinic ."
-        //   sh 'docker push nexus.softwaremathematics.com/petclinic'
-        withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
+          withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
           sh "docker login -u ${env.admin} -p ${env.kgb} https://nexus.softwaremathematics.com/"
           sh "docker build -t nexus.softwaremathematics.com/petclinic ."
           sh "docker push nexus.softwaremathematics.com/petclinic"
