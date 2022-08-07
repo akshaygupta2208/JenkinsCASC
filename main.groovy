@@ -137,7 +137,7 @@ stage('Deployqa') {
       agent any
       steps {
         sh 'ls /var/jenkins_home/workspace/petclinic/target/'
-        //sh 'docker build -f /var/jenkins_home/workspace/petclinic/Dockerfile -t shanem/spring-petclinic:latest .'
+        sh 'docker build -f /var/jenkins_home/workspace/petclinic/Dockerfile -t shanem/spring-petclinic:latest .'
       }
     }
                     stage('BuildSanity') {     
