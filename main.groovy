@@ -142,12 +142,11 @@ stage('Deployqa') {
         //   sh "docker login https://nexus.softwaremathematics.com/"
         //   sh "docker build -t nexus.softwaremathematics.com/petclinic ."
         //   sh 'docker push nexus.softwaremathematics.com/petclinic'
-//         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
-//           sh "docker login -u ${env.admin} -p ${env.kgb} https://nexus.softwaremathematics.com/"
-//           sh "docker build -t nexus.softwaremathematics.com/petclinic ."
-//           sh "docker push nexus.softwaremathematics.com/petclinic"
-//                                 }    
+         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
+          sh "docker login -u ${env.admin} -p ${env.kgb} https://nexus.softwaremathematics.com/"
+          //sh 'docker push shanem/spring-petclinic:latest'
                         }
+                    }
                     }
                     ${dev_stage}
                     ${qa_stage}
