@@ -141,6 +141,9 @@ stage('Deployqa') {
                                 sh 'echo "ArtefactCreation"'
                                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
                                 sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
+                                sh "docker build -t nexus.softwaremathematics.com/petclinic ."
+                                sh "docker push nexus.softwaremathematics.com/petclinic"
+
 
                     }
                     }
