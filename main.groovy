@@ -113,7 +113,7 @@ stage('Deployqa') {
                 stages {
                   stage('Checkout Stage') {     
                         steps{  
-                            sh 'echo "Checkout"',
+                            sh 'echo "Checkout"'
                             git branch: 'main',
                             credentialsId: 'kgyuvraj',
                             url: '${repo_url}'
@@ -146,7 +146,7 @@ stage('Deployqa') {
           sh "docker login -u ${env.admin} -p ${env.kgb} https://nexus.softwaremathematics.com/"
           sh "docker build -t nexus.softwaremathematics.com/petclinic ."
           sh "docker push nexus.softwaremathematics.com/petclinic"
-                                } 
+                                }   
                     }
                     }
                     ${dev_stage}
