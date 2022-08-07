@@ -157,6 +157,12 @@ stage('Deployqa') {
                                 }    
                         }
                     }
+                    stage('deploy') {     
+                            steps{  
+                                sh 'echo "only deploy"'
+                                sh 'docker run -p 8081:8080 nexus.softwaremathematics.com/petclinic'
+                                }    
+                        }
                     ${dev_stage}
                     ${qa_stage}
                     ${stg_stage}
