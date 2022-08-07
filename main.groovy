@@ -28,13 +28,11 @@ list.each {
 
 dev_stage = """
                     stage('DeployDev') { 
-
                             steps{ 
                                 sh 'echo "DeployDev"'
                                 }    
                         }
                     stage('DevSanity') {
-
                             steps{  
                                 sh 'echo "DevSanity"'
                                 }    
@@ -42,26 +40,22 @@ dev_stage = """
 """
 prod_stage = """
 stage('DeployProd') {
-
                             steps{  
                                 sh 'echo "DeployProd"'
                                 }    
                         }
                     stage('ProdSanity') {
-
                             steps{  
                                 sh 'echo "ProdSanity"'
                                 }    
                         }"""
 stg_stage = """
 stage('Deploystg') { 
-
                             steps{  
                                 sh 'echo "DeployStg"'
                                 }    
                         }
                     stage('stgSanity') {  
-
                             steps{  
                                 sh 'echo "StgSanity"'
                                 }    
@@ -69,13 +63,11 @@ stage('Deploystg') {
 """
 qa_stage = """
 stage('Deployqa') { 
-
                             steps{  
                                 sh 'echo "DeployQA"'
                                 }    
                         }
                     stage('qaSanity') {
-
                             steps{  
                                 sh 'echo "QaSanity"'
                                 }    
@@ -134,11 +126,11 @@ stage('Deployqa') {
                                 }    
                         }
                     stage('Docker Build') {
-                              steps {
-                                sh 'ls -l'
-                                sh 'docker build -t petclinic:latest .'
-                              }
-                            }
+      steps {
+        sh 'ls -l'
+        sh 'docker build -t shanem/spring-petclinic:latest .'
+      }
+    }
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
@@ -147,17 +139,6 @@ stage('Deployqa') {
                     stage('ArtefactCreation') {     
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-          withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
-          sh "docker login -u ${env.admin} -p ${env.kgb} https://nexus.softwaremathematics.com/"
-          sh "docker build -t nexus.softwaremathematics.com/petclinic ."
-          sh "docker push nexus.softwaremathematics.com/petclinic"
-                                }    
-                        }
-                    }
-                    stage('deploy') {     
-                            steps{  
-                                sh 'echo "only deploy"'
-                                sh 'docker run -p 8081:8080 nexus.softwaremathematics.com/petclinic'
                                 }    
                         }
                     ${dev_stage}
