@@ -149,7 +149,7 @@ stage('Deployqa') {
                     stage('deploy') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
-                                sh 'docker run -p 8090:8080 nexus.softwaremathematics.com/petclinic'
+                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/petclinic'
                                 }    
                         }
                     ${dev_stage}
