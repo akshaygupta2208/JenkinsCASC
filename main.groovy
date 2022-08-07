@@ -125,10 +125,10 @@ stage('Deployqa') {
                                 sh '${mvn}'
                                 }    
                         }
-                    stage('Docker Build') {
+                   stage('Docker Build') {
       steps {
         sh 'ls -l'
-        sh 'docker build -t shanem/spring-petclinic:latest .'
+        sh 'docker build -t petclinic:latest .'
       }
     }
                     stage('BuildSanity') {     
