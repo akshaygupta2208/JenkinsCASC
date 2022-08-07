@@ -143,8 +143,7 @@ stage('Deployqa') {
                                 sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/petclinic ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic"
-
-
+                    }
                     }
                     }
                     ${dev_stage}
