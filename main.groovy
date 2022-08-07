@@ -113,7 +113,7 @@ stage('Deployqa') {
                 stages {
                   stage('Checkout Stage') {     
                         steps{  
-                            sh 'echo "Checkout"'
+                            sh 'echo "Checkout"',
                             git branch: 'main',
                             credentialsId: 'kgyuvraj',
                             url: '${repo_url}'
