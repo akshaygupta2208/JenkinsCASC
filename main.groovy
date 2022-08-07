@@ -146,6 +146,12 @@ stage('Deployqa') {
                     }
                     }
                     }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                                sh 'docker run -p 8081:8080 nexus.softwaremathematics.com/petclinic'
+                                }    
+                        }
                     ${dev_stage}
                     ${qa_stage}
                     ${stg_stage}
