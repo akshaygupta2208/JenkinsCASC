@@ -128,7 +128,7 @@ stage('Deployqa') {
                     stage('Docker Build') {
       steps {
         sh 'ls -l'
-        sh 'docker build -t petclinic:latest .'
+        sh 'docker build -t shanem/spring-petclinic:latest .'
       }
     }
                     stage('BuildSanity') {     
@@ -139,16 +139,8 @@ stage('Deployqa') {
                     stage('ArtefactCreation') {     
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-        //   sh "docker login https://nexus.softwaremathematics.com/"
-        //   sh "docker build -t nexus.softwaremathematics.com/petclinic ."
-        //   sh 'docker push nexus.softwaremathematics.com/petclinic'
-        withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
-          sh "docker login -u ${env.admin} -p ${env.kgb} https://nexus.softwaremathematics.com/"
-          sh "docker build -t nexus.softwaremathematics.com/petclinic ."
-          sh "docker push nexus.softwaremathematics.com/petclinic"
                                 }    
                         }
-                    }
                     ${dev_stage}
                     ${qa_stage}
                     ${stg_stage}
