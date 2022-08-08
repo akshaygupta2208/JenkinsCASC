@@ -13,6 +13,12 @@ def current_workspace = System.getProperty("user.dir");
 println(current_workspace)
 
 current_workspace = "/var/jenkins_home/workspace/SeedJob"
+// variable declaration of yaml files
+repo_url = example["repo_url"]
+build_command = example["build_command"]
+java_command = example["run_command"]
+deployenv = example["deploy_env"]
+name = example["name"]
 
 import groovy.io.FileType
 
@@ -30,7 +36,7 @@ dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/'
+                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/${name}:latest'
                                 
                                 }    
                         }
@@ -79,12 +85,7 @@ stage('Deployqa') {
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
   
-  // variable declaration of yaml files
-  repo_url = example["repo_url"]
-  build_command = example["build_command"]
-  java_command = example["run_command"]
-  deployenv = example["deploy_env"]
-  name = example["name"]
+ 
   
   if (! deployenv.contains("dev")){
   dev_stage = ""
