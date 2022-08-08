@@ -143,7 +143,7 @@ stage('Deployqa') {
                             steps{  
                                 sh 'echo "ArtefactCreation"'
                                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                                sh "echo build.getEnvironment(listener).get('USERNAME')"
+                                sh "echo env.USERNAME"
                                 sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic:latest"
