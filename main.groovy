@@ -30,6 +30,8 @@ dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
+                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/'
+                                
                                 }    
                         }
                     stage('DevSanity') {
@@ -76,8 +78,10 @@ stage('Deployqa') {
   
   Yaml parser = new Yaml()
   example = parser.load((it.path as File).text)
+  
+  // variable declaration of yaml files
   repo_url = example["repo_url"]
-  mvn = example["build_command"]
+  build_command = example["build_command"]
   java_command = example["run_command"]
   deployenv = example["deploy_env"]
   
@@ -122,15 +126,9 @@ stage('Deployqa') {
                     stage('Build') {     
                             steps{  
                                 sh 'echo "Build"'
-                                sh '${mvn}'
+                                sh '${build_command}'
                                 }    
                         }
-                   stage('Docker Build') {
-      steps {
-        sh 'ls -l'
-        sh 'docker build -t petclinic:latest .'
-      }
-    }
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
@@ -141,7 +139,7 @@ stage('Deployqa') {
                                 sh 'echo "ArtefactCreation"'
                                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
                                 sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
-                                sh "docker build -t nexus.softwaremathematics.com/petclinic ."
+                                sh "docker build -t nexus.softwaremathematics.com/example["repo_url"] ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic"
                     }
                     }
@@ -149,7 +147,6 @@ stage('Deployqa') {
                     stage('deploy') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
-                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/petclinic'
                                 }    
                         }
                     ${dev_stage}
