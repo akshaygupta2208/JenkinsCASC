@@ -115,6 +115,9 @@ stage('Deployqa') {
             script("""
             pipeline {
                 agent any
+                environment {
+		DOCKERHUB_CREDENTIALS=credentials('nexus')
+	}
                 tools {
                 maven 'Maven 3.8.4'
                 jdk 'openjdk-11'
@@ -142,11 +145,12 @@ stage('Deployqa') {
                     stage('ArtefactCreation') {     
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-                                withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
-                                sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
+                                //withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
+                                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                                //sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/${name}:latest ."
                                 sh "docker push nexus.softwaremathematics.com/${name}:latest"
-                    }
+                    //}
                     }
                     }
                     ${dev_stage}
