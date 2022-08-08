@@ -115,9 +115,6 @@ stage('Deployqa') {
             script("""
             pipeline {
                 agent any
-                environment {
-		DOCKER_CREDENTIALS = credentials('nexus')
-	}
                 tools {
                 maven 'Maven 3.8.4'
                 jdk 'openjdk-11'
@@ -142,7 +139,11 @@ stage('Deployqa') {
                                 sh 'echo "BuildSanity"'
                                 }    
                         }
-                    stage('ArtefactCreation') {     
+                    stage('ArtefactCreation') { 
+		   environment
+		{
+		DOCKER_CREDENTIALS = credentials('nexus')
+	}
                             steps{  
                                 sh 'echo "ArtefactCreation"'
                                 //withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
