@@ -26,6 +26,15 @@ dir.eachFileRecurse (FileType.FILES) { file ->
 list.each {
   println it.path
 
+  Yaml parser = new Yaml()
+  example = parser.load((it.path as File).text)
+  
+  // variable declaration of yaml files
+  repo_url = example["repo_url"]
+  build_command = example["build_command"]
+  java_command = example["run_command"]
+  deployenv = example["deploy_env"]
+  name = example["name"]
 dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
@@ -76,15 +85,7 @@ stage('Deployqa') {
                         }
 """
   
-  Yaml parser = new Yaml()
-  example = parser.load((it.path as File).text)
   
-  // variable declaration of yaml files
-  repo_url = example["repo_url"]
-  build_command = example["build_command"]
-  java_command = example["run_command"]
-  deployenv = example["deploy_env"]
-  name = example["name"]
   
   if (! deployenv.contains("dev")){
   dev_stage = ""
