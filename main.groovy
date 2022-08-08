@@ -146,8 +146,8 @@ stage('Deployqa') {
 	}
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-				echo "My username is $DOCKER_CREDENTIALS_USR"
-				echo "My username is $DOCKER_CREDENTIALS_PSW"
+// 				echo "My username is $DOCKER_CREDENTIALS_USR"
+// 				echo "My username is $DOCKER_CREDENTIALS_PSW"
 				
                                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'pass', usernameVariable: 'user')]) {
                                  sh "docker login -u ${user} -p ${pass}  https://nexus.softwaremathematics.com/"
