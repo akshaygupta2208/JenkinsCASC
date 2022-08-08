@@ -42,7 +42,7 @@ list.each {
   deploy_port = example["deploy_port"]
   
   
-  ef jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+  def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
         com.cloudbees.plugins.credentials.Credentials.class,
         Jenkins.instance,
         null,
