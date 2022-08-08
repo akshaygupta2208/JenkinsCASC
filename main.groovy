@@ -35,11 +35,14 @@ list.each {
   java_command = example["run_command"]
   deployenv = example["deploy_env"]
   name = example["name"]
+  application_port = example["application_port"]
+  deploy_port = example["deploy_port"]
+  
 dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/${name}'
+                                sh 'docker run -p ${deploy_port}:${application_port} -d nexus.softwaremathematics.com/${name}'
                                 
                                 }    
                         }
