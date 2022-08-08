@@ -38,6 +38,12 @@ list.each {
   application_port = example["application_port"]
   deploy_port = example["deploy_port"]
   
+  for (creds in jenkinsCredentials) {
+  if(creds.id == "nexus"){
+    println(creds.username)
+    println(creds.password)
+    }
+}
 dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
