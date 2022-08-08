@@ -41,6 +41,13 @@ list.each {
   application_port = example["application_port"]
   deploy_port = example["deploy_port"]
   
+  
+  ef jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+        com.cloudbees.plugins.credentials.Credentials.class,
+        Jenkins.instance,
+        null,
+        null
+);
   for (creds in jenkinsCredentials) {
   if(creds.id == "nexus"){
     println(creds.username)
