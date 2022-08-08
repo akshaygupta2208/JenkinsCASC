@@ -149,11 +149,11 @@ stage('Deployqa') {
 				echo "My username is $DOCKER_CREDENTIALS_USR"
 				echo "My username is $DOCKER_CREDENTIALS_PSW"
 				
-                                //withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
-//                                 sh "docker login -u ${DOCKER_CREDENTIALS_USR} -p ${DOCKER_CREDENTIALS_PSW}  https://nexus.softwaremathematics.com/"
-//                                 sh "docker build -t nexus.softwaremathematics.com/${name}:latest ."
-//                                 sh "docker push nexus.softwaremathematics.com/${name}:latest"
-                    //}
+                                withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                                 sh "docker login -u ${user} -p ${pass}  https://nexus.softwaremathematics.com/"
+                                 sh "docker build -t nexus.softwaremathematics.com/${name}:latest ."
+                                 sh "docker push nexus.softwaremathematics.com/${name}:latest"
+                    }
                     }
                     }
                     ${dev_stage}
