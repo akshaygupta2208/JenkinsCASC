@@ -52,6 +52,8 @@ list.each {
   if(creds.id == "nexus"){
     println(creds.username)
     println(creds.password)
+    username = creds.username
+    password = creds.password
     }
 }
 dev_stage = """
@@ -158,12 +160,9 @@ stage('Deployqa') {
                     stage('ArtefactCreation') { 
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-                                withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                                //sh "echo System.getenv(USERNAME)"
-                                sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
+                                sh "docker login -u ${username} -p ${password} https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic:latest"
-                    }
                     }
                     }
                     ${dev_stage}
