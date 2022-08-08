@@ -84,6 +84,7 @@ stage('Deployqa') {
   build_command = example["build_command"]
   java_command = example["run_command"]
   deployenv = example["deploy_env"]
+  name = example["name"]
   
   if (! deployenv.contains("dev")){
   dev_stage = ""
@@ -139,7 +140,7 @@ stage('Deployqa') {
                                 sh 'echo "ArtefactCreation"'
                                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'kgb', usernameVariable: 'admin')]) {
                                 sh "docker login -u admin -p kgb https://nexus.softwaremathematics.com/"
-                                sh "docker build -t nexus.softwaremathematics.com/example["repo_url"] ."
+                                sh "docker build -t nexus.softwaremathematics.com/+${name} ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic"
                     }
                     }
