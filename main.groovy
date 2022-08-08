@@ -30,7 +30,7 @@ dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/'
+                                sh 'docker run -p 8090:8080 -d nexus.softwaremathematics.com/${name}'
                                 
                                 }    
                         }
