@@ -142,7 +142,7 @@ stage('Deployqa') {
                     stage('ArtefactCreation') { 
 		   environment
 		{
-		DOCKER_CREDENTIALS = credentials('nexus')
+		DOCKER_CREDENTIALS = credentials('nexus_id')
 	}
                             steps{  
                                 sh 'echo "ArtefactCreation"'
