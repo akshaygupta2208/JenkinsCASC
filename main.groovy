@@ -6,7 +6,10 @@
 // }
 
 @Grab('org.yaml:snakeyaml:1.17')
-
+import jenkins.*
+import jenkins.model.* 
+import hudson.*
+import hudson.model.*
 import org.yaml.snakeyaml.Yaml
 def current_workspace = System.getProperty("user.dir");
 
