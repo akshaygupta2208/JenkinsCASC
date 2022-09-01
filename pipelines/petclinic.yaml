@@ -5,6 +5,7 @@ run_command: java -jar app.jar
 src_path: ./
 application_port: 8080
 deploy_port: 9080
+path_prefix: /petclinic
 deploy_env:
 - dev
 - prod
