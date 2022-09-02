@@ -1,3 +1,22 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "nexus"
+          password: "{AQAAABAAAAAQ3M5zF4M24FlsFPo9+Msu5l74eUg41LgQXSdCC+1jZmQ=}"
+          scope: GLOBAL
+          username: "admin"
+      - usernamePassword:
+          description: "nexus_id"
+          id: "nexus_id"
+          password: "{AQAAABAAAAAQ+eoDsMMpjLLT2FcQWOWRTSVI4yFrq0PzUv9ScIZVTZA=}"
+          scope: GLOBAL
+          username: "admin"
+          usernameSecret: true
+    - domain:
+        description: "admin"
+        name: "admin"
 jenkins:
   securityRealm:
     local:
