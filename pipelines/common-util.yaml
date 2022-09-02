@@ -1,2 +1,4 @@
 name: common-util
 repo_url: https://github.com/ioneitsolutions/common-util.git
+deploy_env:
+- dev
