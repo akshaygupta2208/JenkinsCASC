@@ -105,7 +105,15 @@ stage('Deployqa') {
                                 }    
                         }
 """
-  
+mvn_push_stage = """
+stage('DeployMVN') { 
+                            steps{  
+                                sh 'echo "Deploy to MVN repository"'
+                                sh 'mvn deploy'
+                                }    
+                        }
+                   
+"""
   
   
   if (! deployenv.contains("dev")){
@@ -122,7 +130,10 @@ stage('Deployqa') {
   
   if (! deployenv.contains("prod")){
   prod_stage = ""
-  }    
+  }  
+  if (! deployenv.contains("mvn")){
+  mvn_push_stage = ""
+  }
   //println("this is deploy env "+deployenv)
   //println(example["deploy_env"])
   
@@ -168,7 +179,8 @@ stage('Deployqa') {
                     ${dev_stage}
                     ${qa_stage}
                     ${stg_stage}
-                    ${prod_stage}    
+                    ${prod_stage}
+                    ${mvn_push_stage}
             }
         }
                    """)
