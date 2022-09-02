@@ -1,0 +1,4 @@
+name: common-data
+repo_url: https://github.com/ioneitsolutions/TMS.git
+deploy_env:
+- qa
