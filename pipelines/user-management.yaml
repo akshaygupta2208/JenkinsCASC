@@ -1,4 +1,4 @@
-name: common-data
+name: user-management
 repo_url: https://github.com/ioneitsolutions/UserManagement.git
 deploy_env:
 - qa
