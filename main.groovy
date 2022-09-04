@@ -56,6 +56,17 @@ list.each {
     password = creds.password
     }
 }
+  
+artefact_creation = """
+stage('ArtefactCreation') { 
+                            steps{  
+                                sh 'echo "ArtefactCreation"'
+                                sh "docker login -u ${username} -p ${password} https://nexus.softwaremathematics.com/"
+                                sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
+                                sh "docker push nexus.softwaremathematics.com/petclinic:latest"
+                    }
+                    }
+"""  
 dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
@@ -133,6 +144,7 @@ stage('DeployMVN') {
   }  
   if (! deployenv.contains("mvn")){
   mvn_push_stage = ""
+  artefact_creation = ""
   }
   //println("this is deploy env "+deployenv)
   //println(example["deploy_env"])
@@ -168,14 +180,7 @@ stage('DeployMVN') {
                                 sh 'echo "BuildSanity"'
                                 }    
                         }
-                    stage('ArtefactCreation') { 
-                            steps{  
-                                sh 'echo "ArtefactCreation"'
-                                sh "docker login -u ${username} -p ${password} https://nexus.softwaremathematics.com/"
-                                sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
-                                sh "docker push nexus.softwaremathematics.com/petclinic:latest"
-                    }
-                    }
+                    ${artefact_creation}
                     ${dev_stage}
                     ${qa_stage}
                     ${stg_stage}
