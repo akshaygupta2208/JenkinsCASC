@@ -1,6 +1,6 @@
 name: common-data
 repo_url: https://github.com/ioneitsolutions/common-data.git
-src: ./Old/commons-data-mysql
+src_path: ./Old/commons-data-mysql
 build_command: mvn clean install
 deploy_env:
 - mvn
