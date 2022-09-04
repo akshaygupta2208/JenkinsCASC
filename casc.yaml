@@ -4,17 +4,24 @@ credentials:
     - credentials:
       - usernamePassword:
           id: "nexus"
-          password: "{AQAAABAAAAAQ3M5zF4M24FlsFPo9+Msu5l74eUg41LgQXSdCC+1jZmQ=}"
+          password: "{AQAAABAAAACATTDuNr/5nMfMZPT5nFqqDi4EdyZgHlzdLzlYjPGJthZwHGgePVcMpgJvQprS8He7LPUBcHdoNHfgf0CH58do4wYQRFWEg2uwH9cYnNi8rNp+wcA0HNh6gEov+wW27IM3xMRIGdFCMRMU7HziP6iCmy0AzBLzwoCKZDIsu2IthqHL+DiNQ+GegZRqlAv164VT}"
           scope: GLOBAL
           username: "admin"
       - usernamePassword:
           description: "nexus_id"
           id: "nexus_id"
-          password: "{AQAAABAAAAAQ+eoDsMMpjLLT2FcQWOWRTSVI4yFrq0PzUv9ScIZVTZA=}"
+          password: "{AQAAABAAAACAIiTAaT3S3grcV1ccOgvkUMFqjAh69Rx7cip1keAa98WG/7IAfVCnlevdBLQPUddYg5A+eAZGHA+RbeOinGDlLMd95ssDqxkxTKD8Sx3ZgZNiJ6dWTUeDy34o89fAg7cJ2CXN28+09GcPuYIOOKjUZUVVOMo0jCTYnK4ym+spareSk9hvBkLFGDLWo+XbK/u0}"
           scope: GLOBAL
           username: "admin"
           usernameSecret: true
-    - domain:
+    - credentials:
+      - usernamePassword:
+          description: "kgyuvraj"
+          id: "kgyuvraj"
+          password: "{AQAAABAAAABwP72XlP9pedTqjlj4xRLB1SaDdgw6z67lIT9IzUFV6dMgQYmEKUvDxWW94K5df5E/0ZZTM2tRZG4lmehdvJiOOBmvz6e6jOJwIX55VLNo9tEEb1PCe9zvrJAI6vW8VoijB0JR355fgOPrXhFr6ihOGo+p/oSy2DTgQ4pnIndz+uY=}"
+          scope: GLOBAL
+          username: "kgyuvraj"
+      domain:
         description: "admin"
         name: "admin"
 jenkins:
@@ -38,6 +45,31 @@ security:
         strategy: triggeringUsersAuthorizationStrategy
   globaljobdslsecurityconfiguration:
     useScriptSecurity: false
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  jdk:
+    installations:
+    - name: "openjdk-11"
+      properties:
+      - installSource:
+          installers:
+          - zip:
+              subdir: "jdk-11.0.1"
+              url: "https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz"
+  maven:
+    installations:
+    - name: "Maven 3"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.8.4"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
 unclassified:
   location:
     url: ${URL}
