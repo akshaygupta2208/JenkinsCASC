@@ -125,7 +125,7 @@ mvn_push_stage = """
                                     configFileProvider(
                                                 [configFile(fileId: '2dc3bc9a-1ce3-4c14-babe-463e8c9ea900', variable: 'MAVEN_SETTINGS')]) {
                                                 sh 'echo "Build"'
-                                                sh 'mvn -s $MAVEN_SETTINGS deploy'
+                                                sh 'mvn -s \$MAVEN_SETTINGS deploy'
                                               }
                                       }
                                 }  
