@@ -4,13 +4,13 @@ credentials:
     - credentials:
       - usernamePassword:
           id: "nexus"
-          password: "{AQAAABAAAACATTDuNr/5nMfMZPT5nFqqDi4EdyZgHlzdLzlYjPGJthZwHGgePVcMpgJvQprS8He7LPUBcHdoNHfgf0CH58do4wYQRFWEg2uwH9cYnNi8rNp+wcA0HNh6gEov+wW27IM3xMRIGdFCMRMU7HziP6iCmy0AzBLzwoCKZDIsu2IthqHL+DiNQ+GegZRqlAv164VT}"
+          password: "{AQAAABAAAADQW/flyOQ+hqvouFuKR26VvpmRcCmkb6LC83TNLXLkImJjkwKGP8oOEXe9BNSRtSlKjhnNvUS0UIkp3LA3I6Fo6S/yFeIYO4mDaGntKmW/Xq9CgL5bTwdQW8BDFpfuiLuGFPR7Q+iCst7M+AMU7Y7F6zxOt48+ZdoQvLlyBoOMNASdYcu9FmY+Dw+pMs7iuvve3q1d4edSXFf72BhHoksWphPvggfRfx2R2QWtmiQReONAj5jenjCpgeI8UXwd0XHGc9Kg9J21D3Qrx9DVKS2x5SXwCpr4kzkEVMURITz0vBU=}"
           scope: GLOBAL
           username: "admin"
       - usernamePassword:
           description: "nexus_id"
           id: "nexus_id"
-          password: "{AQAAABAAAACAIiTAaT3S3grcV1ccOgvkUMFqjAh69Rx7cip1keAa98WG/7IAfVCnlevdBLQPUddYg5A+eAZGHA+RbeOinGDlLMd95ssDqxkxTKD8Sx3ZgZNiJ6dWTUeDy34o89fAg7cJ2CXN28+09GcPuYIOOKjUZUVVOMo0jCTYnK4ym+spareSk9hvBkLFGDLWo+XbK/u0}"
+          password: "{AQAAABAAAADQcJKZXpzCyhgPq07h+RVjaIrjzeS8IY6HcmYVJYX5MNC3Ewla8ShjKzLdAbEeVA0BfW4unXLFvTKFVyKUn7Xqnl3X1Y9nwxe4iNcABugF1OZIVPGKVlwF1iIOss9BN0uYAXdRBnoFPPTd4CCcRjz3SdlqY5KDOPqtVQOiwReGYLlyMYs9V6P59xBSz9LAk5njY9f7jipkiQZ8x90A5ftcXv5VoQ/A5tU4W42+VgnIyhy5JH4xa7xJZNlinu2KKPYPqFhOU3/9Mx8M2Gdf71VcNzfyZPE+oVzpl66OkOHGGCk=}"
           scope: GLOBAL
           username: "admin"
           usernameSecret: true
@@ -18,7 +18,7 @@ credentials:
       - usernamePassword:
           description: "kgyuvraj"
           id: "kgyuvraj"
-          password: "{AQAAABAAAABwP72XlP9pedTqjlj4xRLB1SaDdgw6z67lIT9IzUFV6dMgQYmEKUvDxWW94K5df5E/0ZZTM2tRZG4lmehdvJiOOBmvz6e6jOJwIX55VLNo9tEEb1PCe9zvrJAI6vW8VoijB0JR355fgOPrXhFr6ihOGo+p/oSy2DTgQ4pnIndz+uY=}"
+          password: "{AQAAABAAAAAwtZovlr96L1SuwSvkk+Om0fvy1nlom451ZTKaq2O5Tk0CU87LJJDfUlFJQ3s5R9vcsTAUQtzd+YChWCw+AH9Tvg==}"
           scope: GLOBAL
           username: "kgyuvraj"
       domain:
@@ -98,6 +98,12 @@ unclassified:
               </server>
             </servers>
             <mirrors>
+              <mirror>
+                <id>nexus</id>
+                <url>https://nexus.softwaremathematics.com/repository/maven-central</url>
+                <mirrorOf>central</mirrorOf>
+              </mirror>
+
               <mirror>
                 <id>central</id>
                 <name>central</name>
