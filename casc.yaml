@@ -71,6 +71,50 @@ tool:
     globalSettingsProvider: "standard"
     settingsProvider: "standard"
 unclassified:
+  globalConfigFiles:
+    configs:
+    - mavenSettings:
+        comment: "User settings"
+        content: |-
+          <?xml version="1.0" encoding="UTF-8"?>
+          <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
+            <servers>
+                <servers>
+              <server>
+                <id>nexus</id>
+                <username>admin</username>
+                <password>kgb</password>
+              </server>
+            </servers>
+              <server>
+                <id>sm-snapshots</id>
+                <username>admin</username>
+                <password>kgb</password>
+              </server>
+              <server>
+                <id>sm-releases</id>
+                <username>admin</username>
+                <password>kgb</password>
+              </server>
+            </servers>
+
+            <mirrors>
+              <mirror>
+                <id>central</id>
+                <name>central</name>
+                <url>https://nexus.softwaremathematics.com</url>
+                <mirrorOf>*</mirrorOf>
+              </mirror>
+            </mirrors>
+
+          </settings>
+        id: "2dc3bc9a-1ce3-4c14-babe-463e8c9ea900"
+        isReplaceAll: true
+        name: "MySettings"
+        providerId: "org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig"
   location:
     url: ${URL}
   resourceRoot:
