@@ -107,7 +107,7 @@ unclassified:
             </mirrors>
 
           </settings>
-        id: "2dc3bc9a-1ce3-4c14-babe-463e8c9ea900"
+        id: "mvn-settings"
         isReplaceAll: true
         name: "MySettings"
         providerId: "org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig"
