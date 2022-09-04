@@ -144,6 +144,9 @@ stage('DeployMVN') {
   }  
   if (! deployenv.contains("mvn")){
   mvn_push_stage = ""
+  
+  }
+  else{
   artefact_creation = ""
   }
   //println("this is deploy env "+deployenv)
