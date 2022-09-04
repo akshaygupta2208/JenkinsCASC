@@ -1,4 +1,5 @@
 name: tms
 repo_url: https://github.com/ioneitsolutions/TMS.git
+build_command: mvn clean install
 deploy_env:
 - qa
