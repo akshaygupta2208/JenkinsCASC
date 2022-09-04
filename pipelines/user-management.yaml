@@ -1,6 +1,0 @@
-name: user-management
-repo_url: https://github.com/ioneitsolutions/UserManagement.git
-src_path:
-build_command: mvn clean install
-deploy_env:
-- dev
