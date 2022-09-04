@@ -177,7 +177,7 @@ mvn_push_stage = """
                     }
                     stage('Build') {     
                             steps{
-                                dir(${src_path}){
+                                dir(\"${src_path}\"){
                                     sh 'echo "Build"'
                                     sh '${build_command}'                                
                                     }
