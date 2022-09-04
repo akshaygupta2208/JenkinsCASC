@@ -119,10 +119,11 @@ stage('Deployqa') {
 """
 mvn_push_stage = """
 stage('DeployMVN') { 
-                            steps{  
+                            steps{
+                                                            dir("${src_path"}){
                                 sh 'echo "Deploy to MVN repository"'
                                 sh 'mvn deploy'
-                                }    
+}    }
                         }
                    
 """
@@ -174,10 +175,12 @@ stage('DeployMVN') {
                             }    
                     }
                     stage('Build') {     
-                            steps{  
-                                sh 'echo "Build"'
-                                sh 'cd ${src_path}'
-                                sh '${build_command}'
+                            steps{
+                                dir("${src_path"}){
+                                    sh 'echo "Build"'
+                                    sh '${build_command}'                                
+                                    }
+  
                                 }    
                         }
                     stage('BuildSanity') {     
