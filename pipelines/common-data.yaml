@@ -1,4 +1,5 @@
 name: common-data
 repo_url: https://github.com/ioneitsolutions/common-data.git
+src: ./Old/commons-data-mysql
 deploy_env:
-- qa
+- mvn
