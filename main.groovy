@@ -120,10 +120,10 @@ stage('Deployqa') {
 mvn_push_stage = """
                         stage('DeployMVN') { 
                                 steps{
-                                  
+                                  dir(\"${src_path}\"){
                                       sh 'echo "MVN deploy"'
                                       sh 'mvn deploy'                                
-                                      
+                                      }
                                 }  
                         }
                    
