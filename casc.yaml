@@ -80,15 +80,12 @@ unclassified:
           <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
-
             <servers>
-                <servers>
               <server>
                 <id>nexus</id>
                 <username>admin</username>
                 <password>kgb</password>
               </server>
-            </servers>
               <server>
                 <id>sm-snapshots</id>
                 <username>admin</username>
@@ -100,7 +97,6 @@ unclassified:
                 <password>kgb</password>
               </server>
             </servers>
-
             <mirrors>
               <mirror>
                 <id>central</id>
