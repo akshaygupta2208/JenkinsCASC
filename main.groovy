@@ -185,7 +185,7 @@ mvn_push_stage = """
                                   configFileProvider(
                                               [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
                                               sh 'echo "Build"'
-                                              sh '${build_command}'                                
+                                              sh '${build_command} -s \$MAVEN_SETTINGS'                                
                                             }
 
                                     }
