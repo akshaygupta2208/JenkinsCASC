@@ -121,8 +121,12 @@ mvn_push_stage = """
                         stage('DeployMVN') { 
                                 steps{
                                   dir(\"${src_path}\"){
-                                      sh 'echo "MVN deploy"'
-                                      sh 'mvn deploy'                                
+                                  
+                                    configFileProvider(
+                                                [configFile(fileId: '2dc3bc9a-1ce3-4c14-babe-463e8c9ea900', variable: 'MAVEN_SETTINGS')]) {
+                                                sh 'echo "Build"'
+                                                sh 'mvn -s $MAVEN_SETTINGS deploy'
+                                              }
                                       }
                                 }  
                         }
@@ -178,8 +182,12 @@ mvn_push_stage = """
                     stage('Build') {     
                             steps{
                                 dir(\"${src_path}\"){
-                                    sh 'echo "Build"'
-                                    sh '${build_command}'                                
+                                  configFileProvider(
+                                              [configFile(fileId: '2dc3bc9a-1ce3-4c14-babe-463e8c9ea900', variable: 'MAVEN_SETTINGS')]) {
+                                              sh 'echo "Build"'
+                                              sh '${build_command}'                                
+                                            }
+
                                     }
                                 }    
                         }
