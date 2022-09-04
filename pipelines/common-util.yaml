@@ -1,4 +1,6 @@
 name: common-util
 repo_url: https://github.com/ioneitsolutions/common-util.git
+src_path: ./Old/commons-util
+build_command: mvn clean install
 deploy_env:
-- qa
+- mvn
