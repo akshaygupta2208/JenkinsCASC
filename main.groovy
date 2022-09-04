@@ -40,6 +40,7 @@ list.each {
   name = example["name"]
   application_port = example["application_port"]
   deploy_port = example["deploy_port"]
+  src_path = example["src_path"]
   
   
   def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
@@ -175,6 +176,7 @@ stage('DeployMVN') {
                     stage('Build') {     
                             steps{  
                                 sh 'echo "Build"'
+                                sh 'cd ${src_path}'
                                 sh '${build_command}'
                                 }    
                         }
