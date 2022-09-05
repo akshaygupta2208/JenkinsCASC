@@ -55,10 +55,10 @@ list.each {
                     stage('ArtefactCreation') { 
                             steps{  
                                 sh 'echo "ArtefactCreation"'
+                                dir(\"${target_path}\"){
                                 sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic:latest"
-                                dir(\"${target_path}\"){  
                                  }
                     }
                     }
