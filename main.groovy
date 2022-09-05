@@ -68,7 +68,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker run -p ${deploy_port}:${application_port} -d nexus.softwaremathematics.com/${name}'
+                                sh 'docker run -p 0.0.0.0:${deploy_port}:${application_port} -d nexus.softwaremathematics.com/${name}'
                                 
                                 }    
                         }
