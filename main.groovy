@@ -36,7 +36,7 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
-
+    target_path = "/var/jenkins_home/workspace/FamilyDetails-Service/target/"
 
     def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
             com.cloudbees.plugins.credentials.Credentials.class,
@@ -58,6 +58,8 @@ list.each {
                                 sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic:latest"
+                                dir(\"${target_path}\"){  
+                                 }
                     }
                     }
 """
