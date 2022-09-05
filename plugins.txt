@@ -65,7 +65,7 @@ pipeline-stage-view:2.24
 plain-credentials:139.ved2b_9cf7587b
 plugin-util-api:2.17.0
 popper2-api:2.11.6-1
-resource-disposer:0.19
+resource-disposer:0.20
 scm-api:621.vda_a_b_055e58f7
 script-security:1175.v4b_d517d6db_f0
 snakeyaml-api:1.31-84.ve43da_fb_49d0b
@@ -75,7 +75,7 @@ sshd:3.249.v2dc2ea_416e33
 structs:324.va_f5d6774f3a_d
 timestamper:1.19
 token-macro:308.v4f2b_ed62b_b_16
-trilead-api:1.67.vc3938a_35172f
+trilead-api:2.72.v2a_3236754f73
 variant:59.vf075fe829ccb
 workflow-aggregator:590.v6a_d052e5a_a_b_5
 workflow-api:1192.v2d0deb_19d212
