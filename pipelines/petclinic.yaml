@@ -1,6 +1,6 @@
 name: petclinic
 repo_url: https://github.com/kgyuvraj/spring-petclinic.git
-build_command: mvn clean install
+build_command: mvn clean install -DskipTests
 run_command: java -jar app.jar
 src_path: ./
 application_port: 8080
