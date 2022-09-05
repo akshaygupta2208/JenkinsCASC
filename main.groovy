@@ -1,56 +1,58 @@
-@Grab('org.yaml:snakeyaml:1.17')
-import jenkins.*
-import jenkins.model.* 
+import groovy.io.FileType
 import hudson.*
 import hudson.model.*
+@Grab('org.yaml:snakeyaml:1.17')
+import jenkins.*
+@Grab('org.yaml:snakeyaml:1.17')
+import jenkins.*
+import jenkins.model.*
 import org.yaml.snakeyaml.Yaml
-def current_workspace = System.getProperty("user.dir");
+
+def current_workspace = System.getProperty("user.dir")
 
 println(current_workspace)
 
 current_workspace = "/var/jenkins_home/workspace/SeedJob"
 
-import groovy.io.FileType
-
 def list = []
 
-def dir = new File(current_workspace+"/pipelines")
-dir.eachFileRecurse (FileType.FILES) { file ->
-  list << file
+def dir = new File(current_workspace + "/pipelines")
+dir.eachFileRecurse(FileType.FILES) { file ->
+    list << file
 }
 
 list.each {
-  println it.path
+    println it.path
 
-  Yaml parser = new Yaml()
-  example = parser.load((it.path as File).text)
-  
-  // variable declaration of yaml files
-  repo_url = example["repo_url"]
-  build_command = example["build_command"]
-  java_command = example["run_command"]
-  deployenv = example["deploy_env"]
-  name = example["name"]
-  application_port = example["application_port"]
-  deploy_port = example["deploy_port"]
-  src_path = example["src_path"]
-  
-  
-  def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
-        com.cloudbees.plugins.credentials.Credentials.class,
-        Jenkins.instance,
-        null,
-        null
-);
-  for (creds in jenkinsCredentials) {
-  if(creds.id == "nexus"){
-    nexus_username = creds.username
-    nexus_password = creds.password
+    Yaml parser = new Yaml()
+    example = parser.load((it.path as File).text)
+
+    // variable declaration of yaml files
+    repo_url = example["repo_url"]
+    build_command = example["build_command"]
+    java_command = example["run_command"]
+    deployenv = example["deploy_env"]
+    name = example["name"]
+    application_port = example["application_port"]
+    deploy_port = example["deploy_port"]
+    src_path = example["src_path"]
+
+
+    def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
+            com.cloudbees.plugins.credentials.Credentials.class,
+            Jenkins.instance,
+            null,
+            null
+    )
+    for (creds in jenkinsCredentials) {
+        if (creds.id == "nexus") {
+            nexus_username = creds.username
+            nexus_password = creds.password
+        }
     }
-}
-  
-artefact_creation = """
-stage('ArtefactCreation') { 
+
+    artefact_creation = """
+                    stage('ArtefactCreation') { 
                             steps{  
                                 sh 'echo "ArtefactCreation"'
                                 sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
@@ -58,8 +60,8 @@ stage('ArtefactCreation') {
                                 sh "docker push nexus.softwaremathematics.com/petclinic:latest"
                     }
                     }
-"""  
-dev_stage = """
+"""
+    dev_stage = """
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
@@ -73,8 +75,8 @@ dev_stage = """
                                 }    
                         }
 """
-prod_stage = """
-stage('DeployProd') {
+    prod_stage = """
+                    stage('DeployProd') {
                             steps{  
                                 sh 'echo "DeployProd"'
                                 }    
@@ -84,8 +86,8 @@ stage('DeployProd') {
                                 sh 'echo "ProdSanity"'
                                 }    
                         }"""
-stg_stage = """
-stage('Deploystg') { 
+    stg_stage = """
+                    stage('Deploystg') { 
                             steps{  
                                 sh 'echo "DeployStg"'
                                 }    
@@ -96,8 +98,8 @@ stage('Deploystg') {
                                 }    
                         }
 """
-qa_stage = """
-stage('Deployqa') { 
+    qa_stage = """
+                    stage('Deployqa') { 
                             steps{  
                                 sh 'echo "DeployQA"'
                                 }    
@@ -108,52 +110,49 @@ stage('Deployqa') {
                                 }    
                         }
 """
-mvn_push_stage = """
-                        stage('DeployMVN') { 
-                                steps{
-                                  dir(\"${src_path}\"){
-                                  
+    mvn_push_stage = """
+                    stage('DeployMVN') { 
+                            steps{
+                                dir(\"${src_path}\"){  
                                     configFileProvider(
-                                                [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-                                                sh 'echo "Build"'
-                                                sh 'mvn -s \$MAVEN_SETTINGS deploy'
-                                              }
-                                      }
-                                }  
-                        }
+                                        [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
+                                            sh 'echo "Build"'
+                                            sh 'mvn -s \$MAVEN_SETTINGS deploy'
+                                        }
+                                }
+                            }  
+                    }
                    
 """
-  
-  
-  if (! deployenv.contains("dev")){
-  dev_stage = ""
-  }
-  
-  if (! deployenv.contains("qa")){
-  qa_stage = ""
-  }
-  
-  if (! deployenv.contains("stg")){
-  stg_stage = ""
-  }
-  
-  if (! deployenv.contains("prod")){
-  prod_stage = ""
-  }  
-  if (! deployenv.contains("mvn")){
-  mvn_push_stage = ""
-  
-  }
-  else{
-  artefact_creation = ""
-  }
 
-  
+
+    if (!deployenv.contains("dev")) {
+        dev_stage = ""
+    }
+
+    if (!deployenv.contains("qa")) {
+        qa_stage = ""
+    }
+
+    if (!deployenv.contains("stg")) {
+        stg_stage = ""
+    }
+
+    if (!deployenv.contains("prod")) {
+        prod_stage = ""
+    }
+    if (!deployenv.contains("mvn")) {
+        mvn_push_stage = ""
+
+    } else {
+        artefact_creation = ""
+    }
+
 
     pipelineJob(example["name"]) {
-    definition {
-        cps {
-            script("""
+        definition {
+            cps {
+                script("""
             pipeline {
                 agent any
                 tools {
@@ -172,20 +171,19 @@ mvn_push_stage = """
                     stage('Build') {     
                             steps{
                                 dir(\"${src_path}\"){
-                                  configFileProvider(
-                                              [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-                                              sh 'echo "Build"'
-                                              sh '${build_command} -s \$MAVEN_SETTINGS'                                
-                                            }
-
-                                    }
-                                }    
-                        }
+                                    configFileProvider(
+                                        [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
+                                            sh 'echo "Build"'
+                                            sh '${build_command} -s \$MAVEN_SETTINGS'                                
+                                        }
+                                }
+                            }    
+                    }
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
-                                }    
-                        }
+                            }    
+                    }
                     ${artefact_creation}
                     ${dev_stage}
                     ${qa_stage}
@@ -195,11 +193,9 @@ mvn_push_stage = """
             }
         }
                    """)
-            sandbox()
+                sandbox()
+            }
         }
     }
-}
-
-  println(example)
-
+    println(example)
 }
