@@ -33,6 +33,7 @@ list.each {
     java_command = example["run_command"]
     deployenv = example["deploy_env"]
     name = example["name"]
+    name = name.toLowerCase()
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
@@ -57,8 +58,8 @@ list.each {
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"${target_path}\"){
                                 sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
-                                sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
-                                sh "docker push nexus.softwaremathematics.com/petclinic:latest"
+                                sh "docker build -t nexus.softwaremathematics.com/${name}:latest ."
+                                sh "docker push nexus.softwaremathematics.com/${name}:latest"
                                  }
                     }
                     }
