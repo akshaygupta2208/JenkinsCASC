@@ -1,10 +1,3 @@
-// Template basic job
-// job('example') {
-//   steps {
-//     shell('echo Hello World!')
-//   }
-// }
-
 @Grab('org.yaml:snakeyaml:1.17')
 import jenkins.*
 import jenkins.model.* 
@@ -51,10 +44,8 @@ list.each {
 );
   for (creds in jenkinsCredentials) {
   if(creds.id == "nexus"){
-    println(creds.username)
-    println(creds.password)
-    username = creds.username
-    password = creds.password
+    nexus_username = creds.username
+    nexus_password = creds.password
     }
 }
   
@@ -62,7 +53,7 @@ artefact_creation = """
 stage('ArtefactCreation') { 
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-                                sh "docker login -u ${username} -p ${password} https://nexus.softwaremathematics.com/"
+                                sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/petclinic:latest ."
                                 sh "docker push nexus.softwaremathematics.com/petclinic:latest"
                     }
@@ -156,8 +147,7 @@ mvn_push_stage = """
   else{
   artefact_creation = ""
   }
-  //println("this is deploy env "+deployenv)
-  //println(example["deploy_env"])
+
   
 
     pipelineJob(example["name"]) {
