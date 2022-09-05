@@ -36,7 +36,7 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
-    target_path = "/var/jenkins_home/workspace/FamilyDetails-Service/target/"
+    target_path = "/var/jenkins_home/workspace/FamilyDetails-Service/FamilyDetails-Service/"
 
     def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
             com.cloudbees.plugins.credentials.Credentials.class,
