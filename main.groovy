@@ -8,6 +8,7 @@ import jenkins.*
 import jenkins.*
 import jenkins.model.*
 import org.yaml.snakeyaml.Yaml
+package javaposse.jobdsl.dsl.helpers
 import javaposse.jobdsl.dsl.helpers.scm.ClearCaseContext
 import javaposse.jobdsl.dsl.helpers.scm.GitContext
 import javaposse.jobdsl.dsl.helpers.scm.HgContext
