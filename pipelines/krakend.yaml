@@ -1,0 +1,12 @@
+name: krakend
+repo_url: https://github.com/akshaygupta2208/JenkinsCASC.git
+repo_url: https://github.com/akshaygupta2208/ansible_repo.git
+#build_command: mvn clean install -DskipTests
+# run_command: java -jar app.jar
+# src_path: ./
+# application_port: 8080
+# deploy_port: 9080
+# path_prefix: /petclinic
+# deploy_env:
+# - dev
+# - prod
