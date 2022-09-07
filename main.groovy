@@ -8,6 +8,13 @@ import jenkins.*
 import jenkins.*
 import jenkins.model.*
 import org.yaml.snakeyaml.Yaml
+import javaposse.jobdsl.dsl.helpers.scm.ClearCaseContext
+import javaposse.jobdsl.dsl.helpers.scm.GitContext
+import javaposse.jobdsl.dsl.helpers.scm.HgContext
+import javaposse.jobdsl.dsl.helpers.scm.P4Context
+
+import javaposse.jobdsl.dsl.helpers.scm.RTCContext
+import javaposse.jobdsl.dsl.helpers.scm.SvnContext
 
 def current_workspace = System.getProperty("user.dir")
 
