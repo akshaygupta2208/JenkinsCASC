@@ -1,6 +1,15 @@
 job('example') {
   steps {
-    shell('echo Hello World!')
+    scm {
+            git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
+    }
+    
+  }
+  steps{
+            scm {
+            git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
+        }
+  
   }
 }
 import groovy.io.FileType
