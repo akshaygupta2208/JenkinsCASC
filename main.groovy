@@ -161,7 +161,11 @@ list.each {
     else {
         artefact_creation = ""
     }
-
+job('example') {
+  steps {
+    shell('echo Hello World!')
+  }
+}
 
     pipelineJob(example["name"]) {
         definition {
