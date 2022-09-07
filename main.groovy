@@ -1,17 +1,4 @@
-job('example') {
-  steps {
-    scm {
-            git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
-    }
-    
-  }
-  steps{
-            scm {
-            git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
-        }
-  
-  }
-}
+
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
@@ -176,6 +163,20 @@ list.each {
         artefact_creation = ""
     }
 
+  job('example') {
+  steps {
+    scm {
+            git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
+    }
+    
+  }
+  steps{
+            scm {
+            git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
+        }
+  
+  }
+}
     pipelineJob(example["name"]) {
         definition {
             cps {
