@@ -1,3 +1,8 @@
+job('example') {
+  steps {
+    shell('echo Hello World!')
+  }
+}
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
@@ -20,14 +25,14 @@ def dir = new File(current_workspace + "/pipelines")
 dir.eachFileRecurse(FileType.FILES) { file ->
     list << file
 }
-job("jenkins2") {
-        scm {
-            git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
-        }
-        scm {
-            git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
-        }
-}
+// job("jenkins2") {
+//         scm {
+//             git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
+//         }
+//         scm {
+//             git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
+//         }
+// }
 
 list.each {
     println it.path
@@ -161,11 +166,6 @@ list.each {
     else {
         artefact_creation = ""
     }
-job('example') {
-  steps {
-    shell('echo Hello World!')
-  }
-}
 
     pipelineJob(example["name"]) {
         definition {
