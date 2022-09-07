@@ -1,4 +1,3 @@
-
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
@@ -21,14 +20,6 @@ def dir = new File(current_workspace + "/pipelines")
 dir.eachFileRecurse(FileType.FILES) { file ->
     list << file
 }
-// job("jenkins2") {
-//         scm {
-//             git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
-//         }
-//         scm {
-//             git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
-//         }
-// }
 
 list.each {
     println it.path
@@ -135,14 +126,6 @@ list.each {
                     }
                    
 """
-    checkout_stage = """ stage('Checkout Stage') {     
-                        steps{  
-                            sh 'echo "Checkout"'
-                            git branch: 'main',
-                            credentialsId: 'kgyuvraj',
-                            url: '${repo_url}'
-                            
-                            """
 
 
     if (!deployenv.contains("dev")) {
@@ -163,35 +146,11 @@ list.each {
     if (!deployenv.contains("mvn")) {
         mvn_push_stage = ""
 
-    }
-    if (deployenv.contains("xyz")) {
-        artefact_creation = ""
-    }
-    if (deployenv.contains("xyz")){
-    checkout_stage='''
-    checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], 
-    userRemoteConfigs: [[credentialsId: 'kgyuvraj', url: 'https://github.com/akshaygupta2208/ansible_repo.git'], 
-    [credentialsId: 'kgyuvraj', url: 'https://github.com/akshaygupta2208/JenkinsCASC.git']]])
-    '''
-    }
-    else {
+    } else {
         artefact_creation = ""
     }
 
-//   job('example') {
-//   steps {
-//     scm {
-//             git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
-//     }
-    
-//   }
-//   steps{
-//             scm {
-//             git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
-//         }
-  
-//   }
-// }
+
     pipelineJob(example["name"]) {
         definition {
             cps {
@@ -203,7 +162,13 @@ list.each {
                 jdk 'openjdk-11'
                 }
                 stages {
-                  ${checkout_stage}
+                  stage('Checkout Stage') {     
+                        steps{  
+                            sh 'echo "Checkout"'
+                            git branch: 'main',
+                            credentialsId: 'kgyuvraj',
+                            url: '${repo_url}'
+                            }    
                     }
                     stage('Build') {     
                             steps{
