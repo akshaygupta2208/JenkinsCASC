@@ -167,7 +167,7 @@ list.each {
     if (deployenv.contains("xyz")) {
         artefact_creation = ""
     }
-    if (deploy_env.contains("xyz")){
+    if (deployenv.contains("xyz")){
     checkout_stage='''
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], 
     userRemoteConfigs: [[credentialsId: 'kgyuvraj', url: 'https://github.com/akshaygupta2208/ansible_repo.git'], 
