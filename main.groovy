@@ -37,7 +37,6 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
-    target_path = "/var/jenkins_home/workspace/FamilyDetails-Service/FamilyDetails-Service/"
 
     def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
             com.cloudbees.plugins.credentials.Credentials.class,
@@ -56,7 +55,7 @@ list.each {
                     stage('ArtefactCreation') { 
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-                                dir(\"${target_path}\"){
+                                dir(\"${src_path}\"){ 
                                 sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
                                 sh "docker build -t nexus.softwaremathematics.com/${name}:latest ."
                                 sh "docker push nexus.softwaremathematics.com/${name}:latest"
