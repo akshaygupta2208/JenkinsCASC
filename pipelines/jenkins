@@ -1,5 +1,5 @@
 name: jenkins
 repo_url: https://github.com/akshaygupta2208/JenkinsCASC.git
-build_command: echo hello world
+build_command: docker build -t jenkins:jcasc .
 deploy_env:
 - xyz
