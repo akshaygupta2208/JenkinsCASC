@@ -146,7 +146,10 @@ list.each {
     if (!deployenv.contains("mvn")) {
         mvn_push_stage = ""
 
-    } else {
+    }
+    if (deployenv.contains("xyz")) {
+        artefact_creation = ""
+    else {
         artefact_creation = ""
     }
 
