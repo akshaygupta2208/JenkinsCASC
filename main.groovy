@@ -1,4 +1,4 @@
-package javaposse.jobdsl.dsl.helpers
+
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
@@ -8,14 +8,6 @@ import jenkins.*
 import jenkins.*
 import jenkins.model.*
 import org.yaml.snakeyaml.Yaml
-
-import javaposse.jobdsl.dsl.helpers.scm.ClearCaseContext
-import javaposse.jobdsl.dsl.helpers.scm.GitContext
-import javaposse.jobdsl.dsl.helpers.scm.HgContext
-import javaposse.jobdsl.dsl.helpers.scm.P4Context
-
-import javaposse.jobdsl.dsl.helpers.scm.RTCContext
-import javaposse.jobdsl.dsl.helpers.scm.SvnContext
 
 def current_workspace = System.getProperty("user.dir")
 
@@ -143,6 +135,14 @@ list.each {
                     }
                    
 """
+    checkout_stage = """ stage('Checkout Stage') {     
+                        steps{  
+                            sh 'echo "Checkout"'
+                            git branch: 'main',
+                            credentialsId: 'kgyuvraj',
+                            url: '${repo_url}'
+                            
+                            """
 
 
     if (!deployenv.contains("dev")) {
@@ -167,24 +167,31 @@ list.each {
     if (deployenv.contains("xyz")) {
         artefact_creation = ""
     }
+    if (deploy_env.contains("xyz")){
+    checkout_stage='''
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], 
+    userRemoteConfigs: [[credentialsId: 'kgyuvraj', url: 'https://github.com/akshaygupta2208/ansible_repo.git'], 
+    [credentialsId: 'kgyuvraj', url: 'https://github.com/akshaygupta2208/JenkinsCASC.git']]])
+    '''
+    }
     else {
         artefact_creation = ""
     }
 
-  job('example') {
-  steps {
-    scm {
-            git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
-    }
+//   job('example') {
+//   steps {
+//     scm {
+//             git("git://github.com/https://github.com/akshaygupta2208/ansible_repo.git", master)
+//     }
     
-  }
-  steps{
-            scm {
-            git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
-        }
+//   }
+//   steps{
+//             scm {
+//             git("git://github.com/https://github.com/akshaygupta2208/JenkinsCASC.git", master)
+//         }
   
-  }
-}
+//   }
+// }
     pipelineJob(example["name"]) {
         definition {
             cps {
@@ -196,13 +203,7 @@ list.each {
                 jdk 'openjdk-11'
                 }
                 stages {
-                  stage('Checkout Stage') {     
-                        steps{  
-                            sh 'echo "Checkout"'
-                            git branch: 'main',
-                            credentialsId: 'kgyuvraj',
-                            url: '${repo_url}'
-                            }    
+                  ${checkout_stage}
                     }
                     stage('Build') {     
                             steps{
