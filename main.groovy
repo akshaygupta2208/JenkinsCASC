@@ -149,6 +149,7 @@ list.each {
     }
     if (deployenv.contains("xyz")) {
         artefact_creation = ""
+    }
     else {
         artefact_creation = ""
     }
