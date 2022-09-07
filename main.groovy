@@ -1,3 +1,50 @@
+pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                stages {
+                    stage('checkout'){
+                        steps{
+                  
+                            dir("repo1"){
+                            git branch: 'main',
+                            credentialsId: 'kgyuvraj',
+                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
+                            }
+                            dir("repo2"){
+                            git branch: 'main',
+                            credentialsId: 'kgyuvraj',
+                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
+                            }
+                        }
+                        }
+                
+                    stage('Build') {     
+                            steps{
+                                dir("null"){
+                                    configFileProvider(
+                                        [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
+                                            sh 'echo "Build"'
+                                            sh 'echo hello world -s $MAVEN_SETTINGS'                                
+                                        }
+                                }
+                            }    
+                    }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                            }    
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+            }
+            }
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
@@ -150,53 +197,7 @@ list.each {
         artefact_creation = ""
     }
 
-pipeline {
-                agent any
-                tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
-                }
-                stages {
-                    stage('checkout'){
-                        steps{
-                  
-                            dir("repo1"){
-                            git branch: 'main',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
-                            }
-                            dir("repo2"){
-                            git branch: 'main',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
-                            }
-                        }
-                        }
-                
-                    stage('Build') {     
-                            steps{
-                                dir("null"){
-                                    configFileProvider(
-                                        [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-                                            sh 'echo "Build"'
-                                            sh 'echo hello world -s $MAVEN_SETTINGS'                                
-                                        }
-                                }
-                            }    
-                    }
-                    stage('BuildSanity') {     
-                            steps{  
-                                sh 'echo "BuildSanity"'
-                            }    
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
-            }
-            }
+
               
     pipelineJob(example["name"]) {
         definition {
