@@ -1,3 +1,4 @@
 name: krakend
 repo_url: https://github.com/akshaygupta2208/JenkinsCASC.git
 repo_url: https://github.com/akshaygupta2208/ansible_repo.git
+build_command: echo hello world
