@@ -162,8 +162,11 @@ list.each {
             pipeline {
                 agent any
                 tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
+                    maven 'Maven 3'
+                    jdk 'openjdk-11'
+                }
+                env {
+                    NEXUS_CRED = credentials('nexus')
                 }
                 stages {
                   stage('Checkout Stage') {     
@@ -266,6 +269,9 @@ pipelineJob('jenkins'){
                 tools {
                 #maven 'Maven 3'
                 #jdk 'openjdk-11'
+                }
+                env {
+                    NEXUS_CRED = credentials('nexus')
                 }
                 stages {
                     stage('checkout'){
