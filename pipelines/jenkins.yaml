@@ -1,5 +1,0 @@
-name: jenkins
-repo_url: https://github.com/akshaygupta2208/JenkinsCASC.git
-build_command: echo hello world
-deploy_env:
-- xyz
