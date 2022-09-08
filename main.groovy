@@ -1,4 +1,3 @@
-
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
@@ -152,7 +151,7 @@ list.each {
     }
 
 
-    pipelineJob('krakend2'){
+    pipelineJob('krakend'){
         definition {
             cps {
                 script("""
