@@ -203,7 +203,7 @@ list.each {
             }
         }
     }
-    pipelineJob('krakend'){
+    pipelineJob('jenkins'){
         definition {
             cps {
                 script("""
