@@ -180,16 +180,9 @@ list.each {
                         }
                 
                     stage('Build') {     
-                            steps{
-//                                 dir("null"){
-//                                     configFileProvider(
-//                                         [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
-//                                             sh 'echo "Build"'
-//                                             sh 'echo hello world -s $MAVEN_SETTINGS'                                
-//                                         }
-//                                 }
-                                               sh 'echo "Build"'
-                                               sh 'echo "hello world"'
+                            steps{                           
+                                  sh 'echo "Build"'
+                                  sh 'echo "hello world"'
                                                 
                             }    
                     }
