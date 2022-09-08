@@ -203,6 +203,48 @@ list.each {
             }
         }
     }
+    pipelineJob('krakend'){
+        definition {
+            cps {
+                script("""
+    pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                stages {
+                    stage('checkout'){
+                        steps{
+                  
+                            dir("repo1"){
+                            git branch: 'master',
+                            credentialsId: 'kgyuvraj',
+                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
+                            }
+                          }
+                        }
+                
+                    stage('Build') {     
+                            steps{                           
+                                  sh 'echo "Build"'
+                                  sh 'echo "hello world"'
+                                                
+                            }    
+                    }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                            }    
+                    }         
+                    
+            }
+            }
+            """)
+                sandbox()
+            }
+        }
+    }
     pipelineJob(example["name"]) {
         definition {
             cps {
