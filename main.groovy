@@ -210,25 +210,25 @@ pipelineJob('krakend'){
     pipeline {
                 agent any
                 tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
+                #maven 'Maven 3'
+                #jdk 'openjdk-11'
                 }
                 stages {
                     stage('checkout'){
                         steps{
                   
-                            dir("repo1"){
-                            git branch: 'master',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
+                            dir("jenkins"){
+                                git branch: 'master',
+                                credentialsId: 'kgyuvraj',
+                                url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
                             }
-                            dir("repo2"){
-                            git branch: 'master',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
+                            dir("ansible"){
+                                git branch: 'master',
+                                credentialsId: 'kgyuvraj',
+                                url: 'https://github.com/akshaygupta2208/ansible_repo.git'
                             }
                         }
-                        }
+                    }
                 
                     stage('Build') {     
                             steps{                           
@@ -242,19 +242,14 @@ pipelineJob('krakend'){
                                 sh 'echo "BuildSanity"'
                             }    
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-            }
+                }
             }
             """)
             sandbox()
         }
     }
 }
+
 pipelineJob('jenkins'){
     definition {
         cps {
@@ -262,14 +257,14 @@ pipelineJob('jenkins'){
     pipeline {
                 agent any
                 tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
+                #maven 'Maven 3'
+                #jdk 'openjdk-11'
                 }
                 stages {
                     stage('checkout'){
                         steps{
                   
-                            dir("repo1"){
+                            dir("jenkins"){
                             git branch: 'master',
                             credentialsId: 'kgyuvraj',
                             url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
@@ -280,8 +275,8 @@ pipelineJob('jenkins'){
                     stage('Build') {     
                             steps{                           
                                   sh 'echo "Build"'
-                                  dir("/var/jenkins_home/workspace/jenkins/repo1/"){
-                                  sh 'docker build -t jenkins:jcasc .'
+                                  dir("jenkins"){
+                                        sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
                                   }
                                                 
                             }    
@@ -289,11 +284,10 @@ pipelineJob('jenkins'){
                     stage('deploy') {     
                             steps{                           
                                   sh 'echo "deploy"'
-                                   dir("/var/jenkins_home/workspace/jenkins/repo1/"){
-                                  sh 'docker login https://nexus.softwaremathematics.com/'
-                                  sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
-                                  sh 'docker push nexus.softwaremathematics.com/jenkins'
-                                       }           
+                                  dir("jenkins"){
+                                      sh 'docker login https://nexus.softwaremathematics.com/'
+                                      sh 'docker push nexus.softwaremathematics.com/jenkins'
+                                  }           
                             }    
                     }
                     stage('BuildSanity') {     
