@@ -165,7 +165,7 @@ list.each {
                     maven 'Maven 3'
                     jdk 'openjdk-11'
                 }
-                env {
+                environment {
                     NEXUS_CRED = credentials('nexus')
                 }
                 stages {
@@ -220,7 +220,7 @@ pipelineJob('krakend'){
                 #maven 'Maven 3'
                 #jdk 'openjdk-11'
                 }
-                env {
+                environment {
                     NEXUS_CRED = credentials('nexus')
                 }
                 stages {
@@ -270,7 +270,7 @@ pipelineJob('jenkins'){
                 #maven 'Maven 3'
                 #jdk 'openjdk-11'
                 }
-                env {
+                environment {
                     NEXUS_CRED = credentials('nexus')
                 }
                 stages {
