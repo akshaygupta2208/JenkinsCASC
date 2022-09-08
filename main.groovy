@@ -232,6 +232,15 @@ list.each {
                                                 
                             }    
                     }
+                    stage('deploy') {     
+                            steps{                           
+                                  sh 'echo "deploy"'
+                                  sh 'docker login https://nexus.softwaremathematics.com/'
+                                  sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
+                                  sh 'docker push nexus.softwaremathematics.com/jenkins'
+                                                
+                            }    
+                    }
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
