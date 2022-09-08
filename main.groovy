@@ -1,9 +1,7 @@
+@Grab('org.yaml:snakeyaml:1.17')
 import groovy.io.FileType
 import hudson.*
 import hudson.model.*
-@Grab('org.yaml:snakeyaml:1.17')
-import jenkins.*
-@Grab('org.yaml:snakeyaml:1.17')
 import jenkins.*
 import jenkins.model.*
 import org.yaml.snakeyaml.Yaml
@@ -143,6 +141,7 @@ list.each {
     if (!deployenv.contains("prod")) {
         prod_stage = ""
     }
+
     if (!deployenv.contains("mvn")) {
         mvn_push_stage = ""
 
@@ -150,113 +149,6 @@ list.each {
         artefact_creation = ""
     }
 
-
-    pipelineJob('krakend'){
-        definition {
-            cps {
-                script("""
-    pipeline {
-                agent any
-                tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
-                }
-                stages {
-                    stage('checkout'){
-                        steps{
-                  
-                            dir("repo1"){
-                            git branch: 'master',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
-                            }
-                            dir("repo2"){
-                            git branch: 'master',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
-                            }
-                        }
-                        }
-                
-                    stage('Build') {     
-                            steps{                           
-                                  sh 'echo "Build"'
-                                  sh 'echo "hello world"'
-                                                
-                            }    
-                    }
-                    stage('BuildSanity') {     
-                            steps{  
-                                sh 'echo "BuildSanity"'
-                            }    
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
-            }
-            }
-            """)
-                sandbox()
-            }
-        }
-    }
-    pipelineJob('jenkins'){
-        definition {
-            cps {
-                script("""
-    pipeline {
-                agent any
-                tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
-                }
-                stages {
-                    stage('checkout'){
-                        steps{
-                  
-                            dir("repo1"){
-                            git branch: 'master',
-                            credentialsId: 'kgyuvraj',
-                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
-                            }
-                          }
-                        }
-                
-                    stage('Build') {     
-                            steps{                           
-                                  sh 'echo "Build"'
-                                  dir("/var/jenkins_home/workspace/jenkins/repo1/"){
-                                  sh 'docker build -t jenkins:jcasc .'
-                                  }
-                                                
-                            }    
-                    }
-                    stage('deploy') {     
-                            steps{                           
-                                  sh 'echo "deploy"'
-                                   dir("/var/jenkins_home/workspace/jenkins/repo1/"){
-                                  sh 'docker login https://nexus.softwaremathematics.com/'
-                                  sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
-                                  sh 'docker push nexus.softwaremathematics.com/jenkins'
-                                       }           
-                            }    
-                    }
-                    stage('BuildSanity') {     
-                            steps{  
-                                sh 'echo "BuildSanity"'
-                            }    
-                    }         
-                    
-            }
-            }
-            """)
-                sandbox()
-            }
-        }
-    }
     pipelineJob(example["name"]) {
         definition {
             cps {
@@ -308,4 +200,112 @@ list.each {
         }
     }
     println(example)
+}
+
+
+pipelineJob('krakend'){
+    definition {
+        cps {
+            script("""
+    pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                stages {
+                    stage('checkout'){
+                        steps{
+                  
+                            dir("repo1"){
+                            git branch: 'master',
+                            credentialsId: 'kgyuvraj',
+                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
+                            }
+                            dir("repo2"){
+                            git branch: 'master',
+                            credentialsId: 'kgyuvraj',
+                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
+                            }
+                        }
+                        }
+                
+                    stage('Build') {     
+                            steps{                           
+                                  sh 'echo "Build"'
+                                  sh 'echo "hello world"'
+                                                
+                            }    
+                    }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                            }    
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+            }
+            }
+            """)
+            sandbox()
+        }
+    }
+}
+pipelineJob('jenkins'){
+    definition {
+        cps {
+            script("""
+    pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                stages {
+                    stage('checkout'){
+                        steps{
+                  
+                            dir("repo1"){
+                            git branch: 'master',
+                            credentialsId: 'kgyuvraj',
+                            url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
+                            }
+                          }
+                        }
+                
+                    stage('Build') {     
+                            steps{                           
+                                  sh 'echo "Build"'
+                                  dir("/var/jenkins_home/workspace/jenkins/repo1/"){
+                                  sh 'docker build -t jenkins:jcasc .'
+                                  }
+                                                
+                            }    
+                    }
+                    stage('deploy') {     
+                            steps{                           
+                                  sh 'echo "deploy"'
+                                   dir("/var/jenkins_home/workspace/jenkins/repo1/"){
+                                  sh 'docker login https://nexus.softwaremathematics.com/'
+                                  sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
+                                  sh 'docker push nexus.softwaremathematics.com/jenkins'
+                                       }           
+                            }    
+                    }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                            }    
+                    }         
+                    
+            }
+            }
+            """)
+            sandbox()
+        }
+    }
 }
