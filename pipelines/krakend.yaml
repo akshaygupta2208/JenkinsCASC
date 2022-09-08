@@ -1,4 +1,0 @@
-name: krakend
-build_command: echo hello world
-deploy_env:
-- xyz
