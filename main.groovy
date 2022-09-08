@@ -237,10 +237,11 @@ list.each {
                     stage('deploy') {     
                             steps{                           
                                   sh 'echo "deploy"'
+                                   dir("/var/jenkins_home/workspace/jenkins/repo1/"){
                                   sh 'docker login https://nexus.softwaremathematics.com/'
                                   sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
                                   sh 'docker push nexus.softwaremathematics.com/jenkins'
-                                                
+                                       }           
                             }    
                     }
                     stage('BuildSanity') {     
