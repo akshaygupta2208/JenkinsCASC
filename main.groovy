@@ -56,6 +56,7 @@ list.each {
                             steps{ 
                                 sh 'echo "DeployDev"'
                                 sh 'docker stop ${name} || true'
+                                sh 'docker rm ${name} || true'
                                 sh 'docker run --name ${name} -p ${deploy_port}:${application_port} -d ${NEXUS_DOCKER_REPO_BASE}/${name}'
                                 
                                 }    
