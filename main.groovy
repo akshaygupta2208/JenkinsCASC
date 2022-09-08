@@ -18,7 +18,10 @@ def dir = new File(current_workspace + "/pipelines")
 dir.eachFileRecurse(FileType.FILES) { file ->
     list << file
 }
-     
+
+NEXUS_REPO_URL = "https://nexus.softwaremathematics.com/"
+NEXUS_DOCKER_REPO_BASE = "nexus.softwaremathematics.com"
+
 list.each {
     println it.path
 
@@ -54,9 +57,9 @@ list.each {
                             steps{  
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"${src_path}\"){ 
-                                sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
-                                sh "docker build --network=host -t nexus.softwaremathematics.com/${name}:latest ."
-                                sh "docker push nexus.softwaremathematics.com/${name}:latest"
+                                sh "docker login -u ${NEXUS_CRED_USR} -p ${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
+                                sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:latest ."
+                                sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:latest"
                                  }
                     }
                     }
@@ -65,7 +68,8 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker run -p ${deploy_port}:${application_port} -d nexus.softwaremathematics.com/${name}'
+                                sh 'docker stop ${name}'
+                                sh 'docker run --name ${name} -p ${deploy_port}:${application_port} -d ${NEXUS_DOCKER_REPO_BASE}/${name}'
                                 
                                 }    
                         }
@@ -213,6 +217,9 @@ pipelineJob('krakend'){
                 #maven 'Maven 3'
                 #jdk 'openjdk-11'
                 }
+                env {
+                    NEXUS_CRED = credentials('nexus')
+                }
                 stages {
                     stage('checkout'){
                         steps{
@@ -276,7 +283,7 @@ pipelineJob('jenkins'){
                             steps{                           
                                   sh 'echo "Build"'
                                   dir("jenkins"){
-                                        sh 'docker build --network=host -t nexus.softwaremathematics.com/jenkins .'
+                                        sh 'docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/jenkins .'
                                   }
                                                 
                             }    
@@ -285,8 +292,8 @@ pipelineJob('jenkins'){
                             steps{                           
                                   sh 'echo "deploy"'
                                   dir("jenkins"){
-                                      sh 'docker login https://nexus.softwaremathematics.com/'
-                                      sh 'docker push nexus.softwaremathematics.com/jenkins'
+                                      sh 'docker login ${NEXUS_REPO_URL}'
+                                      sh 'docker push ${NEXUS_DOCKER_REPO_BASE}/jenkins'
                                   }           
                             }    
                     }
