@@ -153,6 +153,9 @@ list.each {
 
 
     pipelineJob('krakend2'){
+        definition {
+            cps {
+                script("""
     pipeline {
                 agent any
                 tools {
@@ -200,6 +203,10 @@ list.each {
                     
             }
             }
+            """)
+                sandbox()
+            }
+        }
     }
     pipelineJob(example["name"]) {
         definition {
