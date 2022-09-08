@@ -39,19 +39,6 @@ list.each {
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
 
-    def jenkinsCredentials = com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
-            com.cloudbees.plugins.credentials.Credentials.class,
-            Jenkins.instance,
-            null,
-            null
-    )
-    for (creds in jenkinsCredentials) {
-        if (creds.id == "nexus") {
-            nexus_username = creds.username
-            nexus_password = creds.password
-        }
-    }
-
     artefact_creation = """
                     stage('ArtefactCreation') { 
                             steps{  
@@ -68,7 +55,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker stop ${name}'
+                                sh 'docker stop ${name} || true'
                                 sh 'docker run --name ${name} -p ${deploy_port}:${application_port} -d ${NEXUS_DOCKER_REPO_BASE}/${name}'
                                 
                                 }    
