@@ -152,12 +152,8 @@ list.each {
     }
 
 
-              
-    pipelineJob(example["name"]) {
-        definition {
-            cps {
-                script("""
-               pipeline {
+    pipelineJob('krakend2'){
+    pipeline {
                 agent any
                 tools {
                 maven 'Maven 3'
@@ -204,6 +200,12 @@ list.each {
                     
             }
             }
+    }
+    pipelineJob(example["name"]) {
+        definition {
+            cps {
+                script("""
+               
             
             pipeline {
                 agent any
