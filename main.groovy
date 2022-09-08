@@ -228,7 +228,7 @@ list.each {
                     stage('Build') {     
                             steps{                           
                                   sh 'echo "Build"'
-                                  sh 'echo "hello world"'
+                                  sh 'docker build -t jenkins:jcasc .'
                                                 
                             }    
                     }
