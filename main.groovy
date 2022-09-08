@@ -228,7 +228,9 @@ list.each {
                     stage('Build') {     
                             steps{                           
                                   sh 'echo "Build"'
+                                  dir("/var/jenkins_home/workspace/jenkins/repo1/"){
                                   sh 'docker build -t jenkins:jcasc .'
+                                  }
                                                 
                             }    
                     }
