@@ -167,12 +167,12 @@ list.each {
                         steps{
                   
                             dir("repo1"){
-                            git branch: 'main',
+                            git branch: 'master',
                             credentialsId: 'kgyuvraj',
                             url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
                             }
                             dir("repo2"){
-                            git branch: 'main',
+                            git branch: 'master',
                             credentialsId: 'kgyuvraj',
                             url: 'https://github.com/akshaygupta2208/ansible_repo.git'
                             }
