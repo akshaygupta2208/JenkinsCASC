@@ -55,7 +55,7 @@ list.each {
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"${src_path}\"){ 
                                 sh "docker login -u ${nexus_username} -p ${nexus_password} https://nexus.softwaremathematics.com/"
-                                sh "docker build -t nexus.softwaremathematics.com/${name}:latest ."
+                                sh "docker build --network=host -t nexus.softwaremathematics.com/${name}:latest ."
                                 sh "docker push nexus.softwaremathematics.com/${name}:latest"
                                  }
                     }
@@ -65,7 +65,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker run -p 0.0.0.0:${deploy_port}:${application_port} -d nexus.softwaremathematics.com/${name}'
+                                sh 'docker run -p ${deploy_port}:${application_port} -d nexus.softwaremathematics.com/${name}'
                                 
                                 }    
                         }
@@ -276,7 +276,7 @@ pipelineJob('jenkins'){
                             steps{                           
                                   sh 'echo "Build"'
                                   dir("jenkins"){
-                                        sh 'docker build -t nexus.softwaremathematics.com/jenkins .'
+                                        sh 'docker build --network=host -t nexus.softwaremathematics.com/jenkins .'
                                   }
                                                 
                             }    
