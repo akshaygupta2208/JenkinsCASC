@@ -205,8 +205,8 @@ pipelineJob('krakend'){
     pipeline {
                 agent any
                 tools {
-                #maven 'Maven 3'
-                #jdk 'openjdk-11'
+                maven 'Maven 3'
+                jdk 'openjdk-11'
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
@@ -255,8 +255,8 @@ pipelineJob('jenkins'){
     pipeline {
                 agent any
                 tools {
-                #maven 'Maven 3'
-                #jdk 'openjdk-11'
+                maven 'Maven 3'
+                jdk 'openjdk-11'
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
