@@ -248,7 +248,7 @@ pipelineJob('krakend'){
                     stage("execute Ansible") {
            steps {
                
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.yaml', playbook: 'ansible/mainplaybook.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/mainplaybook.yml'
             
                
                }    
