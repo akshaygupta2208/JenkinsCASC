@@ -10,9 +10,11 @@ COPY --chown=jenkins casc.yaml /var/jenkins_home/casc.yaml
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 USER root
 RUN apt-get -y update
+
 RUN apt-get -y install \
     ca-certificates \
     curl \
+    ansible \
     gnupg \
     lsb-release
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
