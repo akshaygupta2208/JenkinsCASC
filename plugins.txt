@@ -1,4 +1,5 @@
 ace-editor:1.1
+ansible:1.1
 ant:475.vf34069fef73c
 antisamy-markup-formatter:2.7
 apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
