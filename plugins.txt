@@ -25,7 +25,7 @@ git:4.11.5
 git-client:3.11.2
 github:1.35.0
 github-api:1.303-400.v35c2d8258028
-github-branch-source:1687.v7618247e672d
+github-branch-source:1694.vd46793a_c4a_57
 gradle:1.39.4
 handlebars:3.0.8
 instance-identity:116.vf8f487400980
@@ -74,7 +74,7 @@ ssh-credentials:305.v8f4381501156
 sshd:3.249.v2dc2ea_416e33
 ssh-slaves:1.834.v622da_57f702c
 structs:324.va_f5d6774f3a_d
-timestamper:1.19
+timestamper:1.20
 token-macro:308.v4f2b_ed62b_b_16
 trilead-api:2.72.v2a_3236754f73
 variant:59.vf075fe829ccb
@@ -88,4 +88,4 @@ workflow-multibranch:716.vc692a_e52371b_
 workflow-scm-step:400.v6b_89a_1317c9a_
 workflow-step-api:639.v6eca_cd8c04a_a_
 workflow-support:838.va_3a_087b_4055b
-ws-cleanup:0.42
+ws-cleanup:0.43
