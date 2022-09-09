@@ -229,15 +229,16 @@ pipelineJob('krakend'){
                     }
                 
                     stage('Build') {     
-                            steps{                           
+                           steps{                           
                                   sh 'echo "Build"'
                                   sh 'echo "hello world"'
+                                  dir ("ansible"){
                                   sh 'docker build -t krakend .'
                                   sh 'docker stop krakend || true'
                                 sh 'docker rm krakend || true'
-                                sh 'docker run --name krakend -p 8000:8080  devopsfaith/krakend run -d -c /etc/krakend/krakend.json'
-                                                
-                            }    
+                                sh 'docker run --name krakend -p 8000:8080 -d  devopsfaith/krakend run -d -c /etc/krakend/krakend.json'
+                                  }
+                            }   
                     }
                     stage('BuildSanity') {     
                             steps{  
