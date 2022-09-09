@@ -290,8 +290,8 @@ pipelineJob('jenkins'){
                     stage('deploy') {     
                             steps{                           
                                   sh 'echo "deploy"'
-                                  dir("jenkins"){
-                                      sh 'docker login ${NEXUS_REPO_URL}'
+                                  dir("jenkins"){                                
+                                      sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
                                       sh 'docker push ${NEXUS_DOCKER_REPO_BASE}/jenkins'
                                   }           
                             }    
