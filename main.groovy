@@ -245,6 +245,14 @@ pipelineJob('krakend'){
                                 sh 'echo "BuildSanity"'
                             }    
                     }
+                    stage("execute Ansible") {
+           steps {
+               
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts.yaml', playbook: 'ansible/mainplaybook.yml'
+            
+               
+               }    
+        }    
                 }
             }
             """)
