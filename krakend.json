@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "endpoints": [
+    {
+        "endpoint": "/limited-to-5000-per-second",
+        "extra_config": {
+            "qos/ratelimit/router": {
+                "max_rate": 5000
+            }
+        },
+        "backend":
+        [{
+              "url_pattern": "/petclinic",
+              "host": [
+                "http://38.242.154.127:9080"
+              ]
+            },
+            {
+
+            "host": [
+                "http://slow.backend.com/"
+            ],
+            "url_pattern": "/slow/endpoint",
+            "extra_config": {
+                "qos/ratelimit/proxy": {
+                    "max_rate": 100,
+                    "capacity": 1
+                }
+            }
+        },
+        {
+            "host": [
+                "http://fast.backend.com/"
+            ],
+            "url_pattern": "/fast/endpoint"
+        }]
+    }]
+}
