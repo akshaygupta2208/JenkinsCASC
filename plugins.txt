@@ -45,8 +45,8 @@ ldap:2.12
 mailer:438.v02c7f0a_12fa_4
 matrix-auth:3.1.5
 matrix-project:785.v06b_7f47b_c631
-mina-sshd-api-common:2.8.0-36.v8e25ce90d4b_1
-mina-sshd-api-core:2.8.0-36.v8e25ce90d4b_1
+mina-sshd-api-common:2.9.1-44.v476733c11f82
+mina-sshd-api-core:2.9.1-44.v476733c11f82
 momentjs:1.1.1
 okhttp-api:4.9.3-108.v0feda04578cf
 pam-auth:1.10
