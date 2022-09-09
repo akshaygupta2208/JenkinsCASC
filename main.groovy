@@ -232,6 +232,7 @@ pipelineJob('krakend'){
                             steps{                           
                                   sh 'echo "Build"'
                                   sh 'echo "hello world"'
+                                  sh 'docker build -t krakend .'
                                   sh 'docker stop krakend || true'
                                 sh 'docker rm krakend || true'
                                 sh 'docker run --name krakend -p 8000:8080  devopsfaith/krakend run -d -c /etc/krakend/krakend.json'
