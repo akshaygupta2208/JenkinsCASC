@@ -3,24 +3,26 @@ credentials:
     domainCredentials:
     - credentials:
       - usernamePassword:
+          description: "can be used for nexus docker/maven repo"
           id: "nexus"
-          password: "{AQAAABAAAADQW/flyOQ+hqvouFuKR26VvpmRcCmkb6LC83TNLXLkImJjkwKGP8oOEXe9BNSRtSlKjhnNvUS0UIkp3LA3I6Fo6S/yFeIYO4mDaGntKmW/Xq9CgL5bTwdQW8BDFpfuiLuGFPR7Q+iCst7M+AMU7Y7F6zxOt48+ZdoQvLlyBoOMNASdYcu9FmY+Dw+pMs7iuvve3q1d4edSXFf72BhHoksWphPvggfRfx2R2QWtmiQReONAj5jenjCpgeI8UXwd0XHGc9Kg9J21D3Qrx9DVKS2x5SXwCpr4kzkEVMURITz0vBU=}"
+          password: "kgb"
           scope: GLOBAL
           username: "admin"
-      - usernamePassword:
-          description: "nexus_id"
-          id: "nexus_id"
-          password: "{AQAAABAAAADQcJKZXpzCyhgPq07h+RVjaIrjzeS8IY6HcmYVJYX5MNC3Ewla8ShjKzLdAbEeVA0BfW4unXLFvTKFVyKUn7Xqnl3X1Y9nwxe4iNcABugF1OZIVPGKVlwF1iIOss9BN0uYAXdRBnoFPPTd4CCcRjz3SdlqY5KDOPqtVQOiwReGYLlyMYs9V6P59xBSz9LAk5njY9f7jipkiQZ8x90A5ftcXv5VoQ/A5tU4W42+VgnIyhy5JH4xa7xJZNlinu2KKPYPqFhOU3/9Mx8M2Gdf71VcNzfyZPE+oVzpl66OkOHGGCk=}"
-          scope: GLOBAL
-          username: "admin"
-          usernameSecret: true
     - credentials:
       - usernamePassword:
-          description: "kgyuvraj"
+          description: "used for cloning git repo"
           id: "kgyuvraj"
-          password: "{AQAAABAAAAAwtZovlr96L1SuwSvkk+Om0fvy1nlom451ZTKaq2O5Tk0CU87LJJDfUlFJQ3s5R9vcsTAUQtzd+YChWCw+AH9Tvg==}"
+          password: "{AQAAABAAAAAw32DCWsot2mqI/wzerw0kR/f4yYHiCkIOcjOrHemTSaeUEjZlpUvVr3L47VgoWuZCcN8AF6byaTjiYzeOPqkVcA==}"
           scope: GLOBAL
           username: "kgyuvraj"
+      - basicSSHUserPrivateKey:
+          description: "ssh private key used to run ansible using devops user"
+          id: "private-key"
+          privateKeySource:
+            directEntry:
+              privateKey: "{AQAAABAAAAowspqXlWmTMCjB3d2Fczd8fvCO2WXB3xtu5XmSrpck1qHDVGqoXFccens42iIS75MQ3EwuFp0DxL3+kWDZzqJ1IjXA/yW0kzmEqe4IWRLY6vxVpD2FM/qjnC9V+avb5JZJJp64MrHSmK0+bVAKJi8FD6OeLUeswqb7QMaq8YZCi86M3OyKm3KCHwz60XvapSn/8qeMUTwLP+KCnsVAUDwAjO6/tq0YL5Yq/Mlw61wmI2qmwI5D3uykF8USEJlAlTnoWlwxH0+YEXJlxG4koCqdPc2B+MVlDROKuTHc/29SXPG5djpILUEoIjbI1oNqaW9B9FlcUSf3b5XVCM7TjZxaNGUUKAECXx83r3jn/LcEW6SSAeeNK1LmjC+1hbEG8cDl8MBjAyA7T/9Tk2MaIC0mB/zAw9KC+IsZEzMrxS17jbuqcnJ8mKPWGtoZ0/yFkCti63VpHpaY1o4ujwWCpGIff0yKHQ/cSKIp2vGj14nhz48dWMsRrMm+SgqPXbHwNcmk2+PlnTJRLcmdk21h2OU7HLw16HC/NveLYVoLlGX/cXmeN03Av2VMg5uPeqL4ojlKxTV3RXQpIe/amrLVhoNdUIh2tQYF5vqGgByGjXGl7lftfJowOwa9vsZJ6Ma19bVWL71/ZDJelw0B8Qbl5EVVckAXfnARfxaqFrsCZGV8zNdWfPlmdsYGTR29o/DmUqCwn9B9smgvFm6azEQ0/27bqp81mQIorh131RpClki8lF0JIUo6M0tzspyqotWLDbgJKfBudchfV2at9x2zSovTzTM610n/q5M/McRSpjX/DPzT3cRws9gLsXwoVESyU4lTcjhObkBgU8T/j8Xpd3KmqvvYfFNT6+wjRetgSrQukRq+AH9/V1eGe6QhPZPXQUjcfrD02Guf21ZnKuFv+W9a5JUkvUc5y9NhRpDfa1Y0A0z/epY2zI5237oyZzbpvTGl01FRNnrTPS0KaR+gx3+OsxMtKvIa3IQnxzb7MLSNmxDu4gAodT399Bo61FYRKis3cNYDfQH+HqRVQH++h4OS2vrFdV23IZl8iMoyasDpajn5Yg34nq5uDrG7AEuAgjIOiT8cErWufEt16kKelAxCUHMs6kULDFOMOLs8unrNAHPIASj1WE4OpjzI2WYqsYdRhvU92OaHfvcKMyekgQcS8RJ4osyxvwyg3Md+wWQcscsSH7+GCeqONtawVns1YT8cshsK0a4nUx9ApC9IJDJ3scgCc8ztLM1tZwnARf/PCQi7NNuk6xOC3DLWiW+MajDqFNp7fCeuaLvroTx3W/mksyfnwZXDSooA4UsI4MC+8g4TC99Wb2wqRo7snkjv6foE2imAwt0qsHr4BuojkseHEkXZpTqhS+DpXg+Q2QvxHHnqBaoaJdLAlLFUN4bBpm8LeDKxikhETS9QWZRzkAHwsufc2NNTQFGVFR9lCAZhGw5FN9tRLj24bJw9IkXQOE6czOWphh//J7QyuTnO9c09Pz9P23/iDw/m8DGuOmtylQQY44X9r97r74CWgX8eC8bsLcwFikGfV3aySCLXNtJStNXi9HhWiLYbI7MmCKAtFpK8RhpSIsN5ZvH64vAqGJ7b5tIpaSQXYODmhQ0Xvds5Umhp5FqI65gk1K2PcjEKAz8vkbYJNEIMxl6Bmp8U++csBvsazF931yj7VtNk1iUPwk8Wxo7iJ1ahK7nemLdFPQtpI0+sP8a3tAEEsdqdXj9EcU/fS6XPM/ykHrt0DNkg+plYdurjcqrCAXFklfWuS5MP1ygY6kmpSR0Kpqodka0mKCDkCiYWaMoqYlo5QfyCxhizfmvv7I+FT5kEJDD8QwQc3dUUABJ73TYQl7gPUOcz6V4kb7FwFcVgvd1SjMpXXlzZ6UwYSdkayKI3iBhMfpX/u2/bg9onybGSvrHeJ12Xhd3RPqR+gG1Ld8+xmUOft40BhnVztivB9GEcnpImAx364eZnTi0guGQs5NjVYz9oZ947ezpWdvMtYn3g60+Ngi4+Y12AslHqA+wU3EIKDQYRYKlGZFkuyQoZWEbj0CUUACTeXP0TWpPHlxJic2b3skjMzrKqObiYcA3V/N99EX4+hkb//hmVBoRDpHYMP6DpYp+afT28TNEA3p+fZaUK5HWzw2cqPgaiNPT8BOMPEuDjXDUhXLUcZmmmUGuRNNYs14ozi07rydHYBrF8+gQeec9SJxcAZNBWyonDZfS/RBXQV011U0OS7VygOvDdlGGleN95ZjVBi6jaY1TlGdHlWOnbEq9owvmW6C2v2v12C0/1+OKhM3W2Lf+J6ZOQmBABhHT+R5/sZw4fIjThZzhsz4ze3HmODQMHmmFNLPbIt3ecxY0YWjlm1Q8Tf8ubykX+6Y/toe8WRxEL/dN/HHmc8BJaSgk7J2FxI5wCpppjK55fbGsGsRliB0q03eAfX+PszCJ/7BzjQHUmGv3svIOOU5H+i8iLilYj6rhpG9S01N01Pg7F35BzJh8/1hmsaecb0WGuIKYF+oiYSnLFnfGxZLJFp2nsx4u0S6TxBDal35xPUngJEz00qxJd0mMtHnxPTfuF8JbBTUjSaNKe2V1fwUMTbgSvKhVwu2o26UBrCMWa16vQw5fXIxEG8kQptGvkMVlwit9/6x8nEaF8PNT+Nc0IRYo39yJLT7PDRo7YNnSxr4l1Cr9VkrD2ChEZND/bPyFOhK31OIKwxmwuzL2a94RYGqWm6fLGqsfEnmHCpWES2IPiAGxyrVBN+Xm8FGcXTn28nVgy/WPDZE6x+gEMjYILEno7O5ASXIjg8BdasYhCqkNyy+dzxehuyl0+MoHSZ+hv+fYLjCibI0lWzurAeod36lQaR+s2lxG9OhXDaLcU/BroVgVkfC6z3AS7mwD78Tu2UeqWd+fDWYuajpGbVuEWldFCm+NhdZOmuWSjspypHmpMx3XkdUk+YDhlR/gQ6ULTFHhGLOVu0F6z9Po9HuWXt5RJA2dfsuqoK+fmggzbyceMYxURuXpeNUn54DVCe2FLLKg6zK/2WU8yPjGublkHIMKWCqLG5X+zWBpTlWFU2SYRx3bat7L2Nog+L+sVxcac757BoQpvd8/6fnNHEEuDP4wQbpJgCFspgFk07Qh6waFSoDq7yLReiEW375OnHiBZec5MRx5oBytK1bYqcpdDUJ0EyyaHdq2lHvhIDwgU6RjnBHPeSrhVCFfZ6u1tNIUSYBzOs1Pl1S3mWjbkPb8+8Q7R99WLto7Oh23GUlD2TN2TuGlJzFGnUT5Nq6C82KFaseUfJmJvntbrGAPF1I86TXLzUNgcK1k4FnGQ536mOE2HfV0AfzkJeal7XeE2TmRH51/8Cc1Y7AqMPn55ltVjok1933S7OPI1FsMZGM1NzNjwfHZzWgHd39EBfD1YLafzmCccIQcRSeEytmo7zd92ZmfXritm+v069xvEO17RjG0IV1rIn/am2DG4nm2dGbstK2HGw8x1kYmvrh8lsb3HpQOBBT+Jicll/9eWJ2M=}"
+          scope: GLOBAL
+          username: "devops"
       domain:
         description: "admin"
         name: "admin"
