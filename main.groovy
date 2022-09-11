@@ -307,19 +307,12 @@ pipelineJob('jenkins'){
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
-                        stage("execute Ansible") {
-           steps {
-               
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/install-jenkins.yml'
-            
-               
-               }    
-        }         }    
+                              }    
                     }  
                      stage("execute Ansible") {
            steps {
                
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/mainplaybook.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/install-jenkins.yml'
             
                
                }    
