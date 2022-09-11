@@ -310,7 +310,7 @@ pipelineJob('jenkins'){
                         stage("execute Ansible") {
            steps {
                
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/mainplaybook.yml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/install-jenkins.yml'
             
                
                }    
