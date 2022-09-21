@@ -231,8 +231,7 @@ pipelineJob('krakend'){
                     stage('Build') {     
                            steps{                           
                                   sh 'echo "Build"'
-                                  sh 'echo "hello world"'
-                                  dir ("ansible"){
+                                dir ("ansible"){
                                   sh 'docker build -t krakend .'
                                   sh 'docker stop krakend || true'
                                 sh 'docker rm krakend || true'
