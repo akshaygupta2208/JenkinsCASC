@@ -1,6 +1,6 @@
 name: commons-util-mongo.yaml
 repo_url: https://github.com/Software-Mathematics/common-util-mongo.git
-src_path: ./Old/commons-util
+src_path: ./common-util-mongo/commons-util-mongo
 build_command: mvn clean install
 deploy_env:
 - mvn
