@@ -60,10 +60,7 @@ list.each {
                                     ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
                                 }
                                 
-                                #sh 'docker stop ${name} || true'
-                                #sh 'docker rm ${name} || true'
-                                #sh 'docker run --name ${name} -p ${deploy_port}:${application_port} -d ${NEXUS_DOCKER_REPO_BASE}/${name}'
-                                
+                              
                                 }    
                         }
                     stage('DevSanity') {
@@ -165,14 +162,20 @@ list.each {
                   stage('Checkout Stage') {     
                         steps{  
                             sh 'echo "Checkout"'
+                                                        dir("ansible"){
+                                git branch: 'master',
+                                credentialsId: 'kgyuvraj',
+                                url: 'https://github.com/akshaygupta2208/ansible_repo.git'
+                            }
+                             dir("app"){
                             git branch: 'main',
                             credentialsId: 'kgyuvraj',
                             url: '${repo_url}'
-                            }    
+                            }  }  
                     }
                     stage('Build') {     
                             steps{
-                                dir(\"${src_path}\"){
+                                dir(\"app/${src_path}\"){
                                     configFileProvider(
                                         [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
                                             sh 'echo "Build"'
