@@ -12,7 +12,7 @@ credentials:
       - usernamePassword:
           description: "used for cloning git repo"
           id: "kgyuvraj"
-          password: "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"
+          password: "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"
           scope: GLOBAL
           username: "kgyuvraj"
       - basicSSHUserPrivateKey:
