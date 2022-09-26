@@ -55,9 +55,14 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                sh 'docker stop ${name} || true'
-                                sh 'docker rm ${name} || true'
-                                sh 'docker run --name ${name} -p ${deploy_port}:${application_port} -d ${NEXUS_DOCKER_REPO_BASE}/${name}'
+                                withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
+                                
+                                    ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
+                                }
+                                
+                                #sh 'docker stop ${name} || true'
+                                #sh 'docker rm ${name} || true'
+                                #sh 'docker run --name ${name} -p ${deploy_port}:${application_port} -d ${NEXUS_DOCKER_REPO_BASE}/${name}'
                                 
                                 }    
                         }
