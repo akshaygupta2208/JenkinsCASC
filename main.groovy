@@ -43,7 +43,7 @@ list.each {
                     stage('ArtefactCreation') { 
                             steps{  
                                 sh 'echo "ArtefactCreation"'
-                                dir(\"${src_path}\"){ 
+                                dir(\"app/${src_path}\"){ 
                                 sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
                                 sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:latest ."
                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:latest"
