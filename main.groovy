@@ -260,6 +260,64 @@ pipelineJob('krakend'){
     }
 }
 
+
+pipelineJob('apithf'){
+    definition {
+        cps {
+            script("""
+    pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                environment {
+                    NEXUS_CRED = credentials('nexus')
+                }
+                stages {
+                    stage('checkout'){
+                        steps{
+                  
+                            dir("jenkins"){
+                                git branch: 'master',
+                                credentialsId: 'kgyuvraj',
+                                url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
+                            }
+                            dir("ansible"){
+                                git branch: 'master',
+                                credentialsId: 'kgyuvraj',
+                                url: 'https://github.com/akshaygupta2208/ansible_repo.git'
+                            }
+                        }
+                    }
+                
+                    stage('Build') {     
+                           steps{                           
+                                  sh 'echo "Build"'
+                                }   
+                    }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                            }    
+                    }
+                    stage("execute Ansible") {
+           steps {
+               
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/apithf-inventory', playbook: 'ansible/apithf-playbook.yml'
+            
+               
+               }    
+        }    
+                }
+            }
+            """)
+            sandbox()
+        }
+    }
+}
+
+
 pipelineJob('jenkins'){
     definition {
         cps {
