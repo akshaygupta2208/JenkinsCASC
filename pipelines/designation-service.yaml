@@ -1,0 +1,11 @@
+name: designation-service
+repo_url: https://github.com/Software-Mathematics/UserManagement.git
+run_command: java -jar app.jar
+src_path: designation-service
+application_port: 8390
+deploy_port: 9085
+path_prefix: /designation-service
+build_command: mvn clean install
+deploy_env:
+- dev
+- prod
