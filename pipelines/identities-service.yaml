@@ -1,0 +1,11 @@
+name: identities-service
+repo_url: https://github.com/Software-Mathematics/UserManagement.git
+run_command: java -jar app.jar
+src_path: identities-service
+application_port: 8390
+deploy_port: 9089
+path_prefix: /identities-service
+build_command: mvn clean install
+deploy_env:
+- dev
+- prod
