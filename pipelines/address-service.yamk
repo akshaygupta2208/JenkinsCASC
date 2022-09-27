@@ -1,0 +1,11 @@
+name: address-service
+repo_url: https://github.com/Software-Mathematics/UserManagement.git
+run_command: java -jar app.jar
+src_path: address-service
+application_port: 8390
+deploy_port: 9083
+path_prefix: /address-service
+build_command: mvn clean install
+deploy_env:
+- dev
+- prod
