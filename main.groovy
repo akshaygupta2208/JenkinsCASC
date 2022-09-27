@@ -206,68 +206,6 @@ list.each {
 }
 
 
-pipelineJob('krakend'){
-    definition {
-        cps {
-            script("""
-    pipeline {
-                agent any
-                tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
-                }
-                environment {
-                    NEXUS_CRED = credentials('nexus')
-                }
-                stages {
-                    stage('checkout'){
-                        steps{
-                  
-                            dir("jenkins"){
-                                git branch: 'master',
-                                credentialsId: 'kgyuvraj',
-                                url: 'https://github.com/akshaygupta2208/JenkinsCASC.git'
-                            }
-                            dir("ansible"){
-                                git branch: 'master',
-                                credentialsId: 'kgyuvraj',
-                                url: 'https://github.com/akshaygupta2208/ansible_repo.git'
-                            }
-                        }
-                    }
-                
-                    stage('Build') {     
-                           steps{                           
-                                  sh 'echo "Build"'
-                                dir ("ansible"){
-                                  sh 'docker build -t krakend .'
-                                  sh 'docker stop krakend || true'
-                                sh 'docker rm krakend || true'
-                                sh 'docker run --name krakend -p 8000:8080 -d  devopsfaith/krakend run -d -c /etc/krakend/krakend.json'
-                                  }
-                            }   
-                    }
-                    stage('BuildSanity') {     
-                            steps{  
-                                sh 'echo "BuildSanity"'
-                            }    
-                    }
-                    stage("execute Ansible") {
-           steps {
-               
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/hosts.yaml', playbook: 'ansible/mainplaybook.yml'
-            
-               
-               }    
-        }    
-                }
-            }
-            """)
-            sandbox()
-        }
-    }
-}
-
 
 pipelineJob('apithf'){
     definition {
