@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
 src_path: professionaldetails-service.
 application_port: 8390
-deploy_port: 9091
+deploy_port: 9092
 path_prefix: /professionaldetails-service.
 build_command: mvn clean install
 deploy_env:
