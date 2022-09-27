@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.367
+FROM jenkins/jenkins:2.366
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
@@ -10,11 +10,9 @@ COPY --chown=jenkins casc.yaml /var/jenkins_home/casc.yaml
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 USER root
 RUN apt-get -y update
-
 RUN apt-get -y install \
     ca-certificates \
     curl \
-    ansible \
     gnupg \
     lsb-release
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
@@ -29,3 +27,5 @@ RUN apt-get -y install docker-ce
 RUN usermod -aG docker jenkins
 
 USER root
+
+
