@@ -1,0 +1,11 @@
+name: role-service
+repo_url: https://github.com/Software-Mathematics/UserManagement.git
+run_command: java -jar app.jar
+src_path: role-service
+application_port: 8390
+deploy_port: 9097
+path_prefix: /role-service
+build_command: mvn clean install
+deploy_env:
+- dev
+- prod
