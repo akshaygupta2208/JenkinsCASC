@@ -107,7 +107,7 @@ list.each {
     mvn_push_stage = """
                     stage('DeployMVN') { 
                             steps{
-                                dir(\"${src_path}\"){  
+                                dir(\"app/${src_path}\"){  
                                     configFileProvider(
                                         [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
                                             sh 'echo "Build"'
