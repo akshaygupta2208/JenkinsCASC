@@ -2,7 +2,7 @@ name: profile-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
 src_path: profile-service
-application_port: 8390
+application_port: 7779
 deploy_port: 9093
 path_prefix: /profile-service
 build_command: mvn clean install
