@@ -77,6 +77,16 @@ jenkins:
         - preferredProvider:
             providerId: "default"
         - "timezone"
+      - id: "gaurav_s"
+          name: "gaurav sharma"
+          properties:
+          - "apiToken"
+          - "myView"
+          - preferredProvider:
+              providerId: "default"
+          - "timezone"
+          - mailer:
+              emailAddress: "gaurav.s@softwaremathemmatics.com"  
   slaveAgentPort: 50000
   updateCenter:
     sites:
