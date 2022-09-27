@@ -1,10 +1,10 @@
 name: professionaldetails-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
-src_path: professionaldetails-service.
+src_path: professionaldetails-service
 application_port: 9002
 deploy_port: 9092
-path_prefix: /professionaldetails-service.
+path_prefix: /professionaldetails-service
 build_command: mvn clean install
 deploy_env:
 - dev
