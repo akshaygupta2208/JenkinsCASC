@@ -2,7 +2,7 @@ name: StatutoryRecords-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
 src_path: StatutoryRecords-service
-application_port: 8390
+application_port: 8389
 deploy_port: 9082
 path_prefix: /StatutoryRecords-service
 build_command: mvn clean install
