@@ -2,7 +2,7 @@ name: FamilyDetails-Service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
 src_path: FamilyDetails-Service
-application_port: 8080
+application_port: 8390
 deploy_port: 9081
 path_prefix: /FamilyDetails-Service
 build_command: mvn clean install
