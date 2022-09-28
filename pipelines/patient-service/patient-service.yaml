@@ -1,0 +1,11 @@
+name: patient-service
+repo_url: https://github.com/Software-Mathematics/UserManagement.git
+run_command: java -jar app.jar
+src_path: patient-service
+application_port: 8390
+deploy_port: 9081
+path_prefix: /patient-service
+build_command: mvn clean install
+deploy_env:
+- dev
+- prod
