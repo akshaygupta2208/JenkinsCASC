@@ -1,0 +1,11 @@
+name: prescription-service
+repo_url: https://github.com/Software-Mathematics/MMUAPI.git
+run_command: java -jar app.jar
+src_path: prescription-service
+application_port: 8390
+deploy_port: 9103
+path_prefix: /prescription-service
+build_command: mvn clean install
+deploy_env:
+- dev
+- prod

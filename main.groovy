@@ -55,10 +55,10 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                                withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
-                                
-                                    ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
-                                }
+                              withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
+                              ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
+
+                               }
                                 
                               
                                 }    
