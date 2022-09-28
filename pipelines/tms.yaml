@@ -1,5 +1,0 @@
-name: tms
-repo_url: https://github.com/Software-Mathematics/TMS.git
-build_command: mvn clean install
-deploy_env:
-- qa
