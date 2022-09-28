@@ -153,7 +153,7 @@ list.each {
                 agent any
                 tools {
                     maven 'Maven 3'
-                    jdk 'open-jdk-11-jdk'
+                    jdk 'openjdk-11'
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
