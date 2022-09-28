@@ -3,22 +3,15 @@ credentials:
     domainCredentials:
     - credentials:
       - usernamePassword:
+          description: "can be used for nexus docker/maven repo"
           id: "nexus"
-          password: "{AQAAABAAAADQW/flyOQ+hqvouFuKR26VvpmRcCmkb6LC83TNLXLkImJjkwKGP8oOEXe9BNSRtSlKjhnNvUS0UIkp3LA3I6Fo6S/yFeIYO4mDaGntKmW/Xq9CgL5bTwdQW8BDFpfuiLuGFPR7Q+iCst7M+AMU7Y7F6zxOt48+ZdoQvLlyBoOMNASdYcu9FmY+Dw+pMs7iuvve3q1d4edSXFf72BhHoksWphPvggfRfx2R2QWtmiQReONAj5jenjCpgeI8UXwd0XHGc9Kg9J21D3Qrx9DVKS2x5SXwCpr4kzkEVMURITz0vBU=}"
+          password: "kgb"
           scope: GLOBAL
           username: "admin"
       - usernamePassword:
-          description: "nexus_id"
-          id: "nexus_id"
-          password: "{AQAAABAAAADQcJKZXpzCyhgPq07h+RVjaIrjzeS8IY6HcmYVJYX5MNC3Ewla8ShjKzLdAbEeVA0BfW4unXLFvTKFVyKUn7Xqnl3X1Y9nwxe4iNcABugF1OZIVPGKVlwF1iIOss9BN0uYAXdRBnoFPPTd4CCcRjz3SdlqY5KDOPqtVQOiwReGYLlyMYs9V6P59xBSz9LAk5njY9f7jipkiQZ8x90A5ftcXv5VoQ/A5tU4W42+VgnIyhy5JH4xa7xJZNlinu2KKPYPqFhOU3/9Mx8M2Gdf71VcNzfyZPE+oVzpl66OkOHGGCk=}"
-          scope: GLOBAL
-          username: "admin"
-          usernameSecret: true
-    - credentials:
-      - usernamePassword:
-          description: "kgyuvraj"
+          description: "used for cloning git repo"
           id: "kgyuvraj"
-          password: "{AQAAABAAAAAwtZovlr96L1SuwSvkk+Om0fvy1nlom451ZTKaq2O5Tk0CU87LJJDfUlFJQ3s5R9vcsTAUQtzd+YChWCw+AH9Tvg==}"
+          password: "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"
           scope: GLOBAL
           username: "kgyuvraj"
       - basicSSHUserPrivateKey:
