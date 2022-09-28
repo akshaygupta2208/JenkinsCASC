@@ -4,7 +4,7 @@ run_command: java -jar app.jar
 src_path: labtests-service
 application_port: 8390
 deploy_port: 9101
-path_prefix: /labtests-service
+path_prefix: /labtests-serv
 build_command: mvn clean install
 deploy_env:
 - dev
