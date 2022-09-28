@@ -1,5 +1,5 @@
 name: prescription-service
-repo_url: https://github.com/Software-Mathematics/UserManagement.git
+repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
 src_path: prescription-service
 application_port: 8390
