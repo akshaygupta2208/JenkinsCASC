@@ -143,7 +143,7 @@ list.each {
         artefact_creation = ""
     }
 
-    pipelineJob(example["name"]) {
+    pipelineJob("jobs/"+example["name"]) {
         definition {
             cps {
                 script("""
