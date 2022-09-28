@@ -142,10 +142,11 @@ list.each {
     } else {
         artefact_creation = ""
     }
-    folder('A') {
-        description('Folder containing all A releted jobs')
+    folder_name = repo_url.split('.git')[0].split("/").last()
+    folder(folder_name) {
+        description('Folder containing all '+folder_name+' releted jobs')
     }
-    pipelineJob("A/"+example["name"]) {
+    pipelineJob(folder_name+"/"+example["name"]) {
         definition {
             cps {
                 script("""
