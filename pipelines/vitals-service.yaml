@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
 src_path: vitals-service
 application_port: 8390
-deploy_port: 9081
+deploy_port: 9106
 path_prefix: /vitals-service
 build_command: mvn clean install
 deploy_env:
