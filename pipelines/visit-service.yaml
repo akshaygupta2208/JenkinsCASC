@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
 src_path: visit-service
 application_port: 8390
-deploy_port: 9081
+deploy_port: 9105
 path_prefix: /visit-service
 build_command: mvn clean install
 deploy_env:
