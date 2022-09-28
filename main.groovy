@@ -142,11 +142,8 @@ list.each {
     } else {
         artefact_creation = ""
     }
-    temp = repo_url.split('.git')
-    println(temp)
-    temp = repo_url.split('.git')[0].split("/")
-    println(temp)
-    folder_name = repo_url.split('.git')[0].split("/").first()
+
+    folder_name = repo_url.split('/').last().replace(".git", "")
     println(folder_name)
     folder(folder_name) {
         description('Folder containing all '+folder_name+' releted jobs')
