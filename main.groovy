@@ -142,8 +142,10 @@ list.each {
     } else {
         artefact_creation = ""
     }
-
-    pipelineJob("jobs/"+example["name"]) {
+    folder('A') {
+        description('Folder containing all A releted jobs')
+    }
+    pipelineJob("A/"+example["name"]) {
         definition {
             cps {
                 script("""
