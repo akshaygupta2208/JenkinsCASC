@@ -79,6 +79,10 @@ unclassified:
     url: ${URL}
   resourceRoot:
     url: ${RESOURCEURL}
+  buildTimestamp:
+    enableBuildTimestamp: true
+    pattern: "yyyy-MM-dd-HH-mm"
+    timezone: "Asia/Kolkata"
   globalConfigFiles:
     configs:
       - mavenSettings:
