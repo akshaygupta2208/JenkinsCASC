@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
 src_path: frequencyMaster-service
 application_port: 9006
-deploy_port: 9099
+deploy_port: 9100
 path_prefix: /frequencyMaster-service
 build_command: mvn clean install
 deploy_env:
