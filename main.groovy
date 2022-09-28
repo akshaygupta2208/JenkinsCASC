@@ -149,6 +149,7 @@ list.each {
     folder(folder_name) {
         description('Folder containing all '+folder_name+' releted jobs')
     }
+    println(folder_name+"/"+example["name"])
     pipelineJob(folder_name+"/"+example["name"]) {
         definition {
             cps {
