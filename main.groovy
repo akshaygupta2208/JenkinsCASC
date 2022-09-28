@@ -142,7 +142,7 @@ list.each {
     } else {
         artefact_creation = ""
     }
-    temp = repo_url.split('.git')[0]
+    temp = repo_url.split('.git')
     println(temp)
     temp = repo_url.split('.git')[0].split("/")
     println(temp)
