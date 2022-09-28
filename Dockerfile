@@ -22,8 +22,8 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o 
   && apt-get update \
   && apt-get install -y docker-ce docker-ce-cli containerd.io
 #RUN service docker enable
-RUN apt-get -y update
-RUN apt-get -y install docker-ce
+#RUN apt-get -y update
+#RUN apt-get -y install docker-ce
 RUN usermod -aG docker jenkins
 
 USER root

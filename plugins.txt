@@ -1,4 +1,5 @@
 ace-editor:1.1
+ansible:1.1
 ant:475.vf34069fef73c
 antisamy-markup-formatter:2.7
 apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
@@ -7,11 +8,13 @@ bootstrap5-api:5.2.1-2
 bouncycastle-api:2.26
 branch-api:2.1046.v0ca_37783ecc5
 build-timeout:1.21
+build-timestamp:1.0.3
 caffeine-api:2.9.3-65.v6a_47d0f4d1fe
 checks-api:1.7.5
 cloudbees-folder:6.758.vfd75d09eea_a_1
 command-launcher:84.v4a_97f2027398
 configuration-as-code:1512.vb_79d418d5fc8
+config-file-provider:3.11.1
 credentials:1189.vf61b_a_5e2f62e
 credentials-binding:523.vd859a_4b_122e6
 display-url-api:2.3.6

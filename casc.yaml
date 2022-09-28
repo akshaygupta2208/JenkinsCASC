@@ -21,10 +21,21 @@ credentials:
           password: "{AQAAABAAAAAwtZovlr96L1SuwSvkk+Om0fvy1nlom451ZTKaq2O5Tk0CU87LJJDfUlFJQ3s5R9vcsTAUQtzd+YChWCw+AH9Tvg==}"
           scope: GLOBAL
           username: "kgyuvraj"
+      - basicSSHUserPrivateKey:
+          description: "ssh private key used to run ansible using devops user"
+          id: "private-key"
+          privateKeySource:
+            directEntry:
+              privateKey: "{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}"
+          scope: GLOBAL
+          username: "devops"
       domain:
         description: "admin"
         name: "admin"
 jenkins:
+  agentProtocols:
+    - "JNLP4-connect"
+    - "Ping"
   securityRealm:
     local:
       allowsSignup: false
@@ -75,6 +86,50 @@ unclassified:
     url: ${URL}
   resourceRoot:
     url: ${RESOURCEURL}
+  globalConfigFiles:
+    configs:
+      - mavenSettings:
+          comment: "User settings"
+          content: |-
+            <?xml version="1.0" encoding="UTF-8"?>
+            <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+              <servers>
+                <server>
+                  <id>nexus</id>
+                  <username>admin</username>
+                  <password>kgb</password>
+                </server>
+                <server>
+                  <id>sm-snapshots</id>
+                  <username>admin</username>
+                  <password>kgb</password>
+                </server>
+                <server>
+                  <id>sm-releases</id>
+                  <username>admin</username>
+                  <password>kgb</password>
+                </server>
+              </servers>
+              <mirrors>
+                <mirror>
+                  <id>nexus</id>
+                  <url>https://nexus.softwaremathematics.com/repository/maven-central</url>
+                  <mirrorOf>central</mirrorOf>
+                </mirror>
+                <mirror>
+                  <id>central</id>
+                  <name>central</name>
+                  <url>https://nexus.softwaremathematics.com</url>
+                  <mirrorOf>*</mirrorOf>
+                </mirror>
+              </mirrors>
+            </settings>
+          id: "mvn-settings"
+          isReplaceAll: true
+          name: "MySettings"
+          providerId: "org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig"
 jobs:
   - script: |
       pipelineJob("SeedJob") {
