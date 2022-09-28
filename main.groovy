@@ -142,6 +142,10 @@ list.each {
     } else {
         artefact_creation = ""
     }
+    temp = repo_url.split('.git')[0]
+    println(temp)
+    temp = repo_url.split('.git')[0].split("/")
+    println(temp)
     folder_name = repo_url.split('.git')[0].split("/").first()
     println(folder_name)
     folder(folder_name) {
