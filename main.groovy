@@ -144,6 +144,7 @@ list.each {
     }
 
     folder_name = repo_url.split('/').last().replace(".git", "")
+    folder_name = "B"
     println(folder_name)
     folder(folder_name) {
         description('Folder containing all '+folder_name+' releted jobs')
