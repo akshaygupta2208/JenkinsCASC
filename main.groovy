@@ -142,8 +142,8 @@ list.each {
     } else {
         artefact_creation = ""
     }
-
-    folder_name = repo_url.split('/').last().replace(".git", "").trim()
+    repo_url_slash_split = repo_url.split('/')
+    folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
     //folder_name = "B"
     println(folder_name)
     folder(folder_name) {
