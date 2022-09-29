@@ -1,6 +1,7 @@
 FROM jenkins/jenkins:2.366
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /usr/share/jenkins/ref/casc.yaml
+ENV TZ Asia/Kolkata
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 #COPY --chown=jenkins casc.yaml /var/jenkins_home/casc.yaml
 COPY --chown=jenkins casc.yaml /usr/share/jenkins/ref/casc.yaml
