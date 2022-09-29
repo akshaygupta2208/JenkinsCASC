@@ -143,7 +143,14 @@ list.each {
         artefact_creation = ""
     }
 
-    pipelineJob(example["name"]) {
+    folder_name = repo_url.split('/').last().replace(".git", "").trim()
+    //folder_name = "B"
+    println(folder_name)
+    folder(folder_name) {
+        description('Folder containing all '+folder_name+' related jobs')
+    }
+    println(folder_name+"/"+example["name"])
+    pipelineJob(folder_name+"/"+example["name"]) {
         definition {
             cps {
                 script("""
@@ -206,8 +213,11 @@ list.each {
 }
 
 
+folder("Infra") {
+    description('Folder containing all Infra related jobs')
+}
 
-pipelineJob('apithf'){
+pipelineJob('Infra/apithf'){
     definition {
         cps {
             script("""
@@ -264,7 +274,7 @@ pipelineJob('apithf'){
 }
 
 
-pipelineJob('jenkins'){
+pipelineJob('Infra/jenkins'){
     definition {
         cps {
             script("""
@@ -322,7 +332,7 @@ pipelineJob('jenkins'){
     }
 }
 
-pipelineJob('nginx'){
+pipelineJob('Infra/nginx'){
     definition {
         cps {
             script("""
