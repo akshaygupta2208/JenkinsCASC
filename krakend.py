@@ -56,7 +56,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                 for path in swagger_data["paths"]:
                     # generating krakend config here
                     krakend_config = {}
-                    krakend_config["endpoint"] = f"{app_name}{path}"
+                    krakend_config["endpoint"] = f"/{app_name}{path}"
                     krakend_config["output_encoding"] = "no-op"
                     krakend_config["backend"] = []
                     hosts = []
