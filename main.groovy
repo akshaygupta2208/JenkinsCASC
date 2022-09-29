@@ -256,7 +256,7 @@ pipelineJob('Infra/apithf'){
                     stage('Build') {     
                            steps{                           
                                   sh 'echo "Build"'
-                                  sh 'python jenkins/krakend.py'
+                                  sh 'python3 jenkins/krakend.py'
                                 }   
                     }
                     stage('BuildSanity') {     
