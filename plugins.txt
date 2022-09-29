@@ -66,6 +66,7 @@ pipeline-stage-step:296.v5f6908f017a_5
 pipeline-stage-tags-metadata:2.2114.v2654ca_721309
 pipeline-stage-view:2.24
 plain-credentials:139.ved2b_9cf7587b
+plugin-usage-plugin:3.0
 plugin-util-api:2.17.0
 popper2-api:2.11.6-1
 resource-disposer:0.20
@@ -91,4 +92,3 @@ workflow-scm-step:400.v6b_89a_1317c9a_
 workflow-step-api:639.v6eca_cd8c04a_a_
 workflow-support:838.va_3a_087b_4055b
 ws-cleanup:0.43
-
