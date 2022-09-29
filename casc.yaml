@@ -29,22 +29,74 @@ jenkins:
   agentProtocols:
     - "JNLP4-connect"
     - "Ping"
+  authorizationStrategy:
+    folderBased:
+      folderRoles:
+        - folders:
+            - "Software-Mathematics"
+          name: "SoftwareMathematics"
+          permissions:
+            - id: "Job/Build"
+            - id: "Job/Cancel"
+            - id: "Job/Read"
+            - id: "Run/Artifacts"
+            - id: "Run/Replay"
+      globalRoles:
+        - name: "GlobalRole"
+          permissions:
+            - id: "Agent/Build"
+            - id: "Overall/Read"
+        - name: "admin"
+          permissions:
+            - id: "Credentials/Create"
+            - id: "Credentials/Delete"
+            - id: "Credentials/ManageDomains"
+            - id: "Credentials/Update"
+            - id: "Credentials/UseItem"
+            - id: "Credentials/UseOwn"
+            - id: "Credentials/View"
+            - id: "Agent/Build"
+            - id: "Agent/Configure"
+            - id: "Agent/Connect"
+            - id: "Agent/Create"
+            - id: "Agent/Delete"
+            - id: "Agent/Disconnect"
+            - id: "Agent/ExtendedRead"
+            - id: "Agent/Provision"
+            - id: "Overall/Administer"
+            - id: "Overall/Manage"
+            - id: "Overall/Read"
+            - id: "Overall/SystemRead"
+            - id: "Job/Build"
+            - id: "Job/Cancel"
+            - id: "Job/Configure"
+            - id: "Job/Create"
+            - id: "Job/Delete"
+            - id: "Job/Discover"
+            - id: "Job/ExtendedRead"
+            - id: "Job/Move"
+            - id: "Job/Read"
+            - id: "Job/WipeOut"
+            - id: "Job/Workspace"
+            - id: "Run/Artifacts"
+            - id: "Run/Delete"
+            - id: "Run/Replay"
+            - id: "Run/Update"
+            - id: "View/Configure"
+            - id: "View/Create"
+            - id: "View/Delete"
+            - id: "View/Read"
+            - id: "SCM/Tag"
+            - id: "Plugin Usage View/PluginView"
+          sids:
+            - "admin"
   securityRealm:
     local:
       allowsSignup: false
       users:
        - id: ${JENKINS_ADMIN_ID}
          password: ${JENKINS_ADMIN_PASSWORD}
-  authorizationStrategy:
-    globalMatrix:
-      permissions:
-        - "Overall/Administer:admin"
-        - "Overall/Read:authenticated"
 security:
-  queueItemAuthenticator:
-    authenticators:
-    - global:
-        strategy: triggeringUsersAuthorizationStrategy
   globaljobdslsecurityconfiguration:
     useScriptSecurity: false
 tool:

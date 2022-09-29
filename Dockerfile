@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.366
+FROM jenkins/jenkins:2.371
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /usr/share/jenkins/ref/casc.yaml
 ENV TZ Asia/Kolkata
