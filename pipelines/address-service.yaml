@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: address-service
 application_port: 8082
 deploy_port: 9083
-path_prefix: /address-service
 build_command: mvn clean install
+deploy_servers:
+  - 194.163.159.164
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

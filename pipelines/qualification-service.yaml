@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: qualification-service
 application_port: 8086
 deploy_port: 9094
-path_prefix: /qualification-service
+deploy_servers:
+  - 194.163.159.164
 build_command: mvn clean install
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

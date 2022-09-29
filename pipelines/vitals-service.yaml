@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: vitals-service
 application_port: 9003
 deploy_port: 9106
-path_prefix: /vitals-service
+deploy_servers:
+  - 194.163.159.164
 build_command: mvn clean install
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

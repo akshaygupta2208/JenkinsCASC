@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: FamilyDetails-Service
 application_port: 8390
 deploy_port: 9081
-path_prefix: /FamilyDetails-Service
+deploy_servers:
+  - 194.163.159.164
 build_command: mvn clean install
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: role-service
 application_port: 9005
 deploy_port: 9097
-path_prefix: /role-service
+deploy_servers:
+  - 194.163.159.164
 build_command: mvn clean install
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

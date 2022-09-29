@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: scheme-service
 application_port: 1000
 deploy_port: 9098
-path_prefix: /scheme-service
+deploy_servers:
+  - 194.163.159.164
 build_command: mvn clean install
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

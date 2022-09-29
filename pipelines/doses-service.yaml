@@ -4,8 +4,9 @@ run_command: java -jar app.jar
 src_path: doses-service
 application_port: 8081
 deploy_port: 9099
-path_prefix: /doses-service
 build_command: mvn clean install
+deploy_servers:
+  - 194.163.159.164
 deploy_env:
-- dev
-- prod
+  - dev
+  - prod

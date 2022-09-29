@@ -3,4 +3,4 @@ repo_url: https://github.com/Software-Mathematics/common-util-mongo.git
 src_path: ./commons-util-mongo
 build_command: mvn clean install
 deploy_env:
-- mvn
+  - mvn
