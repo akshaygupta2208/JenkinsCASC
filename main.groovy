@@ -144,7 +144,13 @@ list.each {
     }
     repo_url_slash_split = repo_url.split('/')
     folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
-    //folder_name = "B"
+
+    // Creating parent folder
+    folder(repo_url_slash_split[repo_url_slash_split.length -2]) {
+        description('Folder containing all '+repo_url_slash_split[repo_url_slash_split.length -2]+' related jobs')
+    }
+
+    // Creating repo specific folder
     println(folder_name)
     folder(folder_name) {
         description('Folder containing all '+folder_name+' related jobs')
