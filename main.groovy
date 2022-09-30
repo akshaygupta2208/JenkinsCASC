@@ -45,8 +45,13 @@ list.each {
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"app/${src_path}\"){ 
                                 sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
-                                sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:latest ."
-                                sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:latest"
+                                
+                                sh "VERSION=$(date %Y%m%d%H%M%S).git.$GIT_REVISION
+                                sh "IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}"
+                                sh "docker --network=host build -t $IMAGE:$VERSION ."
+                                sh "docker push $IMAGE/$VERSION"
+//                                 sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:latest ."
+//                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:latest"
                                  }
                     }
                     }
