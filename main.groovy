@@ -45,8 +45,8 @@ list.each {
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"app/${src_path}\"){ 
                                 sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
-                                 sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:${BUILD_TIMESTAMP} ."
-                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:${BUILD_TIMESTAMP}"
+                                 sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:${VERSION} ."
+                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:${VERSION}"
                                  }
                     }
                     }
@@ -170,6 +170,7 @@ list.each {
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
+                    VERSION = "${env.BUILD_TIMESTAMP}"
                 }
                 stages {
                   stage('Checkout Stage') {     
