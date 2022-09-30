@@ -44,7 +44,7 @@ list.each {
                             steps{  
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"app/${src_path}\"){ 
-                                sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} \${NEXUS_REPO_URL}"
+                                sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
                                 
                                 sh "VERSION=$(date %Y%m%d%H%M%S).git.$GIT_REVISION
                                 sh "IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}"
