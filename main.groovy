@@ -47,7 +47,7 @@ list.each {
                                 dir(\"app/${src_path}\"){ 
                                 sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
                                  sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:${BUILD_TIMESTAMP} ."
-                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:${BUILD_TIMESTAMP}"
+                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:${build_version}"
                                  }
                     }
                     }
@@ -171,7 +171,6 @@ list.each {
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
-                    BUILD_VERSION = build_version
                 }
                 stages {
                   stage('Checkout Stage') {     
