@@ -46,8 +46,8 @@ list.each {
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"app/${src_path}\"){ 
                                 sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
-                                 sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:${VERSION} ."
-                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:${VERSION}"
+                                 sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:\${VERSION} ."
+                                 sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:\${VERSION}"
                                  }
                     }
                     }
@@ -56,7 +56,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                              withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}", "BUILD_TIMESTAMP=${VERSION}"]) {
+                              withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}", "BUILD_TIMESTAMP=\${VERSION}"]) {
                               ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
 
                                }
