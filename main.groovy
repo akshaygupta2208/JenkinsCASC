@@ -171,7 +171,7 @@ list.each {
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
-                    VERSION = "${env.BUILD_TIMESTAMP}"
+                    VERSION = "${BUILD_TIMESTAMP}"
                 }
                 stages {
                   stage('Checkout Stage') {     
