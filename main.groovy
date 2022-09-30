@@ -38,6 +38,7 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
+    build_version = ${BUILD_TIMEOUT}
 
     artefact_creation = """
                     stage('ArtefactCreation') { 
@@ -170,6 +171,7 @@ list.each {
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
+                    BUILD_VERSION = build_version
                 }
                 stages {
                   stage('Checkout Stage') {     
