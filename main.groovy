@@ -39,7 +39,7 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
-
+    deploy_servers = example["deploy_servers"]
     artefact_creation = """
                     stage('ArtefactCreation') { 
                             steps{  
@@ -56,7 +56,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                              withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}", "BUILD_TIMESTAMP=\${VERSION}", "DEPLOY_SERVER=${deploy_servers}"]) {
+                              withEnv(["DEPLOY_SERVER=${deploy_servers}", "CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}", "BUILD_TIMESTAMP=\${VERSION}"]) {
                               ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
 
                                }
