@@ -21,7 +21,7 @@ dir.eachFileRecurse(FileType.FILES) { file ->
 
 NEXUS_REPO_URL = "https://nexus.softwaremathematics.com/"
 NEXUS_DOCKER_REPO_BASE = "nexus.softwaremathematics.com"
-VERSION = ""
+VERSION = "${BUILD_TIMESTAMP}"
 
 list.each {
     println it.path
