@@ -21,6 +21,7 @@ dir.eachFileRecurse(FileType.FILES) { file ->
 
 NEXUS_REPO_URL = "https://nexus.softwaremathematics.com/"
 NEXUS_DOCKER_REPO_BASE = "nexus.softwaremathematics.com"
+VERSION = ${BUILD_TIMESTAMP}
 
 list.each {
     println it.path
@@ -39,6 +40,7 @@ list.each {
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
     dev_deploy = ""
+    
     
     if (example["deploy_servers"]!= null) {
         for (server in example["deploy_servers"]) {
