@@ -38,7 +38,7 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
-    dev_deploy = ""
+    
 
     artefact_creation = """
                     stage('ArtefactCreation') { 
