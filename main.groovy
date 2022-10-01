@@ -39,6 +39,14 @@ list.each {
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
     dev_deploy = ""
+    
+    if (example["deploy_servers"]!= null) {
+        for (server in example["deploy_servers"]) {
+            dev_deploy = dev_deploy + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${server},\"\'
+            """
+        }
+    }
 
     artefact_creation = """
                     stage('ArtefactCreation') { 
@@ -143,30 +151,8 @@ list.each {
         artefact_creation = ""
     }
     
-    if (example["deploy_servers"]!= null) {
-        for (server in example["deploy_servers"]) {
-            dev_deploy = dev_deploy + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${server},\"\'
-            """
-        }
-    }
-"""
-dev_stage = """
-                stage('DeployDev') { 
-                        steps{ 
-                            sh 'echo "DeployDev"'
-                            ${dev_deploy}
-                           }
+    
 
-
-                            }    
-                    }
-                stage('DevSanity') {
-                        steps{  
-                            sh 'echo "DevSanity"'
-                            }    
-                    }
-"""
 
     repo_url_slash_split = repo_url.split('/')
     folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
