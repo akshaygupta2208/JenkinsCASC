@@ -21,7 +21,7 @@ dir.eachFileRecurse(FileType.FILES) { file ->
 
 NEXUS_REPO_URL = "https://nexus.softwaremathematics.com/"
 NEXUS_DOCKER_REPO_BASE = "nexus.softwaremathematics.com"
-VERSION = ${BUILD_TIMESTAMP}
+
 
 list.each {
     println it.path
@@ -184,7 +184,7 @@ list.each {
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
-                    VERSION = "${BUILD_TIMESTAMP}"
+                    VERSION = "\${BUILD_TIMESTAMP}"
                 }
                 stages {
                   stage('Checkout Stage') {     
