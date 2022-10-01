@@ -55,8 +55,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                              withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
-                              ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
+                                ${dev_deploy}
 
                                }
                                 
@@ -142,6 +141,16 @@ list.each {
     } else {
         artefact_creation = ""
     }
+    dev_deploy = ""
+    if (example["deploy_servers"] is not null) {
+        for (server in example["deploy_servers"]) {
+            dev_deploy = dev_deploy +"""withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extraArgs:" -i server"
+            """
+        }
+    }
+
+
     repo_url_slash_split = repo_url.split('/')
     folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
 
