@@ -150,7 +150,23 @@ list.each {
             """
         }
     }
+"""
+dev_stage = """
+                stage('DeployDev') { 
+                        steps{ 
+                            sh 'echo "DeployDev"'
+                            ${dev_deploy}
+                           }
 
+
+                            }    
+                    }
+                stage('DevSanity') {
+                        steps{  
+                            sh 'echo "DevSanity"'
+                            }    
+                    }
+"""
 
     repo_url_slash_split = repo_url.split('/')
     folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
