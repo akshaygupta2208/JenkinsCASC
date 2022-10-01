@@ -142,7 +142,7 @@ list.each {
         artefact_creation = ""
     }
     dev_deploy = ""
-    if ((example["deploy_servers"]) is not null) {
+    if (example["deploy_servers"]!= null) {
         for (server in example["deploy_servers"]) {
             dev_deploy = dev_deploy +"""withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${server},\"\'
