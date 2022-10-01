@@ -57,7 +57,7 @@ list.each {
                             steps{ 
                                 sh 'echo "DeployDev"'
                               withEnv(["DEPLOY_SERVER=${deploy_servers}", "CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}", "BUILD_TIMESTAMP=\${VERSION}"]) {
-                              ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.yml', playbook: 'ansible/deployapp.yml'
+                              ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', , extras: "-i  '\"38.242.154.127,\"'"
 
                                }
                                 
