@@ -21,6 +21,7 @@ dir.eachFileRecurse(FileType.FILES) { file ->
 
 NEXUS_REPO_URL = "https://nexus.softwaremathematics.com/"
 NEXUS_DOCKER_REPO_BASE = "nexus.softwaremathematics.com"
+VERSION = "${BUILD_TIMESTAMP}"
 
 list.each {
     println it.path
@@ -38,6 +39,16 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
+    dev_deploy = ""
+    
+    
+    if (example["deploy_servers"]!= null) {
+        for (server in example["deploy_servers"]) {
+            dev_deploy = dev_deploy + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${server},\"\'
+            """
+        }
+    }
 
     artefact_creation = """
                     stage('ArtefactCreation') { 
@@ -45,8 +56,8 @@ list.each {
                                 sh 'echo "ArtefactCreation"'
                                 dir(\"app/${src_path}\"){ 
                                 sh "docker login -u \${NEXUS_CRED_USR} -p \${NEXUS_CRED_PSW} ${NEXUS_REPO_URL}"
-                                sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:latest ."
-                                sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:latest"
+                                sh "docker build --network=host -t ${NEXUS_DOCKER_REPO_BASE}/${name}:\${VERSION} ."
+                                sh "docker push ${NEXUS_DOCKER_REPO_BASE}/${name}:\${VERSION}"
                                  }
                     }
                     }
@@ -55,8 +66,7 @@ list.each {
                     stage('DeployDev') { 
                             steps{ 
                                 sh 'echo "DeployDev"'
-                              withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
-                              ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/app.txt', playbook: 'ansible/deployapp.yml'
+                                ${dev_deploy}
 
                                }
                                 
@@ -142,6 +152,10 @@ list.each {
     } else {
         artefact_creation = ""
     }
+    
+    
+
+
     repo_url_slash_split = repo_url.split('/')
     folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
 
@@ -170,6 +184,7 @@ list.each {
                 }
                 environment {
                     NEXUS_CRED = credentials('nexus')
+                    VERSION = "\${BUILD_TIMESTAMP}"
                 }
                 stages {
                   stage('Checkout Stage') {     
