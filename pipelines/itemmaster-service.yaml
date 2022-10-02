@@ -1,7 +1,7 @@
 name: itemmaster-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
-src_path: address-service
+src_path: itemMaster-servie
 application_port: 9010
 deploy_port: 9107
 build_command: mvn clean install
