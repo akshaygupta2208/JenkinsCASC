@@ -1,0 +1,1445 @@
+{
+    "version": 3,
+    "endpoints": [
+        {
+            "endpoint": "/labtests-serv/api/labTests/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/labTests/v1/create",
+                    "host": [
+                        "194.163.159.164:9101"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/labtests-serv/api/labTests/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/labTests/v1/createList",
+                    "host": [
+                        "194.163.159.164:9101"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/labtests-serv/api/labTests/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/labTests/v1/delete",
+                    "host": [
+                        "194.163.159.164:9101"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/labtests-serv/api/labTests/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/labTests/v1/get",
+                    "host": [
+                        "194.163.159.164:9101"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/labtests-serv/api/labTests/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/labTests/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9101"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/labtests-serv/api/labTests/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/labTests/v1/update",
+                    "host": [
+                        "194.163.159.164:9101"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/create",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/createList",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/delete",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/get",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/doses-service/api/doses/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/doses/v1/update",
+                    "host": [
+                        "194.163.159.164:9099"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/create",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/createList",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/delete",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/get",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/vitals-service/api/Vitals/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Vitals/v1/update",
+                    "host": [
+                        "194.163.159.164:9106"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/create",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/createList",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/delete",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/get",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/visit-service/api/visit/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/visit/v1/update",
+                    "host": [
+                        "194.163.159.164:9105"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/create",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/createList",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/delete",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/get",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/getSingle",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/getWithFilter",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/getWithFilter",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/login",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/login",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/setPassword",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/setPassword",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/api/ProfileEntity/v2/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/ProfileEntity/v2/update",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/employees",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/employees",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/profile-service/employees",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/employees",
+                    "host": [
+                        "194.163.159.164:9093"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/create",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/createList",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/delete",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/get",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/frequencymaster-service/api/frequencyMaster/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/frequencyMaster/v1/update",
+                    "host": [
+                        "194.163.159.164:9100"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/create",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/createList",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/delete",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/get",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/prescription-service/api/prescription/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/prescription/v1/update",
+                    "host": [
+                        "194.163.159.164:9103"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/create",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/createList",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/delete",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/get",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/getByPatientId/{patientId}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/getByPatientId/{patientId}",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/patient-service/api/patient/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/patient/v1/update",
+                    "host": [
+                        "194.163.159.164:9102"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/create",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/createList",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/delete",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/get",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/getAllByStatus/{status}",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/getAllByStatus/{status}",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/getSingle",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/testmaster-service/api/testMaster/v1/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/testMaster/v1/update",
+                    "host": [
+                        "194.163.159.164:9104"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/api/Kyc/v2/create",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Kyc/v2/create",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/api/Kyc/v2/createList",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Kyc/v2/createList",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/api/Kyc/v2/delete",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Kyc/v2/delete",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/api/Kyc/v2/get",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Kyc/v2/get",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/api/Kyc/v2/getSingle",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Kyc/v2/getSingle",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/api/Kyc/v2/update",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/api/Kyc/v2/update",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "GET",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "HEAD",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "HEAD"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "POST",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "POST"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PUT",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "PUT"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "DELETE",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "OPTIONS",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "OPTIONS"
+                }
+            ]
+        },
+        {
+            "endpoint": "/kyc-service/error",
+            "output_encoding": "no-op",
+            "input_headers": [
+                "*"
+            ],
+            "method": "PATCH",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/error",
+                    "host": [
+                        "194.163.159.164:9090"
+                    ],
+                    "method": "PATCH"
+                }
+            ]
+        }
+    ]
+}
