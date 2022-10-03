@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
 src_path: professionaldetails-service-mongo
 application_port: 6008
-deploy_port: 9119
+deploy_port: 9118
 build_command: mvn clean install
 deploy_servers:
   - 194.163.159.164
