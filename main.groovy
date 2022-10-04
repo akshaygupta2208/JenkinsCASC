@@ -64,8 +64,10 @@ list.each {
 """
     dev_stage = """
                     stage('DeployDev') { 
+                    timeout(time: 5, unit: 'MINUTES') {
                     input{
     message "Do you want to proceed for production deployment?"
+  }
   }
                         steps{ 
                                 sh 'echo "DeployDev"'
