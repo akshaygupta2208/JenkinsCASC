@@ -64,12 +64,10 @@ list.each {
 """
     dev_stage = """
                     stage('DeployDev') { 
-                    stage('Tag on Docker Hub') {
-      agent { label 'yona' }
-      when {
-        environment name: 'TAG_ON_DOCKER_HUB', value: 'yes'
-      }
-                            steps{ 
+                    input{
+    message "Do you want to proceed for production deployment?"
+  }
+                        steps{ 
                                 sh 'echo "DeployDev"'
                                 ${dev_deploy}
 
@@ -207,7 +205,6 @@ list.each {
                             }  }  
                     }
                     stage('Build') {  
-                    agent { label 'yona' }
                             steps{
                                 dir(\"app/${src_path}\"){
                                     configFileProvider(
@@ -218,17 +215,6 @@ list.each {
                                 }
                             }    
                     }
-                    
-                   stage('Decide tag on Docker Hub') {
-      agent none
-      steps {
-        script {
-          env.TAG_ON_DOCKER_HUB = input message: 'User input required',
-              parameters: [choice(name: 'Tag on Docker Hub', choices: 'no\nyes', description: 'Choose "yes" if you want to deploy this build')]
-        }
-      }
-    }
-                   
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
