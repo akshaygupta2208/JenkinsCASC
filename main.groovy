@@ -68,7 +68,7 @@ list.each {
                     input{
     message "Do you want to proceed for production deployment?"
   }
-  }
+  
                         steps{ 
                                 sh 'echo "DeployDev"'
                                 ${dev_deploy}
@@ -77,7 +77,7 @@ list.each {
                                 
                               
                                 }    
-                        }
+                        }}
                     stage('DevSanity') {
                             steps{  
                                 sh 'echo "DevSanity"'
