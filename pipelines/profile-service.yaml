@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/UserManagement.git
 run_command: java -jar app.jar
 src_path: profile-service
 application_port: 7779
-deploy_port: 9093
+deploy_port: 9130
 deploy_servers:
   - 194.163.159.164
 build_command: mvn clean install
