@@ -9,7 +9,7 @@ krakend_base_json = {
     "version": 3,
     "extra_config": {
         "telemetry/logging": {
-            "level": "ERROR",
+            "level": "INFO",
             "prefix": "[KRAKEND]",
             "syslog": False,
             "stdout": True,
@@ -26,6 +26,7 @@ krakend_base_json = {
             "expose_headers": [
                 "*"
             ],
+            "debug": True,
             "max_age": "",
             "allow_methods": ["HEAD", "OPTIONS"],
             "allow_credentials": True,
