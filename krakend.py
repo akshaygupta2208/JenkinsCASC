@@ -8,6 +8,39 @@ from glob import glob
 
 krakend_base_json = {
     "version": 3,
+    "extra_config": {
+        "telemetry/logging": {
+            "level": "ERROR",
+            "prefix": "[KRAKEND]",
+            "syslog": False,
+            "stdout": True,
+            "format": "logstash",
+            "syslog_facility": "local3"
+        },
+        "telemetry/logstash": {
+            "enabled": True
+        },
+        "security/cors": {
+            "allow_origins": [
+                "*"
+            ],
+            "expose_headers": [
+                "*"
+            ],
+            "max_age": "",
+            "allow_methods": ["OPTIONS"],
+            "allow_credentials": True,
+            "allow_headers": [
+                "*"
+            ]
+        },
+        "security/http": {
+            "allowed_hosts": [],
+            "ssl_proxy_headers": {
+                "X-Forwarded-Proto": "https"
+            }
+        }
+    },
     "endpoints": []
 }
 pipeline_base = "jenkins/pipelines"
