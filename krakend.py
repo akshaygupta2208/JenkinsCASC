@@ -6,15 +6,20 @@ import yaml
 from glob import glob
 
 krakend_base_json = {
+    "$schema": "https://www.krakend.io/schema/v3.json",
     "version": 3,
+    "max_idle_connections": 300,
+    "idle_connection_timeout": 300,
     "extra_config": {
+        "router":{
+            "auto_options":True
+        },
         "telemetry/logging": {
             "level": "INFO",
             "prefix": "[KRAKEND]",
             "syslog": False,
             "stdout": True,
-            "format": "logstash",
-            "syslog_facility": "local3"
+            "format": "logstash"
         },
         "telemetry/logstash": {
             "enabled": True
@@ -26,9 +31,9 @@ krakend_base_json = {
             "expose_headers": [
                 "*"
             ],
-            "debug": True,
-            "max_age": "",
-            "allow_methods": ["GET", "HEAD", "POST", "OPTIONS", "PATCH", "DELETE"],
+            "allow_methods": [
+                "GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
+            ],
             "allow_credentials": True,
             "allow_headers": [
                 "*"
@@ -38,7 +43,15 @@ krakend_base_json = {
             "allowed_hosts": [],
             "ssl_proxy_headers": {
                 "X-Forwarded-Proto": "https"
-            }
+            },
+            "host_proxy_headers":[
+                "X-Forwarded-Hosts"
+            ],
+            "referrer_policy": "same-origin",
+            "content_type_nosniff": True,
+            "browser_xss_filter": True,
+            "content_security_policy": "default-src 'self';",
+            "is_development": True
         }
     },
     "endpoints": []
@@ -47,36 +60,15 @@ krakend_base_json = {
 """
 Headers which are to be removed from reaching backend in order to avoid double cors issue
 """
-disable_cors_backend_headers_json = {
-    "modifier/martian": {
-        "fifo.Group": {
-            "scope": ["request", "response"],
-            "aggregateErrors": True,
-            "modifiers": [
-                {
-                    "header.Blacklist": {
-                        "scope": ["request"],
-                        "names": [
-                            "Access-Control-Request-Method",
-                            "Sec-Fetch-Dest",
-                            "Sec-Fetch-Mode",
-                            "Sec-Fetch-Site",
-                            "Origin"
-                        ]
-                    }
-                }
-            ]
-        }
-    }
-}
+
 
 pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
-
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+#pipeline_base = "pipelines"
+#krakend_base_json_path = "./"
+
 
 def get_recursive_files(base_path):
     result = [y for x in os.walk(base_path) for y in glob(os.path.join(x[0], '*.y*ml'))]
@@ -121,23 +113,23 @@ for pipeline_file in get_recursive_files(pipeline_base):
                 for path in swagger_data["paths"]:
                     # generating krakend config here
                     # for each allowed method add an endpoint
-                    for method in swagger_data["paths"][path].keys():
+                    allowed_methods = list(swagger_data["paths"][path].keys())
+                    for method in allowed_methods:
                         method = method.upper()
                         krakend_config = {}
                         krakend_config["endpoint"] = f"/{app_name}{path}"
-                        krakend_config["output_encoding"] = "no-op"
-                        krakend_config["input_headers"] = ["*"]
-                        #krakend_config["method"] = method
+                        krakend_config["output_encoding"] = "json"
+                        krakend_config["input_headers"] = ["Content-Type"]
+                        krakend_config["method"] = method
                         krakend_config["backend"] = []
                         hosts = []
                         for server in deploy_servers:
                             hosts.append(f"{server}:{deploy_port}")
                         backend = {
-                            "encoding": "no-op",
-                            "extra_config": disable_cors_backend_headers_json,
+                            "encoding": "json",
                             "url_pattern": path,
                             "host": hosts,
-                            #"method": method
+                            "method": method
                         }
                         krakend_config["backend"].append(backend)
                         krakend_base_json["endpoints"].append(krakend_config)
