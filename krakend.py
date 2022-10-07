@@ -28,7 +28,7 @@ krakend_base_json = {
             ],
             "debug": True,
             "max_age": "",
-            "allow_methods": ["HEAD", "OPTIONS"],
+            "allow_methods": ["GET", "HEAD", "POST", "OPTIONS", "PATCH", "DELETE"],
             "allow_credentials": True,
             "allow_headers": [
                 "*"
@@ -127,7 +127,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                         krakend_config["endpoint"] = f"/{app_name}{path}"
                         krakend_config["output_encoding"] = "no-op"
                         krakend_config["input_headers"] = ["*"]
-                        krakend_config["method"] = method
+                        #krakend_config["method"] = method
                         krakend_config["backend"] = []
                         hosts = []
                         for server in deploy_servers:
@@ -137,7 +137,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                             "extra_config": disable_cors_backend_headers_json,
                             "url_pattern": path,
                             "host": hosts,
-                            "method": method
+                            #"method": method
                         }
                         krakend_config["backend"].append(backend)
                         krakend_base_json["endpoints"].append(krakend_config)
