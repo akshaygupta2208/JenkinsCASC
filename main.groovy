@@ -64,7 +64,12 @@ list.each {
 """
     dev_stage = """
                     stage('DeployDev') { 
-                            steps{ 
+                    
+  
+                        steps{
+                            timeout(time: 300, unit: 'SECONDS') {
+                            input('Do you want to proceed for production deployment?') 
+                                }
                                 sh 'echo "DeployDev"'
                                 ${dev_deploy}
 
@@ -201,7 +206,7 @@ list.each {
                             url: '${repo_url}'
                             }  }  
                     }
-                    stage('Build') {     
+                    stage('Build') {  
                             steps{
                                 dir(\"app/${src_path}\"){
                                     configFileProvider(

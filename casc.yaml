@@ -90,6 +90,9 @@ jenkins:
             - id: "Plugin Usage View/PluginView"
           sids:
             - "admin"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
   securityRealm:
     local:
       allowsSignup: false

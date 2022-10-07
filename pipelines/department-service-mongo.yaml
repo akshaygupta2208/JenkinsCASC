@@ -1,0 +1,12 @@
+name: department-service-mongo
+repo_url: https://github.com/Software-Mathematics/UserManagement.git
+run_command: java -jar app.jar
+src_path: department-service-mongo
+application_port: 6002
+deploy_port: 9113
+build_command: mvn clean install
+deploy_servers:
+  - 194.163.159.164
+deploy_env:
+  - dev
+  - prod
