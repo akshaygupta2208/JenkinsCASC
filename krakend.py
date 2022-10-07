@@ -5,7 +5,6 @@ import requests
 import yaml
 from glob import glob
 
-
 krakend_base_json = {
     "version": 3,
     "extra_config": {
@@ -28,7 +27,7 @@ krakend_base_json = {
                 "*"
             ],
             "max_age": "",
-            "allow_methods": ["OPTIONS"],
+            "allow_methods": ["HEAD", "OPTIONS"],
             "allow_credentials": True,
             "allow_headers": [
                 "*"
@@ -43,12 +42,40 @@ krakend_base_json = {
     },
     "endpoints": []
 }
+
+"""
+Headers which are to be removed from reaching backend in order to avoid double cors issue
+"""
+disable_cors_backend_headers_json = {
+    "modifier/martian": {
+        "fifo.Group": {
+            "scope": ["request", "response"],
+            "aggregateErrors": True,
+            "modifiers": [
+                {
+                    "header.Blacklist": {
+                        "scope": ["request"],
+                        "names": [
+                            "Access-Control-Request-Method",
+                            "Sec-Fetch-Dest",
+                            "Sec-Fetch-Mode",
+                            "Sec-Fetch-Site",
+                            "Origin"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
+
 pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
+
 # enable these below mentioned variables for development in local
-#pipeline_base = "pipelines"
-#krakend_base_json_path = "./"
+# pipeline_base = "pipelines"
+# krakend_base_json_path = "./"
 
 def get_recursive_files(base_path):
     result = [y for x in os.walk(base_path) for y in glob(os.path.join(x[0], '*.y*ml'))]
@@ -74,6 +101,7 @@ def get_swagger_data(app_base, swagger_uri="/v2/api-docs"):
         print("Swagger data api is not responding")
     return False
 
+
 for pipeline_file in get_recursive_files(pipeline_base):
     print(f'Working on file {pipeline_file}')
 
@@ -91,7 +119,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
             if "paths" in swagger_data:
                 for path in swagger_data["paths"]:
                     # generating krakend config here
-                    #for each allowed method add an endpoint
+                    # for each allowed method add an endpoint
                     for method in swagger_data["paths"][path].keys():
                         method = method.upper()
                         krakend_config = {}
@@ -105,6 +133,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                             hosts.append(f"{server}:{deploy_port}")
                         backend = {
                             "encoding": "no-op",
+                            "extra_config": disable_cors_backend_headers_json,
                             "url_pattern": path,
                             "host": hosts,
                             "method": method
