@@ -67,13 +67,13 @@ list.each {
                     
   
                         steps{
-                            timeout(time: 300, unit: 'SECONDS') {
-                            input('Do you want to proceed for production deployment?') 
-                                }
+//                             timeout(time: 300, unit: 'SECONDS') {
+//                             input('Do you want to proceed for production deployment?') 
+//                                 }
                                 sh 'echo "DeployDev"'
                                 ${dev_deploy}
 
-                               }
+//                                }
                                 
                               
                                 }    
