@@ -5,7 +5,7 @@ src_path: prescription-service
 application_port: 9004
 deploy_port: 9103
 deploy_servers:
-  - 194.163.159.164
+  - 161.97.136.16
 build_command: mvn clean install
 deploy_env:
   - dev

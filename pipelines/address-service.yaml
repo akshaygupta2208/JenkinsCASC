@@ -6,7 +6,7 @@ application_port: 8082
 deploy_port: 9083
 build_command: mvn clean install
 deploy_servers:
-  - 161.97.136.16
+  - 194.163.159.164
 deploy_env:
   - dev
   - prod

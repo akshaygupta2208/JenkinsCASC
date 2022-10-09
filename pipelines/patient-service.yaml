@@ -5,7 +5,7 @@ src_path: patient-service
 application_port: 9001
 deploy_port: 9102
 deploy_servers:
-  - 194.163.159.164
+  - 161.97.136.16
 build_command: mvn clean install
 deploy_env:
   - dev
