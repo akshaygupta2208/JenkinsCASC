@@ -1,0 +1,12 @@
+name: mmu-admin
+repo_url: https://github.com/Software-Mathematics/MMUAdminUI.git
+run_command: java -jar app.jar
+src_path: mmu-admin
+application_port: 9006
+deploy_port: 9130
+deploy_servers:
+  - 161.97.136.16
+build_command: npm run build
+deploy_env:
+  - dev
+  - prod
