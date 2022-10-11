@@ -467,10 +467,19 @@ pipelineJob('Infra/create-user'){
     definition {
         cps {
             script("""
-parameters {
-            stringParam('UserName', 'root', 'Enter the username of the remote host')
-            stringParam('Password', 'Blank', 'Enter the password of the remote host')
-        }
+//parameters {
+//            stringParam('UserName', 'root', 'Enter the username of the remote host')
+//            stringParam('Password', 'Blank', 'Enter the password of the remote host')
+//        }
+                properties([
+                        parameters([
+                            string(
+                                defaultValue: 'root', 
+                                name: 'USERNAME'
+                            )
+                        ])
+                    ])
+
     pipeline {
                 agent any
                 tools {
