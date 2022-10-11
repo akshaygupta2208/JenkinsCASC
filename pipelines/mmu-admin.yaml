@@ -1,12 +1,12 @@
 name: mmu-admin
 repo_url: https://github.com/Software-Mathematics/MMUAdminUI.git
 run_command: java -jar app.jar
-src_path: MMU_AdminUI/app/MMU_AdminUI/
+src_path: MMU_AdminUI
 application_port: 9006
 deploy_port: 9130
 deploy_servers:
   - 161.97.136.16
-build_command: . /root/.nvm/nvm.sh && nvm install 16 && nvm use 16 && npm -v && -s /var/jenkins_home/workspace/Software-Mathematics/MMUAdminUI/mmu-admin/app/MMU_AdminUI
+build_command: . /root/.nvm/nvm.sh && nvm install 16 && nvm use 16 && npm -v && npm run build '#
 deploy_env:
   - dev
   - prod
