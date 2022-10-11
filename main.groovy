@@ -468,7 +468,7 @@ pipelineJob('Infra/create-user'){
         cps {
             script("""
 parameters {
-            stringParam('UserName', 'root', 'Enter the username of the remote host')
+            string(name: "USERNAME", defaultValue: "root", trim: true, description: "Sample string parameter")
             stringParam('Password', 'Blank', 'Enter the password of the remote host')
         }
 //                properties([
@@ -515,7 +515,7 @@ parameters {
            steps {
                
                 withEnv(["CONTAINER_NAME=department-service","CONTAINER_IMAGE=nexus.softwaremathematics.com/department-service", "deploy_port=9085", "application_port=9000"]) {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=${UserName} ansible_password=Smathematics" -i "38.242.198.101,"'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=$params.USERNAME ansible_password=Smathematics" -i "38.242.198.101,"'
             
                
                }    
