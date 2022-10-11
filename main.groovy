@@ -509,7 +509,7 @@ parameters {
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
-                                sh 'echo "$params.USERNAME"'
+                                sh 'echo "${params.USERNAME}"'
                               }    
                     }  
                     stage("execute Ansible") {
