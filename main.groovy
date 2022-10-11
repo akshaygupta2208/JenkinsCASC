@@ -515,7 +515,7 @@ parameters {
            steps {
                
                 withEnv(["CONTAINER_NAME=department-service","CONTAINER_IMAGE=nexus.softwaremathematics.com/department-service", "deploy_port=9085", "application_port=9000"]) {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=root ansible_password=Smathematics" -i "38.242.198.101,"'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=${UserName} ansible_password=Smathematics" -i "38.242.198.101,"'
             
                
                }    
