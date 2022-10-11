@@ -1,7 +1,8 @@
-FROM jenkins/jenkins:2.371
+FROM jenkins/jenkins:2.372
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /usr/share/jenkins/ref/casc.yaml
 ENV TZ Asia/Kolkata
+
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 #COPY --chown=jenkins casc.yaml /var/jenkins_home/casc.yaml
 COPY --chown=jenkins casc.yaml /usr/share/jenkins/ref/casc.yaml
@@ -27,6 +28,10 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o 
 
 RUN usermod -aG docker jenkins
 
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+
+# switch back to root user
 USER root
 
 

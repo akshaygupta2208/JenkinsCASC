@@ -1,9 +1,9 @@
-name: medrequisitiongen-service
+name: typemaster-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
-src_path: medRequisitionGen-servie
-application_port: 9013
-deploy_port: 9110
+src_path: typeMaster-service
+application_port: 6011
+deploy_port: 9127
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers:
   - 161.97.136.16

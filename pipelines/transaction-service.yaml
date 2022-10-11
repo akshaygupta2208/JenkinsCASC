@@ -4,9 +4,9 @@ run_command: java -jar app.jar
 src_path: transaction-servie
 application_port: 9012
 deploy_port: 9109
-build_command: mvn clean install
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers:
-  - 194.163.159.164
+  - 161.97.136.16
 deploy_env:
   - dev
   - prod

@@ -1,12 +1,12 @@
 name: testmaster-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
-src_path: testMaster-servie
+src_path: testMaster-service
 application_port: 9005
 deploy_port: 9104
 deploy_servers:
-  - 194.163.159.164
-build_command: mvn clean install
+  - 161.97.136.16
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev
   - prod

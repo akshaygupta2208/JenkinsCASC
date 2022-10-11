@@ -5,8 +5,8 @@ src_path: patient-service
 application_port: 9001
 deploy_port: 9102
 deploy_servers:
-  - 194.163.159.164
-build_command: mvn clean install
+  - 161.97.136.16
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev
   - prod
