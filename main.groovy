@@ -212,7 +212,7 @@ list.each {
                                     configFileProvider(
                                         [configFile(fileId: 'mvn-settings', variable: 'MAVEN_SETTINGS')]) {
                                             sh 'echo "Build"'
-                                            sh '${build_command} -s \$MAVEN_SETTINGS'                                
+                                            sh '${build_command}'                                
                                         }
                                 }
                             }    
