@@ -9,9 +9,9 @@ krakend_base_json = {
     "$schema": "https://www.krakend.io/schema/v3.json",
     "version": 3,
     "max_idle_connections": 300,
-    "idle_connection_timeout": 300,
+    "idle_connection_timeout": "300s",
     "extra_config": {
-        "router":{
+        "router": {
             "auto_options":True
         },
         "telemetry/logging": {
