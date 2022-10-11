@@ -4,7 +4,7 @@ run_command: java -jar app.jar
 src_path: FamilyDetails-Service-mongo
 application_port: 6005
 deploy_port: 9112
-build_command: mvn clean install
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers:
   - 194.163.159.164
 deploy_env:

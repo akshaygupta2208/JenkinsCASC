@@ -6,7 +6,7 @@ application_port: 9006
 deploy_port: 9130
 deploy_servers:
   - 161.97.136.16
-build_command: . /root/.nvm/nvm.sh && nvm install 16 && nvm use 16 && npm -v && npm run build '#
+build_command: . /root/.nvm/nvm.sh && nvm install 16 && nvm use 16 && npm -v && npm install && npm run build
 deploy_env:
   - dev
   - prod

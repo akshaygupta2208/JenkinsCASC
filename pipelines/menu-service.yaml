@@ -4,7 +4,7 @@ run_command: java -jar app.jar
 src_path: menu-service
 application_port: 6011
 deploy_port: 9129
-build_command: mvn clean install
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers:
   - 161.97.136.16
 deploy_env:
