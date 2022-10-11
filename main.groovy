@@ -465,7 +465,6 @@ pipelineJob('Infra/monitoring-server'){
 }
 pipelineJob('Infra/create-user'){
     definition {
-
         cps {
             script("""
 parameters {
