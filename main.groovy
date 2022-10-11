@@ -464,7 +464,12 @@ pipelineJob('Infra/monitoring-server'){
     }
 }
 pipelineJob('Infra/create-user'){
+    parameters {
+        stringParam('UserName', 'root', 'Enter the username of the remote host')
+        stringParam('Password', 'Blank', 'Enter the password of the remote host')
+    }
     definition {
+
         cps {
             script("""
     pipeline {
@@ -501,7 +506,8 @@ pipelineJob('Infra/create-user'){
                     stage("execute Ansible") {
            steps {
                
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/inventory', playbook: 'ansible/createuser.yml'
+                withEnv(["CONTAINER_NAME=department-service","CONTAINER_IMAGE=nexus.softwaremathematics.com/department-service", "deploy_port=9085", "application_port=9000"]) {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=${UserName} ansible_password=Smathematics" -i "38.242.198.101,"'
             
                
                }    
