@@ -1,6 +1,6 @@
 name: mmu-admin
 repo_url: https://github.com/Software-Mathematics/MMUAdminUI.git
-run_command: java -jar app.jar
+run_command:
 src_path: MMU_AdminUI
 application_port: 80
 deploy_port: 9130
