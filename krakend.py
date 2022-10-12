@@ -9,9 +9,9 @@ krakend_base_json = {
     "$schema": "https://www.krakend.io/schema/v3.json",
     "version": 3,
     "max_idle_connections": 300,
-    "idle_connection_timeout": 300,
+    "idle_connection_timeout": "300s",
     "extra_config": {
-        "router":{
+        "router": {
             "auto_options":True
         },
         "telemetry/logging": {
@@ -118,6 +118,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                         method = method.upper()
                         krakend_config = {}
                         krakend_config["endpoint"] = f"/{app_name}{path}"
+                        krakend_config["input_query_strings"] = ["*"]
                         krakend_config["output_encoding"] = "json"
                         krakend_config["input_headers"] = ["Content-Type"]
                         krakend_config["method"] = method
