@@ -468,22 +468,12 @@ pipelineJob('Infra/create-user'){
     parameters {
         stringParam("USERNAME","root", "Sample string parameter")
         stringParam('PASSWORD', null, 'Enter the password of the remote host')
-        stringParam("IP","null", "Sample string parameter")
+        stringParam("IP",null, "Sample string parameter")
     }
     definition {
 
         cps {
             script("""
-
-//                properties([
-//                        parameters([
-//                            string(
-//                                defaultValue: 'root', 
-//                                name: 'USERNAME'
-//                            )
-//                        ])
-//                    ])
-
     pipeline {
                 agent any
                 tools {
@@ -524,7 +514,7 @@ pipelineJob('Infra/create-user'){
                
                }    
         }
-                    
+                    }
                     
             }
             }
