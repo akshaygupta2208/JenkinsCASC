@@ -119,7 +119,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                         krakend_config = {}
                         krakend_config["endpoint"] = f"/{app_name}{path}"
                         krakend_config["input_query_strings"] = ["*"]
-                        krakend_config["output_encoding"] = "json"
+                        krakend_config["output_encoding"] = "no-op"
                         krakend_config["input_headers"] = ["Content-Type", "Cookie"]
                         krakend_config["method"] = method
                         krakend_config["backend"] = []
@@ -127,7 +127,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                         for server in deploy_servers:
                             hosts.append(f"{server}:{deploy_port}")
                         backend = {
-                            "encoding": "json",
+                            "encoding": "no-op",
                             "url_pattern": path,
                             "host": hosts,
                             "method": method
