@@ -464,22 +464,16 @@ pipelineJob('Infra/monitoring-server'){
     }
 }
 pipelineJob('Infra/create-user'){
+
+    parameters {
+        stringParam("USERNAME","root", "Sample string parameter")
+        stringParam('PASSWORD', null, 'Enter the password of the remote host')
+        stringParam("IP",null, "Sample string parameter")
+    }
     definition {
+
         cps {
             script("""
-parameters {
-            string(name: "USERNAME", defaultValue: "root", trim: true, description: "Sample string parameter")
-            stringParam('Password', 'Blank', 'Enter the password of the remote host')
-        }
-//                properties([
-//                        parameters([
-//                            string(
-//                                defaultValue: 'root', 
-//                                name: 'USERNAME'
-//                            )
-//                        ])
-//                    ])
-
     pipeline {
                 agent any
                 tools {
@@ -509,19 +503,18 @@ parameters {
                     stage('BuildSanity') {     
                             steps{  
                                 sh 'echo "BuildSanity"'
-                                sh 'echo "params.USERNAME"'
                               }    
                     }  
                     stage("execute Ansible") {
            steps {
                
                 withEnv(["CONTAINER_NAME=department-service","CONTAINER_IMAGE=nexus.softwaremathematics.com/department-service", "deploy_port=9085", "application_port=9000"]) {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=root ansible_password=Smathematics" -i "38.242.198.101,"'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/createuser.yml', extras: '--extra-vars "ansible_user=\${USERNAME} ansible_password=\${PASSWORD}" -i "\${IP},"'
             
                
                }    
         }
-                    
+                    }
                     
             }
             }
