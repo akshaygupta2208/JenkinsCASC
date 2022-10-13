@@ -466,7 +466,7 @@ pipelineJob('Infra/monitoring-server'){
 pipelineJob('Infra/create-user'){
 
     parameters {
-        stringParam(parameterName: "USERNAME", defaultValue: "root", trim: true, description: "Sample string parameter")
+        stringParam("USERNAME","root", "Sample string parameter")
 
     }
     definition {
