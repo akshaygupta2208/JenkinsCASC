@@ -465,11 +465,12 @@ pipelineJob('Infra/monitoring-server'){
 }
 pipelineJob('Infra/create-user'){
 
+    parameters {
+        stringParam(parameterName: "USERNAME", defaultValue: "root", trim: true, description: "Sample string parameter")
+        stringParam(parameterName:'Password', defaultValue:null, 'Enter the password of the remote host')
+    }
     definition {
-        parameters {
-            string(name: "USERNAME", defaultValue: "root", trim: true, description: "Sample string parameter")
-            stringParam('Password', 'Blank', 'Enter the password of the remote host')
-        }
+
         cps {
             script("""
 
