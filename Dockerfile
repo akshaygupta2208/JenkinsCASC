@@ -18,7 +18,8 @@ RUN apt-get -y install \
     curl \
     gnupg \
     ansible \
-    lsb-release
+    lsb-release \
+    sshpass
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
     && echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
