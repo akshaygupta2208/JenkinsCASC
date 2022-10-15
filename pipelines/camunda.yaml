@@ -1,0 +1,12 @@
+name: camunda-service
+repo_url: https://github.com/Software-Mathematics/workflow.git
+run_command: java -jar app.jar
+src_path: camunda-service
+application_port: 8088
+deploy_port: 9135
+deploy_servers:
+  - 194.163.159.164
+build_command: mvn clean install -s $MAVEN_SETTINGS
+deploy_env:
+  - dev
+  - prod
