@@ -2,7 +2,7 @@ name: aggregation-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -jar app.jar
 src_path: aggregation-service
-application_port: 6011
+application_port: 9004
 deploy_port: 9137
 deploy_servers:
   - 161.97.136.16
