@@ -243,7 +243,7 @@ folder("Infra") {
     description('Folder containing all Infra related jobs')
 }
 
-pipelineJob('Infra/apithf'){
+pipelineJob('Software-Mathematics/MMUAPI/apithf'){
     definition {
         cps {
             script("""
