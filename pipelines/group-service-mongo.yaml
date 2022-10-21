@@ -1,6 +1,6 @@
 name: group-service-mongo
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
-run_command: java -jar app.jar
+run_command: java -Xmx256m -jar app.jar
 src_path: group-service-mongo
 application_port: 6006
 deploy_port: 9116
@@ -9,4 +9,5 @@ deploy_servers:
   - 194.163.159.164
 deploy_env:
   - dev
+  - stg
   - prod

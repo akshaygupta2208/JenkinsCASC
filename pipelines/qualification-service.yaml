@@ -1,6 +1,6 @@
 name: qualification-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
-run_command: java -jar app.jar
+run_command: java -Xmx256m -jar app.jar
 src_path: qualification-service
 application_port: 8086
 deploy_port: 9094
@@ -9,4 +9,5 @@ deploy_servers:
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev
+  - stg
   - prod

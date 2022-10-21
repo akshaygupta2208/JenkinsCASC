@@ -9,4 +9,5 @@ deploy_servers:
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev
+  - stg
   - prod

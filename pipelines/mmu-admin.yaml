@@ -9,4 +9,5 @@ deploy_servers:
 build_command: . /root/.nvm/nvm.sh && nvm install 16 && nvm use 16 && node -v && npm install && npm run build
 deploy_env:
   - dev
+  - stg
   - prod
