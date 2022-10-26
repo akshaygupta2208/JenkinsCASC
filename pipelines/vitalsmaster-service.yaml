@@ -1,6 +1,6 @@
 name: vitalsmaster-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
-run_command: java -Xmx256m -jar app.jar
+run_command: java -Xmx128m -jar app.jar
 src_path: vitalsMaster-service
 application_port: 6011
 deploy_port: 9131

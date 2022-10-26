@@ -1,6 +1,6 @@
 name: personal-information-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
-run_command: java -Xmx256m -jar app.jar
+run_command: java -Xmx128m -jar app.jar
 src_path: personal-information-service
 application_port: 8087
 deploy_port: 9091

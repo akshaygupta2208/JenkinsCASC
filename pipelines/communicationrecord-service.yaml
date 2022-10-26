@@ -1,6 +1,6 @@
 name: communicationrecord-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
-run_command: java -Xmx256m -jar app.jar
+run_command: java -Xmx128m -jar app.jar
 src_path: communicationrecord-service
 application_port: 8084
 deploy_port: 9084
