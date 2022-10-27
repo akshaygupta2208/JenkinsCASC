@@ -5,7 +5,7 @@ src_path: mmuCreation-service
 application_port: 6011
 deploy_port: 9133
 deploy_servers:
-  - 161.97.136.16
+  - 194.163.159.164
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev
