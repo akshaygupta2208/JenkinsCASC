@@ -57,8 +57,7 @@ list.each {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${server},\"\'
             """
         }
-    }
-}
+        }
 
     artefact_creation = """
                     stage('ArtefactCreation') { 
@@ -246,7 +245,6 @@ list.each {
         }
     }
     println(example)
-}
 
 
 folder("Infra") {
