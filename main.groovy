@@ -56,10 +56,10 @@ list.each {
         for (server in example["deploy_servers_prod"]) {
             prod_deploy = prod_deploy + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${server},\"\'
-                }            
+            }            
             """
         }
-        }
+    }
 
     artefact_creation = """
                     stage('ArtefactCreation') { 
