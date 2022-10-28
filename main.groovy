@@ -40,6 +40,7 @@ list.each {
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
     dev_deploy = ""
+    prod_deploy = ""
     
     
     if (example["deploy_servers_dev"]!= null) {
