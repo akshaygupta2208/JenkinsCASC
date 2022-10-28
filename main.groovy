@@ -52,7 +52,6 @@ list.each {
 
         }
     }
-}
     if (example["deploy_servers_prod"] != null) {
         for (server in example["deploy_servers_prod"]) {
             prod_deploy = prod_deploy + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
@@ -169,25 +168,23 @@ list.each {
     } else {
         artefact_creation = ""
     }
-    
-    
 
 
     repo_url_slash_split = repo_url.split('/')
-    folder_name = repo_url_slash_split[repo_url_slash_split.length -2] +"/"+repo_url_slash_split.last().replace(".git", "").trim()
+    folder_name = repo_url_slash_split[repo_url_slash_split.length - 2] + "/" + repo_url_slash_split.last().replace(".git", "").trim()
 
     // Creating parent folder
-    folder(repo_url_slash_split[repo_url_slash_split.length -2]) {
-        description('Folder containing all '+repo_url_slash_split[repo_url_slash_split.length -2]+' related jobs')
+    folder(repo_url_slash_split[repo_url_slash_split.length - 2]) {
+        description('Folder containing all ' + repo_url_slash_split[repo_url_slash_split.length - 2] + ' related jobs')
     }
 
     // Creating repo specific folder
     println(folder_name)
     folder(folder_name) {
-        description('Folder containing all '+folder_name+' related jobs')
+        description('Folder containing all ' + folder_name + ' related jobs')
     }
-    println(folder_name+"/"+example["name"])
-    pipelineJob(folder_name+"/"+example["name"]) {
+    println(folder_name + "/" + example["name"])
+    pipelineJob(folder_name + "/" + example["name"]) {
         definition {
             cps {
                 script("""
@@ -250,14 +247,14 @@ list.each {
     println(example)
 
 
-folder("Infra") {
-    description('Folder containing all Infra related jobs')
-}
+    folder("Infra") {
+        description('Folder containing all Infra related jobs')
+    }
 
-pipelineJob('Software-Mathematics/MMUAPI/apithf'){
-    definition {
-        cps {
-            script("""
+    pipelineJob('Software-Mathematics/MMUAPI/apithf') {
+        definition {
+            cps {
+                script("""
     pipeline {
                 agent any
                 tools {
@@ -306,16 +303,16 @@ pipelineJob('Software-Mathematics/MMUAPI/apithf'){
                 }
             }
             """)
-            sandbox()
+                sandbox()
+            }
         }
     }
-}
 
 
-pipelineJob('Infra/jenkins'){
-    definition {
-        cps {
-            script("""
+    pipelineJob('Infra/jenkins') {
+        definition {
+            cps {
+                script("""
     pipeline {
                 agent any
                 tools {
@@ -365,15 +362,15 @@ pipelineJob('Infra/jenkins'){
             }
             }
             """)
-            sandbox()
+                sandbox()
+            }
         }
     }
-}
 
-pipelineJob('Infra/nginx'){
-    definition {
-        cps {
-            script("""
+    pipelineJob('Infra/nginx') {
+        definition {
+            cps {
+                script("""
     pipeline {
                 agent any
                 tools {
@@ -418,14 +415,14 @@ pipelineJob('Infra/nginx'){
             }
             }
             """)
-            sandbox()
+                sandbox()
+            }
         }
     }
-}
-pipelineJob('Infra/monitoring-server'){
-    definition {
-        cps {
-            script("""
+    pipelineJob('Infra/monitoring-server') {
+        definition {
+            cps {
+                script("""
     pipeline {
                 agent any
                 tools {
@@ -470,21 +467,21 @@ pipelineJob('Infra/monitoring-server'){
             }
             }
             """)
-            sandbox()
+                sandbox()
+            }
         }
     }
-}
-pipelineJob('Infra/create-user'){
+    pipelineJob('Infra/create-user') {
 
-    parameters {
-        stringParam("USERNAME","root", "Sample string parameter")
-        stringParam('PASSWORD', null, 'Enter the password of the remote host')
-        stringParam("IP",null, "Sample string parameter")
-    }
-    definition {
+        parameters {
+            stringParam("USERNAME", "root", "Sample string parameter")
+            stringParam('PASSWORD', null, 'Enter the password of the remote host')
+            stringParam("IP", null, "Sample string parameter")
+        }
+        definition {
 
-        cps {
-            script("""
+            cps {
+                script("""
     pipeline {
                 agent any
                 tools {
@@ -530,9 +527,10 @@ pipelineJob('Infra/create-user'){
             }
             }
             """)
-            sandbox()
+                sandbox()
+            }
         }
     }
+
+
 }
-
-
