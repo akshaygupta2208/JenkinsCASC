@@ -6,7 +6,7 @@ application_port: 9000
 deploy_port: 9085
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers_dev:
-  - 38.242.154.127
+  - 38.242.198.101
 deploy_servers_prod:
   - 194.163.159.164
 deploy_env:
