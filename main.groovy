@@ -91,6 +91,7 @@ list.each {
                                 sh 'echo "DevSanity"'
                                 }    
                         }
+}
 """
     prod_stage = """
                     stage('DeployProd') {
