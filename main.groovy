@@ -85,7 +85,6 @@ list.each {
                                 
                               
                                 }    
-                        }
                     stage('DevSanity') {
                             steps{  
                                 sh 'echo "DevSanity"'
@@ -99,7 +98,6 @@ list.each {
                                 ${prod_deploy}
                                 }    
                         }
-}
                     stage('ProdSanity') {
                             steps{  
                                 sh 'echo "ProdSanity"'
