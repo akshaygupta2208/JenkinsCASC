@@ -4,7 +4,9 @@ run_command: java -jar app.jar
 src_path: my-workflow
 application_port: 8088
 deploy_port: 9135
-deploy_servers:
+deploy_servers_dev:
+  - 38.242.154.127
+deploy_servers_prod:
   - 194.163.159.164
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
