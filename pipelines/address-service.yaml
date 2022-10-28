@@ -10,6 +10,6 @@ deploy_servers_dev:
 deploy_servers_prod:
   - 194.163.159.164
 deploy_env:
-  - dev
+#  - dev
   - stg
-#  - prod
+  - prod
