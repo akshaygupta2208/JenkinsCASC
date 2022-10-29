@@ -109,6 +109,7 @@ list.each {
                             steps{  
                                 sh 'echo "DeployProd"'
                                 ${prod_deploy}
+                                ${deploy_env}
                                 }    
                         }
                     stage('ProdSanity') {
@@ -132,7 +133,7 @@ list.each {
                     stage('Deployqa') { 
                             steps{  
                                 sh 'echo "DeployQA"'
-                                ${deploy_env}
+                                
                                 }    
                         }
                     stage('qaSanity') {
