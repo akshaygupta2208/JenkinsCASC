@@ -41,6 +41,7 @@ list.each {
     src_path = example["src_path"]
     dev_deploy = ""
     prod_deploy = ""
+    deploy_env = ""
 
 
     if (example["deploy_servers_dev"] != null) {
