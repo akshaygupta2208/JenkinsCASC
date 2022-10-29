@@ -1,6 +1,6 @@
 name: group-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
-run_command: java -Xmx128m -jar app.jar
+run_command: java -Xmx256m -jar app.jar
 src_path: group-service
 application_port: 9004
 deploy_port: 9088
