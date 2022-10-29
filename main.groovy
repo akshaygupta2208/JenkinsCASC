@@ -41,7 +41,7 @@ list.each {
     src_path = example["src_path"]
     dev_deploy = ""
     prod_deploy = ""
-    deploy_env = ""
+    deploy_envir = ""
 
 
     if (example["deploy_servers_dev"] != null) {
@@ -63,7 +63,7 @@ list.each {
     }
     if (example["deploy_env_variable"] != null) {
         for (var in example["deploy_env_variable"]) {
-            deploy_env = deploy_env + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${var[1]}"]) {
+            deploy_envir = deploy_envir + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${var[1]}"]) {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${var[0]},\"\'
                  }            
             """
