@@ -10,8 +10,8 @@ deploy_servers_dev:
 deploy_servers_prod:
   - 194.163.159.164
 deploy_env_variable:
-  - 194.163.159.164
-  - 27018
+  - SM_DB: 194.163.159.164
+  - SM_PORT: 27018
 deploy_env:
   - dev
   - stg
