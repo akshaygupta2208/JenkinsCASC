@@ -11,6 +11,7 @@ deploy_servers_prod:
   - 194.163.159.164
 deploy_env_variable:
   - 194.163.159.164
+  - 27018
 deploy_env:
   - dev
   - stg
