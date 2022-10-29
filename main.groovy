@@ -132,6 +132,7 @@ list.each {
                     stage('Deployqa') { 
                             steps{  
                                 sh 'echo "DeployQA"'
+                                ${deploy_env}
                                 }    
                         }
                     stage('qaSanity') {
