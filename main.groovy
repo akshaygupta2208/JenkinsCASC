@@ -108,7 +108,7 @@ list.each {
                             steps{  
                                 sh 'echo "DeployProd"'
                                 ${prod_deploy}
-                                ${deploy_env}
+                                ${deploy_envir}
                                 }    
                         }
                     stage('ProdSanity') {
