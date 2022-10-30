@@ -9,7 +9,7 @@ deploy_servers_dev:
   - 38.242.154.127
 deploy_servers_prod:
   - 194.163.159.164
-deploy_env_variable: SM_DB= 194.163.159.164 SM_DB_HOST= mongo
+deploy_env_variable: SM_DB=194.163.159.164 SM_DB_HOST=mongo
 deploy_env:
   - dev
   - stg
