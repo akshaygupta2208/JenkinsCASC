@@ -10,8 +10,7 @@ deploy_servers_dev:
 deploy_servers_prod:
   - 194.163.159.164
 deploy_env_variable:
-  - SM_DB= 194.163.159.164
-  - SM_DB_HOST= mongo
+  - SM_DB= 194.163.159.164\n SM_DB_HOST= mongo
 #  - SM_PORT: 27018
 deploy_env:
   - dev
