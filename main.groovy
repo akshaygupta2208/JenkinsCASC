@@ -62,15 +62,15 @@ list.each {
         }
     }
     if (example["deploy_env_variable"] != null) {
-        for (var in example["deploy_env_variable"]) {
+//        for (var in example["deploy_env_variable"]) {
 //            for (i in var) {
                 deploy_envir = deploy_envir + """withEnv(["CONTAINER_NAME=${name}","CONTAINER_IMAGE=${NEXUS_DOCKER_REPO_BASE}/${name}", "deploy_port=${deploy_port}", "application_port=${application_port}"]) {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${var},\"\'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'ansible/deployapp.yml', extras: \'-i \"${example["deploy_env_variable"]},\"\'
                          
                  }   
             """
 //            }
-        }
+//        }
     }
 
     artefact_creation = """
