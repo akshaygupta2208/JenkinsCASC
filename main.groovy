@@ -470,7 +470,6 @@ list.each {
                     stage("execute Ansible") {
            steps {
                 sh 'python3 jenkins/prometheus.py'
-//                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible/monitoring-inventory.yml', playbook: 'ansible/monitoring-nginx-playbook'
             
                
                }    
