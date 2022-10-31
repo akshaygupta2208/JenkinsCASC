@@ -4,8 +4,9 @@ run_command:
 src_path: MMU_AdminUI
 application_port: 80
 deploy_port: 9130
-deploy_servers:
+deploy_servers_prod:
   - 194.163.159.164
+deploy_env_prod: SM_TEST=test
 build_command: . /root/.nvm/nvm.sh && nvm install 16 && nvm use 16 && node -v && npm install && npm run build
 deploy_env:
   - dev

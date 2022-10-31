@@ -4,8 +4,9 @@ run_command: java -Xmx256m -jar app.jar
 src_path: stock-service
 application_port: 6011
 deploy_port: 9136
-deploy_servers:
+deploy_servers_prod:
   - 161.97.136.16
+deploy_env_prod: SM_TEST=test
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev

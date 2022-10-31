@@ -4,8 +4,9 @@ run_command: java -Xmx256m -jar app.jar
 src_path: group-service
 application_port: 9004
 deploy_port: 9088
-deploy_servers:
+deploy_servers_prod:
   - 194.163.159.164
+deploy_env_prod: SM_TEST=test
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev

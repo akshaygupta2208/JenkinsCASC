@@ -5,8 +5,9 @@ src_path: doses-service
 application_port: 8081
 deploy_port: 9099
 build_command: mvn clean install -s $MAVEN_SETTINGS
-deploy_servers:
+deploy_servers_prod:
   - 161.97.136.16
+deploy_env_prod: SM_TEST=test
 deploy_env:
   - dev
   - stg

@@ -18,8 +18,8 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-#pipeline_base = "pipelines"
-#krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
 
 def get_recursive_files(base_path):
@@ -56,87 +56,75 @@ def write_yaml(yaml_data):
     with open('toyaml_updated_stg.yml', 'w') as f:
         yaml.dump(yaml_data, f, Dumper=MyDumper, default_flow_style=False)
 
-def health_check_is_available(domain):
-    try:
-        x = requests.get("https://" + domain + "/app/health")
-        if x.status_code == 200:
-            return True
-    except Exception as e:
-        print(e)
-    return False
-
-
-yaml_dict = OrderedDict({"scrape_configs": [
-    {
-        "job_name": "blackbox",
-        "static_configs": [
-            OrderedDict({
-                "targets": [],
-                "labels": OrderedDict({
-                    "service_name": "",
-                    "env": "",
-                    "verticle": ""
-                })
-
-            })
+yaml_dict = OrderedDict({
+         "static_configs": [
         ]
-    }
-]
-
 }
 )
 
-def write_data_yaml(item_list,env):
-    for item in item_list:
-        ### exclude RGB environments
-        exclude_list = ["-red-", "-blue-", "-green-"]
-        if [ele for ele in exclude_list if(ele in item)]:
-            continue
-        ###### check if monitoring is not enabled
-        if True: #item not in data:
-            namespace = item.split(',')[-1]
-            service_end_point = item.split(',')[0]
-            service_name = item.split(".")[0].split("-")[0]
-            #print(namespace,service_end_point,service_name)
-            ####check if healthcheck endpoint is available
-            if health_check_is_available(service_end_point):
-                #### identify the service name
-
-                service_name_found = False
-
-                for idx, data_item in enumerate(yaml_dict["scrape_configs"][0]["static_configs"]):
-                    if data_item["labels"]["service_name"] == service_name:
-                        service_name_found = True
-
-                        yaml_dict["scrape_configs"][0]["static_configs"][idx]["targets"].append(
-                            "https://" + service_end_point + "/app/health")
-                        break
-                if not service_name_found:
-                    new_data_item = OrderedDict({
-                        "targets": ["https://" + service_end_point + "/app/health"],
-                        "labels": OrderedDict({
-                            "service_name": service_name,
-                            "env": env,
-                            "verticle": namespace
-                        })
-                    })
-                    yaml_dict["scrape_configs"][0]["static_configs"].append(new_data_item)
-            else:
-                print("health check is not available for " + item)
-
-
+prometheus_temp = read_yaml("prometheus.template.yml")
 for pipeline_file in get_recursive_files(pipeline_base):
     print(f'Working on file {pipeline_file}')
 
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
     # deploy_port
-    if "deploy_port" in yaml_config[0] and "deploy_servers" in yaml_config[0]:
+    if "deploy_port" in yaml_config[0] and "deploy_servers_dev" in yaml_config[0]:
         deploy_port = yaml_config[0].get("deploy_port")
         app_name = yaml_config[0].get("name")
-        deploy_servers = yaml_config[0].get("deploy_servers")
+        deploy_servers = yaml_config[0].get("deploy_servers_dev")
         print("Application has deploy_port looking for swagger config now")
         # get swagger data if present
         swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
         if swagger_data:
-            write_data_yaml(dev_item_list, 'dev')
+            service_name_found = False
+
+            for idx, data_item in enumerate(yaml_dict["static_configs"]):
+                if data_item["labels"]["service_name"] == app_name:
+                    service_name_found = True
+
+                    yaml_dict["static_configs"][idx]["targets"].append(
+                        f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs")
+                    break
+            if not service_name_found:
+                new_data_item = OrderedDict({
+                    "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
+                    "labels": OrderedDict({
+                        "service_name": app_name,
+                        "env": "dev",
+                        "bu": "mmu"
+                    })
+                })
+                yaml_dict["static_configs"].append(new_data_item)
+
+    if "deploy_port" in yaml_config[0] and "deploy_servers_prod" in yaml_config[0]:
+        deploy_port = yaml_config[0].get("deploy_port")
+        app_name = yaml_config[0].get("name")
+        deploy_servers = yaml_config[0].get("deploy_servers_prod")
+        print("Application has deploy_port looking for swagger config now")
+        # get swagger data if present
+        swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
+        if swagger_data:
+            service_name_found = False
+
+            for idx, data_item in enumerate(yaml_dict["static_configs"]):
+                if data_item["labels"]["service_name"] == app_name:
+                    service_name_found = True
+
+                    yaml_dict["static_configs"][idx]["targets"].append(
+                        f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs")
+                    break
+            if not service_name_found:
+                new_data_item = OrderedDict({
+                    "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
+                    "labels": OrderedDict({
+                        "service_name": app_name,
+                        "env": "prod",
+                        "bu": "mmu"
+                    })
+                })
+                yaml_dict["static_configs"].append(new_data_item)
+
+prometheus_temp[0]["scrape_configs"][1]["static_configs"] = yaml_dict["static_configs"]
+prometheus_temp = prometheus_temp[0]
+write_yaml(prometheus_temp)
