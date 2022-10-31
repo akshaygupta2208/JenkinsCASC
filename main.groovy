@@ -110,7 +110,7 @@ list.each {
                     stage('DeployProd') {
                             steps{  
                                 sh 'echo "DeployProd"'
-                                ${prod_deploy}a
+                                ${prod_deploy}
                                 }    
                         }
                     stage('ProdSanity') {
