@@ -1,7 +1,7 @@
 name: medrequisitiongen-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -Xmx256m -jar app.jar
-src_path: medRequisitionGen-service
+src_path: medRequisitionGen-servie
 application_port: 9013
 deploy_port: 9110
 build_command: mvn clean install -s $MAVEN_SETTINGS
