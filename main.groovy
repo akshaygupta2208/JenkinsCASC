@@ -472,12 +472,12 @@ list.each {
                                 sh 'echo "BuildSanity"'
                               }    
                     }  
-                    stage("execute Ansible") {
+//                    stage("execute Ansible") {
            steps {
                 sh 'python3 jenkins/prometheus.py'
             
                
-               }    
+//               }    
         }
                     
                     
