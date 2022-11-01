@@ -5,8 +5,6 @@ src_path: wareHouseMaster-servie
 application_port: 9011
 deploy_port: 9108
 build_command: mvn clean install -s $MAVEN_SETTINGS
-deploy_servers_dev:
-  - 38.242.154.127
 deploy_servers_prod:
   - 161.97.136.16
 deploy_env_prod: SM_TEST=test

@@ -15,11 +15,11 @@ dev_item_list = []
 
 
 pipeline_base = "jenkins/pipelines"
-krakend_base_json_path = "ansible/roles/apithfrole/files"
+krakend_base_json_path = "ansible/roles/prometheus/files"
 
 # enable these below mentioned variables for development in local
-pipeline_base = "pipelines"
-krakend_base_json_path = "./"
+# pipeline_base = "pipelines"
+# krakend_base_json_path = "./"
 
 
 def get_recursive_files(base_path):
