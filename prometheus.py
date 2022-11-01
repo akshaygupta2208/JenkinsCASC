@@ -124,42 +124,42 @@ for pipeline_file in get_recursive_files(pipeline_base):
                 })
 
                 yaml_dict["static_configs"].append(new_data_item)
-    new_data_item = OrderedDict({
-        "targets": ["https://grafana.softwaremathematics.com"],
-        "labels": OrderedDict({
-            "service_name": "Grafana",
-            "env": "infra",
-            "bu": "mmu"
-        })
+new_data_item = OrderedDict({
+    "targets": ["https://grafana.softwaremathematics.com"],
+    "labels": OrderedDict({
+        "service_name": "Grafana",
+        "env": "infra",
+        "bu": "mmu"
     })
-    yaml_dict["static_configs"].append(new_data_item)
-    new_data_item = OrderedDict({
-        "targets": ["https://jenkins.softwaremathematics.com"],
-        "labels": OrderedDict({
-            "service_name": "Jenkins",
-            "env": "infra",
-            "bu": "mmu"
-        })
+})
+yaml_dict["static_configs"].append(new_data_item)
+new_data_item = OrderedDict({
+    "targets": ["https://jenkins.softwaremathematics.com"],
+    "labels": OrderedDict({
+        "service_name": "Jenkins",
+        "env": "infra",
+        "bu": "mmu"
     })
-    yaml_dict["static_configs"].append(new_data_item)
-    new_data_item = OrderedDict({
-        "targets": ["https://apithf.softwaremathematics.com"],
-        "labels": OrderedDict({
-            "service_name": "Apithf",
-            "env": "infra",
-            "bu": "mmu"
-        })
+})
+yaml_dict["static_configs"].append(new_data_item)
+new_data_item = OrderedDict({
+    "targets": ["https://apithf.softwaremathematics.com"],
+    "labels": OrderedDict({
+        "service_name": "Apithf",
+        "env": "infra",
+        "bu": "mmu"
     })
-    yaml_dict["static_configs"].append(new_data_item)
-    new_data_item = OrderedDict({
-        "targets": ["https://nexus.softwaremathematics.com"],
-        "labels": OrderedDict({
-            "service_name": "Nexus",
-            "env": "infra",
-            "bu": "mmu"
-        })
+})
+yaml_dict["static_configs"].append(new_data_item)
+new_data_item = OrderedDict({
+    "targets": ["https://nexus.softwaremathematics.com"],
+    "labels": OrderedDict({
+        "service_name": "Nexus",
+        "env": "infra",
+        "bu": "mmu"
     })
-    yaml_dict["static_configs"].append(new_data_item)
+})
+yaml_dict["static_configs"].append(new_data_item)
 prometheus_temp[0]["scrape_configs"][1]["static_configs"] = yaml_dict["static_configs"]
 prometheus_temp = prometheus_temp[0]
 write_yaml(prometheus_temp)
