@@ -137,7 +137,8 @@ for x in infra_endpoints:
             "bu": "mmu"
         })
     })
-yaml_dict["static_configs"].append(new_data_item)
+    yaml_dict["static_configs"].append(new_data_item)
+
 prometheus_temp[0]["scrape_configs"][1]["static_configs"] = yaml_dict["static_configs"]
 prometheus_temp = prometheus_temp[0]
 write_yaml(prometheus_temp)
