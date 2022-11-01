@@ -62,7 +62,7 @@ yaml_dict = OrderedDict({
 }
 )
 
-prometheus_temp = read_yaml("prometheus.template.yml")
+prometheus_temp = read_yaml("ansible/roles/prometheus/files/prometheus.template.yml")
 for pipeline_file in get_recursive_files(pipeline_base):
     print(f'Working on file {pipeline_file}')
 
