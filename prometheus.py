@@ -53,7 +53,7 @@ class MyDumper(yaml.Dumper):
 
 def write_yaml(yaml_data):
     """ A function to write YAML file"""
-    with open('prometheus.yml', 'w') as f:
+    with open('ansible/roles/prometheus/prometheus.yml', 'w') as f:
         yaml.dump(yaml_data, f, Dumper=MyDumper, default_flow_style=False)
 
 yaml_dict = OrderedDict({
