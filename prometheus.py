@@ -22,8 +22,8 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/prometheus/files"
 
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
 
 def get_recursive_files(base_path):
@@ -57,7 +57,7 @@ class MyDumper(yaml.Dumper):
 
 def write_yaml(yaml_data):
     """ A function to write YAML file"""
-    with open('ansible/roles/prometheus/files/prometheus.yml', 'w') as f:
+    with open('prometheus.yml', 'w') as f:
         yaml.dump(yaml_data, f, Dumper=MyDumper, default_flow_style=False)
 
 yaml_dict = OrderedDict({
@@ -65,14 +65,14 @@ yaml_dict = OrderedDict({
 }
 )
 
-prometheus_temp = read_yaml("ansible/roles/prometheus/files/prometheus.template.yml")
+prometheus_temp = read_yaml("prometheus.template.yml")
 for pipeline_file in get_recursive_files(pipeline_base):
     print(f'Working on file {pipeline_file}')
 
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
     # deploy_port
-    if "deploy_port" in yaml_config[0] and "deploy_servers_dev" in yaml_config[0]:
+    if "deploy_servers_dev" in yaml_config[0]:
         deploy_port = yaml_config[0].get("deploy_port")
         app_name = yaml_config[0].get("name")
         deploy_servers = yaml_config[0].get("deploy_servers_dev")
@@ -82,8 +82,8 @@ for pipeline_file in get_recursive_files(pipeline_base):
         if swagger_data:
             service_name_found = False
 
-            for idx, data_item in enumerate(yaml_dict["static_configs"]):
-                if data_item["labels"]["service_name"] == app_name:
+            for idx, data_item_dev in enumerate(yaml_dict["static_configs"]):
+                if data_item_dev["labels"]["service_name"] == app_name:
                     service_name_found = True
 
                     yaml_dict["static_configs"][idx]["targets"].append(
@@ -100,7 +100,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                 })
                 yaml_dict["static_configs"].append(new_data_item)
 
-    if "deploy_port" in yaml_config[0] and "deploy_servers_prod" in yaml_config[0]:
+    if "deploy_servers_prod" in yaml_config[0]:
         deploy_port = yaml_config[0].get("deploy_port")
         app_name = yaml_config[0].get("name")
         deploy_servers = yaml_config[0].get("deploy_servers_prod")
@@ -110,8 +110,8 @@ for pipeline_file in get_recursive_files(pipeline_base):
         if swagger_data:
             service_name_found = False
 
-            for idx, data_item in enumerate(yaml_dict["static_configs"]):
-                if data_item["labels"]["service_name"] == app_name:
+            for idx, data_item_prod in enumerate(yaml_dict["static_configs"]):
+                if data_item_prod["labels"]["service_name"] == app_name:
                     service_name_found = True
 
                     yaml_dict["static_configs"][idx]["targets"].append(
@@ -133,7 +133,7 @@ for x in infra_endpoints:
         "targets": [infra_endpoints[x]],
         "labels": OrderedDict({
             "service_name": x,
-            "env": "infra",
+            "env": "prod",
             "bu": "mmu"
         })
     })
