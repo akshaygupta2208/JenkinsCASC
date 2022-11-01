@@ -101,10 +101,10 @@ for pipeline_file in get_recursive_files(pipeline_base):
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
     # deploy_port
-    if "deploy_port" in yaml_config[0] and "deploy_servers" in yaml_config[0]:
+    if "deploy_port" in yaml_config[0] and "deploy_servers_prod" in yaml_config[0]:
         deploy_port = yaml_config[0].get("deploy_port")
         app_name = yaml_config[0].get("name")
-        deploy_servers = yaml_config[0].get("deploy_servers")
+        deploy_servers = yaml_config[0].get("deploy_servers_prod")
         print("Application has deploy_port looking for swagger config now")
         # get swagger data if present
         swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
