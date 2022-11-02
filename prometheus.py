@@ -14,7 +14,7 @@ infra_endpoints = {
     "Nexus":  "https://nexus.softwaremathematics.com"
 }
 pipeline_base = "jenkins/pipelines"
-krakend_base_json_path = "ansible/roles/prometheus/files"
+krakend_base_json_path = "ansible/roles/prometheus/files/"
 
 # enable these below mentioned variables for development in local
 # pipeline_base = "pipelines"
