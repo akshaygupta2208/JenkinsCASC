@@ -14,11 +14,11 @@ infra_endpoints = {
     "Nexus":  "https://nexus.softwaremathematics.com"
 }
 pipeline_base = "jenkins/pipelines"
-krakend_base_json_path = "ansible/roles/prometheus/files/"
+prometheus_path = "ansible/roles/prometheus/files/"
 
 # enable these below mentioned variables for development in local
 # pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+# prometheus_path = "./"
 
 
 def get_recursive_files(base_path):
@@ -52,7 +52,7 @@ class MyDumper(yaml.Dumper):
 
 def write_yaml(yaml_data):
     """ A function to write YAML file"""
-    with open(f'{krakend_base_json_path}prometheus.yml', 'w') as f:
+    with open(f'{prometheus_path}prometheus.yml', 'w') as f:
         yaml.dump(yaml_data, f, Dumper=MyDumper, default_flow_style=False)
 
 yaml_dict = OrderedDict({
@@ -60,7 +60,7 @@ yaml_dict = OrderedDict({
 }
 )
 
-prometheus_temp = read_yaml(f"{krakend_base_json_path}prometheus.template.yml")
+prometheus_temp = read_yaml(f"{prometheus_path}prometheus.template.yml")
 for pipeline_file in get_recursive_files(pipeline_base):
     print(f'Working on file {pipeline_file}')
 
