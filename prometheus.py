@@ -81,14 +81,6 @@ for pipeline_file in get_recursive_files(pipeline_base):
         swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
         if swagger_data:
             service_name_found = False
-
-            for idx, data_item_dev in enumerate(yaml_dict["static_configs"]):
-                if data_item_dev["labels"]["service_name"] == app_name:
-                    service_name_found = True
-
-                    yaml_dict["static_configs"][idx]["targets"].append(
-                        f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs")
-                    break
             if not service_name_found:
                 new_data_item = OrderedDict({
                     "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
@@ -109,14 +101,6 @@ for pipeline_file in get_recursive_files(pipeline_base):
         swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
         if swagger_data:
             service_name_found = False
-
-            for idx, data_item_prod in enumerate(yaml_dict["static_configs"]):
-                if data_item_prod["labels"]["service_name"] == app_name:
-                    service_name_found = True
-
-                    yaml_dict["static_configs"][idx]["targets"].append(
-                        f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs")
-                    break
             if not service_name_found:
                 new_data_item = OrderedDict({
                     "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
