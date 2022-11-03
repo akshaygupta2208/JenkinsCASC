@@ -10,7 +10,7 @@ import oyaml as yaml
 dev_item_list = []
 infra_endpoints = {
     "Grafana": "https://grafana.softwaremathematics.com",
-    "Jenkins": "https://jenkins.softwaremathematics.com",
+    "Jenkins": "https://jenkins.softwaremathematics.com/login?from=%2F",
     "Apithf": "https://apithf.softwaremathematics.com",
     "Nexus":  "https://nexus.softwaremathematics.com"
 }
