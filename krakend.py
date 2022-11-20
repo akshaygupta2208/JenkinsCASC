@@ -66,9 +66,11 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-#pipeline_base = "pipelines"
-#krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
+
+########################
 
 def get_recursive_files(base_path):
     result = [y for x in os.walk(base_path) for y in glob(os.path.join(x[0], '*.y*ml'))]
@@ -101,10 +103,10 @@ for pipeline_file in get_recursive_files(pipeline_base):
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
     # deploy_port
-    if "deploy_port" in yaml_config[0] and "deploy_servers" in yaml_config[0]:
+    if "deploy_port" in yaml_config[0] and "deploy_servers_prod" in yaml_config[0]:
         deploy_port = yaml_config[0].get("deploy_port")
         app_name = yaml_config[0].get("name")
-        deploy_servers = yaml_config[0].get("deploy_servers")
+        deploy_servers = yaml_config[0].get("deploy_servers_prod")
         print("Application has deploy_port looking for swagger config now")
         # get swagger data if present
         swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
@@ -119,7 +121,6 @@ for pipeline_file in get_recursive_files(pipeline_base):
                         krakend_config = {}
                         krakend_config["endpoint"] = f"/{app_name}{path}"
                         krakend_config["input_query_strings"] = ["*"]
-                        krakend_config["output_encoding"] = "json"
                         krakend_config["input_headers"] = ["Content-Type", "Cookie"]
                         krakend_config["method"] = method
                         krakend_config["backend"] = []
@@ -127,18 +128,16 @@ for pipeline_file in get_recursive_files(pipeline_base):
                         for server in deploy_servers:
                             hosts.append(f"{server}:{deploy_port}")
                         backend = {
-                            "encoding": "json",
+                            "encoding": "no-op",
                             "url_pattern": path,
                             "host": hosts,
                             "method": method
                         }
                         krakend_config["backend"].append(backend)
-                        krakend_base_json["endpoints"].append(krakend_config)
-
+                    krakend_base_json["endpoints"].append(krakend_config)
 # Serializing json
 json_object = json.dumps(krakend_base_json, indent=4)
 print(json.dumps(json_object, indent=4))
-
 # Writing to sample.json
 with open(f"{krakend_base_json_path}/krakend.json", "w") as outfile:
     outfile.write(json.dumps(krakend_base_json, indent=4))
