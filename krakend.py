@@ -66,8 +66,8 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
 
 ########################
@@ -119,6 +119,7 @@ for pipeline_file in get_recursive_files(pipeline_base):
                     for method in allowed_methods:
                         method = method.upper()
                         krakend_config = {}
+                        krakend_config["output_encoding"] = "no-op"
                         krakend_config["endpoint"] = f"/{app_name}{path}"
                         krakend_config["input_query_strings"] = ["*"]
                         krakend_config["input_headers"] = ["Content-Type", "Cookie"]
