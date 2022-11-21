@@ -66,11 +66,9 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+#pipeline_base = "pipelines"
+#krakend_base_json_path = "./"
 
-
-########################
 
 def get_recursive_files(base_path):
     result = [y for x in os.walk(base_path) for y in glob(os.path.join(x[0], '*.y*ml'))]
@@ -119,9 +117,9 @@ for pipeline_file in get_recursive_files(pipeline_base):
                     for method in allowed_methods:
                         method = method.upper()
                         krakend_config = {}
-                        krakend_config["output_encoding"] = "no-op"
                         krakend_config["endpoint"] = f"/{app_name}{path}"
                         krakend_config["input_query_strings"] = ["*"]
+                        krakend_config["output_encoding"] = "no-op"
                         krakend_config["input_headers"] = ["Content-Type", "Cookie"]
                         krakend_config["method"] = method
                         krakend_config["backend"] = []
@@ -135,10 +133,12 @@ for pipeline_file in get_recursive_files(pipeline_base):
                             "method": method
                         }
                         krakend_config["backend"].append(backend)
-                    krakend_base_json["endpoints"].append(krakend_config)
+                        krakend_base_json["endpoints"].append(krakend_config)
+
 # Serializing json
 json_object = json.dumps(krakend_base_json, indent=4)
 print(json.dumps(json_object, indent=4))
+
 # Writing to sample.json
 with open(f"{krakend_base_json_path}/krakend.json", "w") as outfile:
     outfile.write(json.dumps(krakend_base_json, indent=4))
