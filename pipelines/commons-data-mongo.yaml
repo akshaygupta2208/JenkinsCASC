@@ -1,6 +1,6 @@
 name: commons-data-mongo
 repo_url: https://github.com/Software-Mathematics/common-data-mongo.git
 src_path: ./commons-data-mongo/
-build_command: mvn clean install -DskipTests -s $MAVEN_SETTINGS
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - mvn

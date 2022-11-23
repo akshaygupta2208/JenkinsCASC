@@ -8,7 +8,7 @@ deploy_servers_dev:
   - 38.242.154.127
 deploy_servers_prod:
   - 194.163.159.164
-build_command: mvn clean install -DskipTests -s $MAVEN_SETTINGS
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
   - dev
   - stg
