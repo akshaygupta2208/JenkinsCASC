@@ -23,7 +23,7 @@ durable-task:501.ve5d4fc08b0be
 echarts-api:5.4.0-1
 email-ext:2.92
 folder-auth:1.4
-font-awesome-api:6.2.0-3
+font-awesome-api:6.2.1-1
 git:4.13.0
 git-client:3.13.0
 github:1.36.0
