@@ -19,7 +19,8 @@ RUN apt-get -y install \
     gnupg \
     ansible \
     lsb-release \
-    sshpass
+    sshpass \
+    python3-pip
 RUN pip3 install kafka-python
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
     && echo \
