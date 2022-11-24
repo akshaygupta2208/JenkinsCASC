@@ -4,7 +4,7 @@ run_command: java -Xmx256m -jar app.jar
 src_path: qualification-service-mongo
 application_port: 6009
 deploy_port: 9119
-build_command: mvn clean install -DskipTests -s $MAVEN_SETTINGS
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers_prod:
   - 194.163.159.164
 deploy_env_prod: SM_QUALIFICATION_SERVICE_DB_HOST=194.163.159.164 SM_QUALIFICATION_SERVICE_DB_PORT=27018 SM_QUALIFICATION_SERVICE_DB_USERNAME=devops SM_QUALIFICATION_SERVICE_DB_PASSWORD=devops@123 SM_QUALIFICATION_SERVICE_DB_NAME=newusermanagement SM_QUALIFICATION_SERVICE_APP_PORT=6009

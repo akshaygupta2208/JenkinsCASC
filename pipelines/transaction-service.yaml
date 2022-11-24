@@ -4,7 +4,7 @@ run_command: java -Xmx256m -jar app.jar
 src_path: transaction-servie
 application_port: 9012
 deploy_port: 9109
-build_command: mvn clean install -DskipTests -s $MAVEN_SETTINGS
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers_dev:
   - 185.207.250.107
 deploy_servers_prod:

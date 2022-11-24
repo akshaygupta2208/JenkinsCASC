@@ -4,7 +4,7 @@ run_command: java -Xmx256m -jar app.jar
 src_path: address-service
 application_port: 8082
 deploy_port: 9083
-build_command: mvn clean install -DskipTests -s $MAVEN_SETTINGS
+build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers_prod:
   - 194.163.159.164
 deploy_env_prod: SM_TEST=test
