@@ -9,7 +9,7 @@ deploy_servers_dev:
 deploy_servers_prod:
   - 194.163.159.164
 build_command: mvn clean install -s $MAVEN_SETTINGS
-deploy-env-prod: SM-test=test
+deploy_env_prod: SM_TEST=test
 deploy_env:
 #  - dev
   - stg
