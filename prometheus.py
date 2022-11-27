@@ -11,8 +11,9 @@ dev_item_list = []
 infra_endpoints = {
     "Grafana": "https://grafana.softwaremathematics.com",
     "Jenkins": "https://jenkins.softwaremathematics.com/login?from=%2F",
-    "Apithf" : "https://apithf.softwaremathematics.com/__health",
-    "Nexus":  "https://nexus.softwaremathematics.com"
+    "Apithf": "https://apithf.softwaremathematics.com/__health",
+    "Nexus":  "https://nexus.softwaremathematics.com",
+    "Camunda": "https://workflow.softwaremathematics.com/camunda/app/welcome/default/#!/login"
 }
 pipeline_base = "jenkins/pipelines"
 prometheus_path = "ansible/roles/prometheus/files/"
