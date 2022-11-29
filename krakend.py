@@ -71,8 +71,8 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
 
 ########################
