@@ -34,7 +34,6 @@ list.each {
     build_command = example["build_command"]
     java_command = example["run_command"]
     deployenv = example["deploy_env"]
-    max_memory = java_command.split(Xmx)
     name = example["name"]
     name = name.toLowerCase()
     application_port = example["application_port"]
@@ -43,7 +42,6 @@ list.each {
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
-
     if (java_command.contains('java -Xmx256m -jar app.jar')){
         println("doneDONE")
     }
