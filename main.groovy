@@ -42,7 +42,7 @@ list.each {
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
-    if (java_command.contains('java -Xmx256m -jar app.jar')){
+    if (java_command.contains(java)){
         println("doneDONE")
     }
 
