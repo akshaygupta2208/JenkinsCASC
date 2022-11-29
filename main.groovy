@@ -44,9 +44,9 @@ list.each {
     prod_deploy = ""
     deploy_envir = ""
 
-    if java_command.contains(Xms):
-        pass
-
+    if (java_command.contains(Xms)) {
+        println("doneDONE")
+    }
 
 
     if (example["deploy_servers_dev"] != null) {
