@@ -1,6 +1,6 @@
 name: common-util
 repo_url: https://github.com/Software-Mathematics/common-util.git
-run_command:
+
 src_path: ./Old/commons-util
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
