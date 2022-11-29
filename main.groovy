@@ -45,6 +45,9 @@ list.each {
     if (java_command.contains('java')){
         println("doneDONE")
     }
+    else{
+        println("NOT FOUND XMX")
+    }
 
 
     if (example["deploy_servers_dev"] != null) {
