@@ -54,8 +54,9 @@ list.each {
             max_memory = c*2
             max_memory = ((max_memory + 99) / 100)
             max_memory = max_memory -1
-            max_memory = max_memory * 100
             max_memory = max_memory.round(0)
+            max_memory = max_memory * 100
+
             println(max_memory)
         }
     }
