@@ -48,8 +48,8 @@ list.each {
             println(a)
             b = a[1].split('m -jar app.jar')
             println(b)
-            b = b.toInteger()
-            max_memory = b*2
+            int c = Integer.parseInt(b)
+            max_memory = c*2
             println(max_memory)
         }
     }
