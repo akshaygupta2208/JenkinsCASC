@@ -48,7 +48,7 @@ list.each {
             println(a)
             b = a[1].split('m -jar app.jar')
             println(b)
-            int c = Integer.parseInt(b)
+            int c = b[0]
             println(c)
             max_memory = c*2
             println(max_memory)
