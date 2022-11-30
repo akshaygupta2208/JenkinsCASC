@@ -45,9 +45,9 @@ list.each {
     if (example["run_command"] != null){
         if (example["run_command"].contains("Xmx")){
             println("doneDONE")
-            a = java_command.split("java -Xmx")
+            a = java_command.split(" ")
             println(a)
-            b = a.split("m -jar app.jar")
+            b = a[1].split('-Xmx')
             println(b)
         }
     }
