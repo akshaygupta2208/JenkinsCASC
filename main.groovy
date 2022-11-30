@@ -23,6 +23,9 @@ NEXUS_REPO_URL = "https://nexus.softwaremathematics.com/"
 NEXUS_DOCKER_REPO_BASE = "nexus.softwaremathematics.com"
 VERSION = "${BUILD_TIMESTAMP}"
 
+def round_down_to_nearest_100(num) {
+    return math.floor(num / 100) * 100
+}
 list.each {
     println it.path
 
@@ -42,6 +45,7 @@ list.each {
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
+
     if (example["run_command"] != null){
         if (example["run_command"].contains("Xmx")){
             a = java_command.split("Xmx")
@@ -51,7 +55,7 @@ list.each {
             int c = b[0].toInteger()
             println(c)
             max_memory = c*2
-            max_memory = max_memory.round()
+            max_memory = round_down_to_nearest_100(max_memory)
             println(max_memory)
         }
     }
