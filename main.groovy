@@ -48,7 +48,8 @@ list.each {
             a = java_command.split(" ")
             println(a)
             b = a[1].split('-Xmx')
-            println(b)
+            c = b[1].split('m')
+            println(c)
         }
     }
     else{
