@@ -54,6 +54,7 @@ list.each {
             println(c)
             max_memory = c*2
             max_memory = max_memory/100
+            max_memory = max_memory * 100
             max_memory = Math.round(max_memory)
 
 
