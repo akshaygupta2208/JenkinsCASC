@@ -1,6 +1,5 @@
 name: common-data-mysql
 repo_url: https://github.com/Software-Mathematics/common-data.git
-run_command:
 src_path: ./Old/commons-data-mysql/
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_env:
