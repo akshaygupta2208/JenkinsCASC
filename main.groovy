@@ -44,11 +44,11 @@ list.each {
     deploy_envir = ""
     if (example["run_command"] != null){
         if (example["run_command"].contains("Xmx")){
-            a = java_command.split("java -Xmx")
+            a = java_command.split("Xmx")
             println(a)
-            b = a[1].split('m -jar app.jar')
+            b = a[1].split('m')
             println(b)
-            int c = b[0]
+            int c = b[0].toInteger()
             println(c)
             max_memory = c*2
             println(max_memory)
