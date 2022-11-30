@@ -51,6 +51,7 @@ list.each {
             int c = b[0].toInteger()
             println(c)
             max_memory = c*2
+            max_memory = max_memory.round()
             println(max_memory)
         }
     }
