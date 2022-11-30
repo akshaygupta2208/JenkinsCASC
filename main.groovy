@@ -52,10 +52,9 @@ list.each {
             int c = b[0].toInteger()
             println(c)
             max_memory = c*2
-            max_memory = ((max_memory + 99) / 100)
-            max_memory = max_memory -1
-            max_memory = max_memory.round(0)
-            max_memory = max_memory * 100
+            max_memory = max_memory/100
+            max_memory = round(max_memory)
+
 
             println(max_memory)
         }
