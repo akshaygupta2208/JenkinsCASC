@@ -43,14 +43,10 @@ list.each {
     prod_deploy = ""
     deploy_envir = ""
     if (example["run_command"] != null){
-        if (example["run_command"].contains("Xmx")){
-            println("doneDONE")
-            a = java_command.split("java -Xmx")
-            println(a)
-            b = a[1].split('m -jar app.jar')
-//            c = b[1].split('')
-            println(b)
-        }
+        a = java_command.split("java -Xmx")
+        println(a)
+        b = a[1].split('m -jar app.jar')
+        println(b)
     }
     else{
         println("NOT FOUND XMX")
