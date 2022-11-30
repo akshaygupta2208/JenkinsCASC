@@ -42,8 +42,10 @@ list.each {
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
-    if (!example["run_command"].contains('java')){
-        println("doneDONE")
+    if (example["run_command"] != null){
+        if (example["run_command"].contains("java")){
+
+        }
     }
     else{
         println("NOT FOUND XMX")
