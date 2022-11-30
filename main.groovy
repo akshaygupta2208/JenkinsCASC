@@ -5,6 +5,7 @@ import hudson.model.*
 import jenkins.*
 import jenkins.model.*
 import org.yaml.snakeyaml.Yaml
+import java.lang.Math
 
 def current_workspace = System.getProperty("user.dir")
 
@@ -53,7 +54,7 @@ list.each {
             println(c)
             max_memory = c*2
             max_memory = max_memory/100
-            max_memory = round(max_memory)
+            max_memory = Math.round(max_memory)
 
 
             println(max_memory)
