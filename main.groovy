@@ -43,10 +43,14 @@ list.each {
     prod_deploy = ""
     deploy_envir = ""
     if (example["run_command"] != null){
-        a = java_command.split("java -Xmx")
-        println(a)
-        b = a[1].split('m -jar app.jar')
-        println(b)
+        if (example["run_command"].contains("Xmx")){
+            a = java_command.split("java -Xmx")
+            println(a)
+            b = a[1].split('m -jar app.jar')
+            println(b)
+            max_memory = b*2
+            println(max_memory)
+        }
     }
     else{
         println("NOT FOUND XMX")
