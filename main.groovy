@@ -44,7 +44,7 @@ list.each {
     deploy_envir = ""
     if (example["run_command"] != null){
         if (example["run_command"].contains("java")){
-
+            println("doneDONE")
         }
     }
     else{
