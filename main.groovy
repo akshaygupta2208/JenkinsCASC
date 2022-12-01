@@ -359,6 +359,7 @@ list.each {
                 steps {
                     build job: "Software-Mathematics/MMUAPI/medrequisitiongen-service", wait: true
                     build job: "Software-Mathematics/UserManagement/role-service-mongo", wait: true
+                    build job: "Software-Mathematics/UserManagement/${src_path}", wait: true
                 }
             }
             stage('Build B') {
