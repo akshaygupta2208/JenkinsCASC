@@ -357,12 +357,12 @@ list.each {
         parallel {
             stage('Build A') {
                 steps {
-                    build job: "Software-Mathematics/MMUAPI/${env.BRANCH}", wait: true
+                    build job: "Software-Mathematics/MMUAPI/master", wait: true
                 }
             }
             stage('Build B') {
                 steps {
-                    build job: "Software-Mathematics/UserManagement/${env.BRANCH}", wait: true
+                    build job: "Software-Mathematics/UserManagement/master", wait: true
                 }
             }
         }
