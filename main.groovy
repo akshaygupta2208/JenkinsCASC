@@ -47,18 +47,13 @@ list.each {
     if (example["run_command"] != null){
         if (example["run_command"].contains("Xmx")){
             a = java_command.split("Xmx")
-            println(a)
             b = a[1].split('m')
-            println(b)
             int c = b[0].toInteger()
-            println(c)
             max_memory = c*2
             max_memory = max_memory/100
 
             max_memory = Math.round(max_memory)
             max_memory = max_memory * 100
-
-            println(max_memory)
         }
     }
     else{
@@ -336,6 +331,45 @@ list.each {
                }    
         }    
                 }
+            }
+            """)
+                sandbox()
+            }
+        }
+    }
+
+    pipelineJob('Infra/Build_all_jobs') {
+        definition {
+            cps {
+                script("""
+    pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                environment {
+                    NEXUS_CRED = credentials('nexus')
+                }
+                stages {
+                    stage('Build A and B') {
+        failFast true
+        parallel {
+            stage('Build A') {
+                steps {
+                    build job: "Software-Mathematics/MMUAPI/${env.BRANCH}", wait: true
+                }
+            }
+            stage('Build B') {
+                steps {
+                    build job: "Software-Mathematics/UserManagement/${env.BRANCH}", wait: true
+                }
+            }
+        }
+    }  
+                    
+                    
+            }
             }
             """)
                 sandbox()
