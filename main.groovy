@@ -54,6 +54,8 @@ list.each {
 
             max_memory = Math.round(max_memory)
             max_memory = max_memory * 100
+            println(max_memory)
+            println("DONEDONE")
         }
     }
     else{
@@ -356,7 +358,10 @@ list.each {
         failFast true
         parallel {
             stage('Build A') {
+
                 steps {
+                    mmu_api_jobs = ['medrequisitiongen-service', 'labtests-serv', 'patient-service']
+                    for i in
                     build job: "Software-Mathematics/MMUAPI/medrequisitiongen-service", wait: true
                     build job: "Software-Mathematics/UserManagement/role-service-mongo", wait: true
                     build job: "Software-Mathematics/UserManagement/${src_path}", wait: true
