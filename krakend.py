@@ -12,7 +12,7 @@ krakend_base_json = {
     "idle_connection_timeout": "300s",
     "extra_config": {
         "router": {
-            "auto_options":True
+            "auto_options": True
         },
         "telemetry/logging": {
             "level": "INFO",
@@ -44,7 +44,7 @@ krakend_base_json = {
             "ssl_proxy_headers": {
                 "X-Forwarded-Proto": "https"
             },
-            "host_proxy_headers":[
+            "host_proxy_headers": [
                 "X-Forwarded-Hosts"
             ],
             "referrer_policy": "same-origin",
