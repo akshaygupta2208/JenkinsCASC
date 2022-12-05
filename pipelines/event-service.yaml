@@ -2,7 +2,7 @@ name: event-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 run_command: java -Xmx256m -jar app.jar
 src_path: doses-service
-application_port: 9013
+application_port: 9001
 deploy_port: 9142
 build_command: mvn clean install -s $MAVEN_SETTINGS
 #deploy_servers_dev:
