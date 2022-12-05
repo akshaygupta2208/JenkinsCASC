@@ -66,8 +66,8 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-#pipeline_base = "pipelines"
-#krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
 
 def get_recursive_files(base_path):
@@ -87,9 +87,12 @@ def get_swagger_data(app_base, swagger_uri="/v2/api-docs"):
     print(f'Looking for swagger data for http://{app_base}{swagger_uri}')
     try:
         response = requests.get(f'http://{app_base}{swagger_uri}')
-        print(f'Swagger data api returned {response.status_code}')
-        if response.status_code == 200:
-            return response.json()
+        if response.headers.get('content-type') == 'application/json':
+            print(f'Swagger data api returned {response.status_code}')
+            if response.status_code == 200:
+                return response.json()
+        else:
+            pass
     except requests.exceptions.ConnectionError as e:
         print("Swagger data api is not responding")
     return False
