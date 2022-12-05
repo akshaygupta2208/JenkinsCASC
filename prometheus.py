@@ -40,12 +40,16 @@ def get_swagger_data(app_base, swagger_uri="/v2/api-docs"):
     print(f'Looking for swagger data for http://{app_base}{swagger_uri}')
     try:
         response = requests.get(f'http://{app_base}{swagger_uri}')
-        print(f'Swagger data api returned {response.status_code}')
-        if response.status_code == 200:
-            return response.json()
+        if response.headers.get('content-type') == 'application/json':
+            print(f'Swagger data api returned {response.status_code}')
+            if response.status_code == 200:
+                return response.json()
+        else:
+            pass
     except requests.exceptions.ConnectionError as e:
         print("Swagger data api is not responding")
     return False
+
 class MyDumper(yaml.Dumper):
 
     def increase_indent(self, flow=False, indentless=False):
