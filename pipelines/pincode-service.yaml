@@ -1,0 +1,15 @@
+name: pincode-service
+repo_url: https://github.com/Software-Mathematics/MMUAPI.git
+run_command: java -Xmx256m -jar app.jar
+src_path: event-service
+application_port: 9013
+deploy_port: 9143
+build_command: mvn clean install -s $MAVEN_SETTINGS
+deploy_servers_dev:
+  - 185.207.250.107
+deploy_servers_prod:
+  - 161.97.136.16
+deploy_env_prod: SM_TEST=test
+deploy_env:
+  - stg
+  - prod
