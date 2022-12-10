@@ -1,6 +1,6 @@
 name: jvabsvb
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
-enabled: true
+enabled: false
 run_command: java -Xmx256m -jar app.jar
 src_path: jsnsuvjfn
 application_port: 8081
