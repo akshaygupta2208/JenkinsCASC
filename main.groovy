@@ -271,17 +271,19 @@ list.each {
                     ${stg_stage}
                     ${prod_stage}
                     ${mvn_push_stage}
+}
             }
         }
                    """)
                     sandbox()
+
                 }
             }
         }
-    }
-    else{
-        println("repo not generated")
-    }
+
+//    else{
+//        println("repo not generated")
+//    }
     println(example)
 
 
