@@ -272,8 +272,12 @@ list.each {
                     ${prod_stage}
                     ${mvn_push_stage}
 }
+
             }
         }
+else{
+        println("repo not generated")
+    }
                    """)
                     sandbox()
 
@@ -281,9 +285,7 @@ list.each {
             }
         }
 
-//    else{
-//        println("repo not generated")
-//    }
+
     println(example)
 
 
