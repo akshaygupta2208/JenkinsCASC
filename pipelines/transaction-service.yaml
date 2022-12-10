@@ -1,5 +1,6 @@
 name: transaction-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
+enabled: false
 run_command: java -Xmx256m -jar app.jar
 src_path: transaction-servie
 application_port: 9012

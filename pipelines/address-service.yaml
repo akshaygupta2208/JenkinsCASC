@@ -1,5 +1,6 @@
 name: address-service
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
+enabled: true
 run_command: java -Xmx256m -jar app.jar
 src_path: address-service
 application_port: 8082

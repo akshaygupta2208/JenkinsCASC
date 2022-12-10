@@ -40,6 +40,7 @@ list.each {
     application_port = example["application_port"]
     deploy_port = example["deploy_port"]
     src_path = example["src_path"]
+    job_state = example["enabled"]
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
@@ -216,10 +217,11 @@ list.each {
         description('Folder containing all ' + folder_name + ' related jobs')
     }
     println(folder_name + "/" + example["name"])
-    pipelineJob(folder_name + "/" + example["name"]) {
-        definition {
-            cps {
-                script("""
+    if (job_state == 'true') {
+        pipelineJob(folder_name + "/" + example["name"]) {
+            definition {
+                cps {
+                    script("""
                
             
             pipeline {
@@ -272,9 +274,13 @@ list.each {
             }
         }
                    """)
-                sandbox()
+                    sandbox()
+                }
             }
         }
+    }
+    else{
+            println("repo not generated")
     }
     println(example)
 

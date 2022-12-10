@@ -1,5 +1,6 @@
 name: registration-login
 repo_url: https://github.com/Software-Mathematics/UserManagement.git
+enabled: true
 run_command: java -Xmx256m -jar app.jar
 src_path: registration-login
 application_port: 8390
