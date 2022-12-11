@@ -218,8 +218,8 @@ list.each {
                 description('Folder containing all ' + folder_name + ' related jobs')
             }
             println(folder_name + "/" + example["name"])
-    if (example["enabled"] != null) {
-        if (example["enabled"] == 'true') {
+//    if (example["enabled"] != null) {
+//        if (example["enabled"] == 'true') {
             pipelineJob(folder_name + "/" + example["name"]) {
                 definition {
                     cps {
@@ -284,10 +284,10 @@ list.each {
                     }
                 }
             }
-        }
-    else if (example["enabled"] == 'false'){
-        println("repo not generated")
-    }
+//        }
+//    else if (example["enabled"] == 'false'){
+//        println("repo not generated")
+//    }
         }
 
 
