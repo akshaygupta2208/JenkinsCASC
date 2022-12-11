@@ -285,7 +285,7 @@ list.each {
                 }
             }
         }
-    elseif (example["enabled"] == 'false'){
+    else if (example["enabled"] == 'false'){
         println("repo not generated")
     }
         }
