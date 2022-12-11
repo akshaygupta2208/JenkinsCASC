@@ -217,13 +217,13 @@ list.each {
         description('Folder containing all ' + folder_name + ' related jobs')
     }
     println(folder_name + "/" + example["name"])
-
+    if (job_state == 'true'){
         pipelineJob(folder_name + "/" + example["name"]) {
             definition {
                 cps {
                     script("""
                
-        if (job_state == 'true'){
+        
             pipeline {
                 agent any
                 tools {
@@ -271,19 +271,20 @@ list.each {
                     ${stg_stage}
                     ${prod_stage}
                     ${mvn_push_stage}
-}
+
 
             }
         }
-else{
-        println("repo not generated")
-    }
+
                    """)
                     sandbox()
 
                 }
             }
-        }
+        }}
+    else{
+        println("repo not generated")
+    }
 
 
     println(example)
