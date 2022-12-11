@@ -288,7 +288,6 @@ list.each {
 //    else if (example["enabled"] == 'false'){
 //        println("repo not generated")
 //    }
-        }
 
 
     println(example)
