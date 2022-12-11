@@ -213,18 +213,19 @@ list.each {
 
     // Creating repo specific folder
     println(folder_name)
-    if (job_state == 'true'){
-    folder(folder_name) {
-        description('Folder containing all ' + folder_name + ' related jobs')
-    }
-    println(folder_name + "/" + example["name"])
 
-        pipelineJob(folder_name + "/" + example["name"]) {
-            definition {
-                cps {
-                    script("""
+            folder(folder_name) {
+                description('Folder containing all ' + folder_name + ' related jobs')
+            }
+            println(folder_name + "/" + example["name"])
+    if (example["enabled"] != null) {
+        if (example["enabled"] == 'true') {
+            pipelineJob(folder_name + "/" + example["name"]) {
+                definition {
+                    cps {
+                        script("""
                
-        
+
             pipeline {
                 agent any
                 tools {
@@ -278,15 +279,16 @@ list.each {
         }
 
                    """)
-                    sandbox()
+                        sandbox()
 
+                    }
                 }
             }
         }
-        }
-    else{
+    elseif (example["enabled"] == 'false'){
         println("repo not generated")
     }
+        }
 
 
     println(example)
