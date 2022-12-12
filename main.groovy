@@ -44,7 +44,7 @@ list.each {
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
-
+    println(example["enabled"])
     // skip creating the job is enabled is false.
     if (example["enabled"] == 'false'){
         println("skip creating the job because enabled is false for " + example["name"])
@@ -61,8 +61,8 @@ list.each {
 
             max_memory = Math.round(max_memory)
             max_memory = max_memory * 100
-            println(max_memory)
-            println("DONEDONE")
+//            println(max_memory)
+//            println("DONEDONE")
         }
     } else {
         println("NOT FOUND XMX")
@@ -289,7 +289,7 @@ list.each {
         }
     }
 
-    println(example)
+//    println(example)
 
 }
 
