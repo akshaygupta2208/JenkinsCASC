@@ -73,7 +73,6 @@ for pipeline_file in get_recursive_files(pipeline_base):
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
     job_state = yaml_config[0].get("enabled")
-    print(job_state)
     if (job_state):
         print("configuration generated")
         # deploy_port
