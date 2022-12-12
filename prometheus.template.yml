@@ -1,0 +1,308 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: null
+rule_files: null
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - localhost:9090
+  - job_name: blackbox
+    metrics_path: /probe
+    params:
+      module:
+        - http_2xx
+    static_configs:
+      - targets:
+          - http://161.97.136.16:9107/v2/api-docs
+        labels:
+          service_name: itemmaster-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9104/v2/api-docs
+        labels:
+          service_name: testmaster-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9106/v2/api-docs
+        labels:
+          service_name: vitals-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9132/v2/api-docs
+        labels:
+          service_name: mmuassociation-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9102/v2/api-docs
+        labels:
+          service_name: patient-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9100/v2/api-docs
+        labels:
+          service_name: frequencymaster-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9137/v2/api-docs
+        labels:
+          service_name: aggregation-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9127/v2/api-docs
+        labels:
+          service_name: typemaster-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9115/v2/api-docs
+        labels:
+          service_name: experience-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9133/v2/api-docs
+        labels:
+          service_name: mmucreation-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9122/v2/api-docs
+        labels:
+          service_name: scheme-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9138/v2/api-docs
+        labels:
+          service_name: referal-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9099/v2/api-docs
+        labels:
+          service_name: doses-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9119/v2/api-docs
+        labels:
+          service_name: qualification-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9125/v2/api-docs
+        labels:
+          service_name: new-upload-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9114/v2/api-docs
+        labels:
+          service_name: designation-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9118/v2/api-docs
+        labels:
+          service_name: professionaldetails-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9136/v2/api-docs
+        labels:
+          service_name: stock-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9103/v2/api-docs
+        labels:
+          service_name: prescription-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9129/v2/api-docs
+        labels:
+          service_name: menu-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9113/v2/api-docs
+        labels:
+          service_name: department-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9126/v2/api-docs
+        labels:
+          service_name: profile-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://194.163.159.164:9121/v2/api-docs
+        labels:
+          service_name: role-service-mongo
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9109/v2/api-docs
+        labels:
+          service_name: transaction-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9128/v2/api-docs
+        labels:
+          service_name: statusmaster-service
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9101/v2/api-docs
+        labels:
+          service_name: labtests-serv
+          env: prod
+          bu: mmu
+      - targets:
+          - http://161.97.136.16:9105/v2/api-docs
+        labels:
+          service_name: visit-service
+          env: prod
+          bu: mmu
+    relabel_configs:
+      - source_labels:
+          - __address__
+        target_label: __param_target
+      - source_labels:
+          - __param_target
+        target_label: instance
+      - target_label: __address__
+        replacement: 38.242.198.101:9115
+  - job_name: node_exporter
+    static_configs:
+      - targets:
+          - 161.97.136.16:4000
+          - 194.163.159.164:4000
+          - 38.242.154.127:4000
+          - 185.207.250.107:4000
+          - 38.242.198.101:4000
+  - job_name: cont_metrics
+    static_configs:
+      - targets:
+          - 161.97.136.16:4001
+          - 194.163.159.164:4001
+          - 38.242.154.127:4001
+          - 185.207.250.107:4001
+          - 38.242.198.101:4001
+  - job_name: jmx-exporter
+    static_configs:
+      - targets: ['194.163.159.164:59110']
+        labels:
+          instance: 'medrequisitiongen-service'
+      - targets: [ '194.163.159.164:59129' ]
+        labels:
+          instance: 'menu-service'
+      - targets: [ '194.163.159.164:59133' ]
+        labels:
+          instance: 'mmucreation-service'
+      - targets: [ '161.97.136.16:59132' ]
+        labels:
+          instance: 'mmuassociation-service'
+      - targets: [ '161.97.136.16:59108' ]
+        labels:
+          instance: 'warehousemaster-service'
+      - targets: [ '194.163.159.164:59120' ]
+        labels:
+          instance: 'resource-service-mongo'
+      - targets: [ '194.163.159.164:59126' ]
+        labels:
+          instance: 'profile-service-mongo'
+      - targets: [ '194.163.159.164:59102' ]
+        labels:
+          instance: 'patient-service'
+      - targets: [ '194.163.159.164:59122' ]
+        labels:
+          instance: 'scheme-service-mongo'
+      - targets: [ '194.163.159.164:59121' ]
+        labels:
+          instance: 'role-service-mongo'
+      - targets: [ '194.163.159.164:59119' ]
+        labels:
+          instance: 'qualification-service-mongo'
+      - targets: [ '194.163.159.164:59115' ]
+        labels:
+          instance: 'experience-service-mongo'
+      - targets: [ '194.163.159.164:59114' ]
+        labels:
+          instance: 'designation-service-mongo'
+      - targets: [ '194.163.159.164:59113' ]
+        labels:
+          instance: 'department-service-mongo'
+      - targets: [ '194.163.159.164:59125' ]
+        labels:
+          instance: 'new-upload-service-mongo'
+      - targets: [ '161.97.136.16:59099' ]
+        labels:
+          instance: 'doses-service'
+      - targets: [ '161.97.136.16:59137' ]
+        labels:
+          instance: 'aggregation-service'
+      - targets: [ '161.97.136.16:59107' ]
+        labels:
+          instance: 'itemmaster-service'
+      - targets: [ '161.97.136.16:59100' ]
+        labels:
+          instance: 'frequencymaster-service'
+      - targets: [ '161.97.136.16:59101' ]
+        labels:
+          instance: 'labtests-serv'
+      - targets: [ '161.97.136.16:59110' ]
+        labels:
+          instance: 'medrequisitiongen-service'
+      - targets: [ '161.97.136.16:59132' ]
+        labels:
+          instance: 'mmuassociation-service'
+      - targets: [ '161.97.136.16:59103' ]
+        labels:
+          instance: 'prescription-service'
+      - targets: [ '161.97.136.16:59138' ]
+        labels:
+          instance: 'referal-service'
+      - targets: [ '161.97.136.16:59128' ]
+        labels:
+          instance: 'statusmaster-service'
+      - targets: [ '161.97.136.16:59136' ]
+        labels:
+          instance: 'stock-service'
+      - targets: [ '161.97.136.16:59104' ]
+        labels:
+          instance: 'testmaster-service'
+      - targets: [ '161.97.136.16:59109' ]
+        labels:
+          instance: 'transaction-service'
+      - targets: [ '161.97.136.16:59127' ]
+        labels:
+          instance: 'typemaster-service'
+      - targets: [ '161.97.136.16:59105' ]
+        labels:
+          instance: 'visit-service'
+      - targets: [ '161.97.136.16:59106' ]
+        labels:
+          instance: 'vitals-service'
+      - targets: [ '161.97.136.16:59108' ]
+        labels:
+          instance: 'warehousemaster-service'
+      - targets: [ '161.97.136.16:59109' ]
+        labels:
+          instance: 'vitalsmaster-service'
+

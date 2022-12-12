@@ -66,8 +66,8 @@ pipeline_base = "jenkins/pipelines"
 krakend_base_json_path = "ansible/roles/apithfrole/files"
 
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# krakend_base_json_path = "./"
+pipeline_base = "pipelines"
+krakend_base_json_path = "./"
 
 
 def get_recursive_files(base_path):
@@ -103,41 +103,47 @@ for pipeline_file in get_recursive_files(pipeline_base):
 
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
+    job_state = yaml_config[0].get("enabled")
+    print(job_state)
+    if (job_state):
+        print("configuration generated")
     # deploy_port
-    if "deploy_port" in yaml_config[0] and "deploy_servers_prod" in yaml_config[0]:
-        deploy_port = yaml_config[0].get("deploy_port")
-        app_name = yaml_config[0].get("name")
-        deploy_servers = yaml_config[0].get("deploy_servers_prod")
-        print("Application has deploy_port looking for swagger config now")
-        # get swagger data if present
-        swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
-        if swagger_data:
-            if "paths" in swagger_data:
-                for path in swagger_data["paths"]:
-                    # generating krakend config here
-                    # for each allowed method add an endpoint
-                    allowed_methods = list(swagger_data["paths"][path].keys())
-                    for method in allowed_methods:
-                        method = method.upper()
-                        krakend_config = {}
-                        krakend_config["endpoint"] = f"/{app_name}{path}"
-                        krakend_config["input_query_strings"] = ["*"]
-                        krakend_config["output_encoding"] = "no-op"
-                        krakend_config["input_headers"] = ["Content-Type", "Cookie"]
-                        krakend_config["method"] = method
-                        krakend_config["backend"] = []
-                        hosts = []
-                        for server in deploy_servers:
-                            hosts.append(f"{server}:{deploy_port}")
-                        backend = {
-                            "encoding": "no-op",
-                            "url_pattern": path,
-                            "host": hosts,
-                            "method": method
-                        }
-                        krakend_config["backend"].append(backend)
-                        krakend_base_json["endpoints"].append(krakend_config)
-
+        if "deploy_port" in yaml_config[0] and "deploy_servers_prod" in yaml_config[0]:
+            deploy_port = yaml_config[0].get("deploy_port")
+            app_name = yaml_config[0].get("name")
+            deploy_servers = yaml_config[0].get("deploy_servers_prod")
+            print("Application has deploy_port looking for swagger config now")
+            # get swagger data if present
+            swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
+            if swagger_data:
+                if "paths" in swagger_data:
+                    for path in swagger_data["paths"]:
+                        # generating krakend config here
+                        # for each allowed method add an endpoint
+                        allowed_methods = list(swagger_data["paths"][path].keys())
+                        for method in allowed_methods:
+                            method = method.upper()
+                            krakend_config = {}
+                            krakend_config["endpoint"] = f"/{app_name}{path}"
+                            krakend_config["input_query_strings"] = ["*"]
+                            krakend_config["output_encoding"] = "no-op"
+                            krakend_config["input_headers"] = ["Content-Type", "Cookie"]
+                            krakend_config["method"] = method
+                            krakend_config["backend"] = []
+                            hosts = []
+                            for server in deploy_servers:
+                                hosts.append(f"{server}:{deploy_port}")
+                            backend = {
+                                "encoding": "no-op",
+                                "url_pattern": path,
+                                "host": hosts,
+                                "method": method
+                            }
+                            krakend_config["backend"].append(backend)
+                            krakend_base_json["endpoints"].append(krakend_config)
+    else:
+        print("enabled is false hence not generated")
+        pass
 # Serializing json
 json_object = json.dumps(krakend_base_json, indent=4)
 print(json.dumps(json_object, indent=4))

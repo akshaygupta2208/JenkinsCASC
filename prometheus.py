@@ -19,8 +19,8 @@ pipeline_base = "jenkins/pipelines"
 prometheus_path = "ansible/roles/prometheus/files/"
 
 # enable these below mentioned variables for development in local
-# pipeline_base = "pipelines"
-# prometheus_path = "./"
+pipeline_base = "pipelines"
+prometheus_path = "./"
 
 
 def get_recursive_files(base_path):
@@ -72,47 +72,54 @@ for pipeline_file in get_recursive_files(pipeline_base):
 
     # get all necessary details
     yaml_config = read_yaml(pipeline_file)
-    # deploy_port
-    if "deploy_servers_dev" in yaml_config[0]:
-        deploy_port = yaml_config[0].get("deploy_port")
-        app_name = yaml_config[0].get("name")
-        deploy_servers = yaml_config[0].get("deploy_servers_dev")
-        print("Application has deploy_port looking for swagger config now")
-        # get swagger data if present
-        swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
-        if swagger_data:
-            service_name_found = False
-            if not service_name_found:
-                new_data_item = OrderedDict({
-                    "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
-                    "labels": OrderedDict({
-                        "service_name": app_name,
-                        "env": "dev",
-                        "bu": "mmu"
+    job_state = yaml_config[0].get("enabled")
+    print(job_state)
+    if (job_state):
+        print("configuration generated")
+        # deploy_port
+        if "deploy_servers_dev" in yaml_config[0]:
+            deploy_port = yaml_config[0].get("deploy_port")
+            app_name = yaml_config[0].get("name")
+            deploy_servers = yaml_config[0].get("deploy_servers_dev")
+            print("Application has deploy_port looking for swagger config now")
+            # get swagger data if present
+            swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
+            if swagger_data:
+                service_name_found = False
+                if not service_name_found:
+                    new_data_item = OrderedDict({
+                        "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
+                        "labels": OrderedDict({
+                            "service_name": app_name,
+                            "env": "dev",
+                            "bu": "mmu"
+                        })
                     })
-                })
-                yaml_dict["static_configs"].append(new_data_item)
+                    yaml_dict["static_configs"].append(new_data_item)
 
-    if "deploy_servers_prod" in yaml_config[0]:
-        deploy_port = yaml_config[0].get("deploy_port")
-        app_name = yaml_config[0].get("name")
-        deploy_servers = yaml_config[0].get("deploy_servers_prod")
-        print("Application has deploy_port looking for swagger config now")
-        # get swagger data if present
-        swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
-        if swagger_data:
-            service_name_found = False
-            if not service_name_found:
-                new_data_item = OrderedDict({
-                    "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
-                    "labels": OrderedDict({
-                        "service_name": app_name,
-                        "env": "prod",
-                        "bu": "mmu"
+        if "deploy_servers_prod" in yaml_config[0]:
+            deploy_port = yaml_config[0].get("deploy_port")
+            app_name = yaml_config[0].get("name")
+            deploy_servers = yaml_config[0].get("deploy_servers_prod")
+            print("Application has deploy_port looking for swagger config now")
+            # get swagger data if present
+            swagger_data = get_swagger_data(f'{deploy_servers[0]}:{deploy_port}')
+            if swagger_data:
+                service_name_found = False
+                if not service_name_found:
+                    new_data_item = OrderedDict({
+                        "targets": [f"http://{deploy_servers[0]}:{deploy_port}/v2/api-docs"],
+                        "labels": OrderedDict({
+                            "service_name": app_name,
+                            "env": "prod",
+                            "bu": "mmu"
+                        })
                     })
-                })
 
-                yaml_dict["static_configs"].append(new_data_item)
+                    yaml_dict["static_configs"].append(new_data_item)
+    else:
+        print("enabled is false hence not generated")
+        pass
 for x in infra_endpoints:
     new_data_item = OrderedDict({
         "targets": [infra_endpoints[x]],
