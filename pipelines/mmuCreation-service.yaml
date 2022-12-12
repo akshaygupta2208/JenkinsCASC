@@ -1,6 +1,6 @@
 name: mmucreation-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
-enabled: false
+enabled: true
 run_command: java -Xmx256m -jar app.jar
 src_path: mmuCreation-service
 application_port: 6011

@@ -44,8 +44,6 @@ list.each {
     dev_deploy = ""
     prod_deploy = ""
     deploy_envir = ""
-    println(example["enabled"])
-    println(example["enabled"].getClass())
     // skip creating the job is enabled is false.
     if (!example["enabled"]){
         println("skip creating the job because enabled is false for " + example["name"])

@@ -1,8 +1,7 @@
 name: pincode-service
 repo_url: https://github.com/Software-Mathematics/MMUAPI.git
-enabled: false
-run_command: java -Xmx256m -jar app.jar
 enabled: true
+run_command: java -Xmx256m -jar app.jar
 src_path: pincode-service
 application_port: 8081
 deploy_port: 9143

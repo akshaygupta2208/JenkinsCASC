@@ -1,5 +1,6 @@
 name: camunda-service
 repo_url: https://github.com/Software-Mathematics/workflow.git
+enabled: true
 run_command: java -jar app.jar
 src_path: my-workflow
 application_port: 8088
