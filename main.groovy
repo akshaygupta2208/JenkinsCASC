@@ -45,21 +45,26 @@ list.each {
     prod_deploy = ""
     deploy_envir = ""
 
-    if (example["run_command"] != null){
-        if (example["run_command"].contains("Xmx")){
+    // skip creating the job is enabled is false.
+    if (example["enabled"] == 'false'){
+        println("skip creating the job because enabled is false for " + example["name"])
+        return
+    }
+
+    if (example["run_command"] != null) {
+        if (example["run_command"].contains("Xmx")) {
             a = java_command.split("Xmx")
             b = a[1].split('m')
             int c = b[0].toInteger()
-            max_memory = c*2
-            max_memory = max_memory/100
+            max_memory = c * 2
+            max_memory = max_memory / 100
 
             max_memory = Math.round(max_memory)
             max_memory = max_memory * 100
             println(max_memory)
             println("DONEDONE")
         }
-    }
-    else{
+    } else {
         println("NOT FOUND XMX")
     }
 
@@ -90,7 +95,7 @@ list.each {
                  }
             """
             }
-      }
+        }
     }
 
     artefact_creation = """
@@ -214,16 +219,15 @@ list.each {
     // Creating repo specific folder
     println(folder_name)
 
-            folder(folder_name) {
-                description('Folder containing all ' + folder_name + ' related jobs')
-            }
-            println(folder_name + "/" + example["name"])
-//    if (example["enabled"] != null) {
-//        if (example["enabled"] == 'true') {
-            pipelineJob(folder_name + "/" + example["name"]) {
-                definition {
-                    cps {
-                        script("""
+    folder(folder_name) {
+        description('Folder containing all ' + folder_name + ' related jobs')
+    }
+    println(folder_name + "/" + example["name"])
+
+    pipelineJob(folder_name + "/" + example["name"]) {
+        definition {
+            cps {
+                script("""
                
 
             pipeline {
@@ -279,28 +283,24 @@ list.each {
         }
 
                    """)
-                        sandbox()
+                sandbox()
 
-                    }
-                }
             }
-//        }
-//    else if (example["enabled"] == 'false'){
-//        println("repo not generated")
-//    }
-
+        }
+    }
 
     println(example)
 
+}
 
-    folder("Infra") {
-        description('Folder containing all Infra related jobs')
-    }
+folder("Infra") {
+    description('Folder containing all Infra related jobs')
+}
 
-    pipelineJob('Software-Mathematics/MMUAPI/apithf') {
-        definition {
-            cps {
-                script("""
+pipelineJob('Software-Mathematics/MMUAPI/apithf') {
+    definition {
+        cps {
+            script("""
     pipeline {
                 agent any
                 tools {
@@ -349,60 +349,15 @@ list.each {
                 }
             }
             """)
-                sandbox()
-            }
+            sandbox()
         }
     }
+}
 
-    pipelineJob('Infra/Build_all_jobs') {
-        definition {
-            cps {
-                script("""
-    pipeline {
-                agent any
-                tools {
-                maven 'Maven 3'
-                jdk 'openjdk-11'
-                }
-                environment {
-                    NEXUS_CRED = credentials('nexus')
-                }
-                stages {
-                    stage('Build A and B') {
-        failFast true
-        parallel {
-            stage('Build A') {
-
-                steps {
-                    mmu_api_jobs = ['medrequisitiongen-service', 'labtests-serv', 'patient-service']
-                    for i in
-                    build job: "Software-Mathematics/MMUAPI/medrequisitiongen-service", wait: true
-                    build job: "Software-Mathematics/UserManagement/role-service-mongo", wait: true
-                    build job: "Software-Mathematics/UserManagement/${src_path}", wait: true
-                }
-            }
-            stage('Build B') {
-                steps {
-                    build job: "Software-Mathematics/UserManagement/department-service-mongo", wait: true
-                }
-            }
-        }
-    }  
-                    
-                    
-            }
-            }
-            """)
-                sandbox()
-            }
-        }
-    }
-
-
-    pipelineJob('Infra/jenkins') {
-        definition {
-            cps {
-                script("""
+pipelineJob('Infra/jenkins') {
+    definition {
+        cps {
+            script("""
     pipeline {
                 agent any
                 tools {
@@ -452,15 +407,15 @@ list.each {
             }
             }
             """)
-                sandbox()
-            }
+            sandbox()
         }
     }
+}
 
-    pipelineJob('Infra/nginx') {
-        definition {
-            cps {
-                script("""
+pipelineJob('Infra/nginx') {
+    definition {
+        cps {
+            script("""
     pipeline {
                 agent any
                 tools {
@@ -505,14 +460,14 @@ list.each {
             }
             }
             """)
-                sandbox()
-            }
+            sandbox()
         }
     }
-    pipelineJob('Infra/monitoring-server') {
-        definition {
-            cps {
-                script("""
+}
+pipelineJob('Infra/monitoring-server') {
+    definition {
+        cps {
+            script("""
     pipeline {
                 agent any
                 tools {
@@ -569,21 +524,21 @@ list.each {
             }
             }
             """)
-                sandbox()
-            }
+            sandbox()
         }
     }
-    pipelineJob('Infra/create-user') {
+}
+pipelineJob('Infra/create-user') {
 
-        parameters {
-            stringParam("USERNAME", "root", "Sample string parameter")
-            stringParam('PASSWORD', null, 'Enter the password of the remote host')
-            stringParam("IP", null, "Sample string parameter")
-        }
-        definition {
+    parameters {
+        stringParam("USERNAME", "root", "Sample string parameter")
+        stringParam('PASSWORD', null, 'Enter the password of the remote host')
+        stringParam("IP", null, "Sample string parameter")
+    }
+    definition {
 
-            cps {
-                script("""
+        cps {
+            script("""
     pipeline {
                 agent any
                 tools {
@@ -629,10 +584,7 @@ list.each {
             }
             }
             """)
-                sandbox()
-            }
+            sandbox()
         }
     }
-
-
 }
