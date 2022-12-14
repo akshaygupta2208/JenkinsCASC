@@ -3,7 +3,7 @@ repo_url: https://github.com/Software-Mathematics/MMUAPI.git
 enabled: true
 run_command: java -Xmx256m -jar app.jar
 src_path: disease-service
-application_port: 6011
+application_port: 8081
 deploy_port: 9145
 build_command: mvn clean install -s $MAVEN_SETTINGS
 deploy_servers_prod:
