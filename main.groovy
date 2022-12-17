@@ -295,6 +295,9 @@ list.each {
 folder("Infra") {
     description('Folder containing all Infra related jobs')
 }
+folder("Infra/Backup") {
+    description('Folder containing all Backup related jobs')
+}
 
 pipelineJob('Software-Mathematics/MMUAPI/apithf') {
     definition {
