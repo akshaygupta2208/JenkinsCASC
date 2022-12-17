@@ -587,3 +587,46 @@ pipelineJob('Infra/create-user') {
         }
     }
 }
+pipelineJob('Infra/Backup/backup-mongodb') {
+    definition {
+        cps {
+            script("""
+    pipeline {
+                agent any
+                tools {
+                maven 'Maven 3'
+                jdk 'openjdk-11'
+                }
+                environment {
+                    NEXUS_CRED = credentials('nexus')
+                }
+                stages {
+                    stage('checkout'){
+                        steps{
+                  
+//                            dir("ansible"){
+//                            git branch: 'master',
+//                            credentialsId: 'kgyuvraj',
+//                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
+                            }
+                          }
+                        }
+                
+                    stage('Build') {     
+                            steps{                           
+                                  sh 'echo "Build"'
+                                  sh 'mongodump -vvv -h mongoSet/185.207.250.107:30001,185.207.250.107:30002,185.207.250.107:30003 --gzip --archive=db.backup`date +%F`.gz'
+                                }    
+                  }
+                    stage('BuildSanity') {     
+                            steps{  
+                                sh 'echo "BuildSanity"'
+                              }    
+                    }
+            }
+            }
+            """)
+            sandbox()
+        }
+    }
+}
