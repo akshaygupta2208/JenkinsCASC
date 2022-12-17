@@ -605,13 +605,7 @@ pipelineJob('Infra/Backup/backup-mongodb') {
                 }
                 stages {
                     stage('checkout'){
-                        steps{
-                  
-//                            dir("ansible"){
-//                            git branch: 'master',
-//                            credentialsId: 'kgyuvraj',
-//                            url: 'https://github.com/akshaygupta2208/ansible_repo.git'
-                            }
+                        sh 'echo ''
                           }
                         }
                 
