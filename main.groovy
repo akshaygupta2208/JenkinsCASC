@@ -607,7 +607,6 @@ pipelineJob('Infra/Backup/backup-mongodb') {
                     stage('checkout'){
                         sh 'echo ''
                           }
-                        }
                 
                     stage('Build') {     
                             steps{                           
