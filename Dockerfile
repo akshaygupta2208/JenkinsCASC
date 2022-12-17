@@ -21,6 +21,8 @@ RUN apt-get -y install \
     lsb-release \
     sshpass \
     python3-pip
+RUN wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian11-x86_64-100.6.1.deb
+RUN dpkg -i mongodb-database-tools-debian11-x86_64-100.6.1.deb
 RUN pip3 install kafka-python
 RUN pip3 install oyaml
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg |  gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
