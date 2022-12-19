@@ -596,6 +596,10 @@ pipelineJob('Infra/Backup/backup-mongodb') {
             script("""
     pipeline {
                 agent any
+                triggers {
+              cron '* 18 * * * '
+            }
+
                 tools {
                 maven 'Maven 3'
                 jdk 'openjdk-11'
