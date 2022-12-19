@@ -616,7 +616,7 @@ pipelineJob('Infra/Backup/backup-mongodb') {
                     stage('Build') {     
                             steps{                           
                                   sh 'echo "Build"'
-                                  sh 'mongodump -vvv -h mongoSet/185.207.250.107:30001,185.207.250.107:30002,185.207.250.107:30003 --gzip --archive=db.backup`date +%F`.gz'
+                                  sh 'mongodump -vvv -h 194.163.159.164:27018 --gzip --archive=db.backup`date +%F`.gz'
                                 }    
                   }
                     stage('BuildSanity') {     
