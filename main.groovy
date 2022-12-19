@@ -597,7 +597,7 @@ pipelineJob('Infra/Backup/backup-mongodb') {
     pipeline {
                 agent any
                 triggers {
-              cron '* 18 * * * '
+              cron '0 0 * * *'
             }
 
                 tools {
